@@ -1,0 +1,177 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.32.1.169/W32 for ARM         19/Jun/2024  10:36:56
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  
+#    Endian       =  little
+#    Source file  =  
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\Core\Src\stm32f4xx_hal_msp.c
+#    Command line =  
+#        -f C:\Users\JASAN1~1\AppData\Local\Temp\EW43A.tmp
+#        (D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\Core\Src\stm32f4xx_hal_msp.c
+#        -D USE_HAL_DRIVER -D STM32F407xx -lC
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM\LED_blinking\List
+#        -lA
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM\LED_blinking\List
+#        -o
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM\LED_blinking\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C:\Program Files
+#        (x86)\IAR Systems\Embedded Workbench 8.2\arm\inc\c\DLib_Config_Full.h"
+#        -I
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM/..\Drivers\STM32F4xx_HAL_Driver\
+#        -I
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM/..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\
+#        -I
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM/..\Drivers\CMSIS\Include\
+#        -I
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM/..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\
+#        -I
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM/../Core/Inc\
+#        -I
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM/../Drivers/STM32F4xx_HAL_Driver/Inc\
+#        -Ol)
+#    Locale       =  C
+#    List file    =  
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM\LED_blinking\List\stm32f4xx_hal_msp.lst
+#    Object file  =  
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM\LED_blinking\Obj\stm32f4xx_hal_msp.o
+#
+###############################################################################
+
+D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\Core\Src\stm32f4xx_hal_msp.c
+      1          /* USER CODE BEGIN Header */
+      2          /**
+      3            ******************************************************************************
+      4            * @file         stm32f4xx_hal_msp.c
+      5            * @brief        This file provides code for the MSP Initialization
+      6            *               and de-Initialization codes.
+      7            ******************************************************************************
+      8            * @attention
+      9            *
+     10            * Copyright (c) 2024 STMicroelectronics.
+     11            * All rights reserved.
+     12            *
+     13            * This software is licensed under terms that can be found in the LICENSE file
+     14            * in the root directory of this software component.
+     15            * If no LICENSE file comes with this software, it is provided AS-IS.
+     16            *
+     17            ******************************************************************************
+     18            */
+     19          /* USER CODE END Header */
+     20          
+     21          /* Includes ------------------------------------------------------------------*/
+     22          #include "main.h"
+     23          /* USER CODE BEGIN Includes */
+     24          
+     25          /* USER CODE END Includes */
+     26          
+     27          /* Private typedef -----------------------------------------------------------*/
+     28          /* USER CODE BEGIN TD */
+     29          
+     30          /* USER CODE END TD */
+     31          
+     32          /* Private define ------------------------------------------------------------*/
+     33          /* USER CODE BEGIN Define */
+     34          
+     35          /* USER CODE END Define */
+     36          
+     37          /* Private macro -------------------------------------------------------------*/
+     38          /* USER CODE BEGIN Macro */
+     39          
+     40          /* USER CODE END Macro */
+     41          
+     42          /* Private variables ---------------------------------------------------------*/
+     43          /* USER CODE BEGIN PV */
+     44          
+     45          /* USER CODE END PV */
+     46          
+     47          /* Private function prototypes -----------------------------------------------*/
+     48          /* USER CODE BEGIN PFP */
+     49          
+     50          /* USER CODE END PFP */
+     51          
+     52          /* External functions --------------------------------------------------------*/
+     53          /* USER CODE BEGIN ExternalFunctions */
+     54          
+     55          /* USER CODE END ExternalFunctions */
+     56          
+     57          /* USER CODE BEGIN 0 */
+     58          
+     59          /* USER CODE END 0 */
+     60          /**
+     61            * Initializes the Global MSP.
+     62            */
+
+   \                                 In section .text, align 4, keep-with-next
+     63          void HAL_MspInit(void)
+     64          {
+   \                     HAL_MspInit: (+1)
+   \        0x0   0xB081             SUB      SP,SP,#+4
+     65          
+     66            /* USER CODE BEGIN MspInit 0 */
+     67          
+     68            /* USER CODE END MspInit 0 */
+     69          
+     70            __HAL_RCC_SYSCFG_CLK_ENABLE();
+   \        0x2   0x2000             MOVS     R0,#+0
+   \        0x4   0x9000             STR      R0,[SP, #+0]
+   \        0x6   0x480C             LDR.N    R0,??HAL_MspInit_0  ;; 0x40023844
+   \        0x8   0x6801             LDR      R1,[R0, #+0]
+   \        0xA   0xF451 0x4180      ORRS     R1,R1,#0x4000
+   \        0xE   0x6001             STR      R1,[R0, #+0]
+   \       0x10   0x6800             LDR      R0,[R0, #+0]
+   \       0x12   0xF410 0x4080      ANDS     R0,R0,#0x4000
+   \       0x16   0x9000             STR      R0,[SP, #+0]
+   \       0x18   0x9800             LDR      R0,[SP, #+0]
+     71            __HAL_RCC_PWR_CLK_ENABLE();
+   \       0x1A   0x2000             MOVS     R0,#+0
+   \       0x1C   0x9000             STR      R0,[SP, #+0]
+   \       0x1E   0x4807             LDR.N    R0,??HAL_MspInit_0+0x4  ;; 0x40023840
+   \       0x20   0x6801             LDR      R1,[R0, #+0]
+   \       0x22   0xF051 0x5180      ORRS     R1,R1,#0x10000000
+   \       0x26   0x6001             STR      R1,[R0, #+0]
+   \       0x28   0x6800             LDR      R0,[R0, #+0]
+   \       0x2A   0xF010 0x5080      ANDS     R0,R0,#0x10000000
+   \       0x2E   0x9000             STR      R0,[SP, #+0]
+   \       0x30   0x9800             LDR      R0,[SP, #+0]
+     72          
+     73            /* System interrupt init*/
+     74          
+     75            /* USER CODE BEGIN MspInit 1 */
+     76          
+     77            /* USER CODE END MspInit 1 */
+     78          }
+   \       0x32   0xB001             ADD      SP,SP,#+4
+   \       0x34   0x4770             BX       LR               ;; return
+   \       0x36   0xBF00             Nop      
+   \                     ??HAL_MspInit_0:
+   \       0x38   0x4002'3844        DC32     0x40023844
+   \       0x3C   0x4002'3840        DC32     0x40023840
+     79          
+     80          /* USER CODE BEGIN 1 */
+     81          
+     82          /* USER CODE END 1 */
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       4   HAL_MspInit
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      64  HAL_MspInit
+
+ 
+ 64 bytes in section .text
+ 
+ 64 bytes of CODE memory
+
+Errors: none
+Warnings: none

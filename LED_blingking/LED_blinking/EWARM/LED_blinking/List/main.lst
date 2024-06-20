@@ -1,0 +1,408 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.32.1.169/W32 for ARM         19/Jun/2024  18:34:07
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  
+#    Endian       =  little
+#    Source file  =  
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\Core\Src\main.c
+#    Command line =  
+#        -f C:\Users\JASAN1~1\AppData\Local\Temp\EWE248.tmp
+#        (D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\Core\Src\main.c
+#        -D USE_HAL_DRIVER -D STM32F407xx -lC
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM\LED_blinking\List
+#        -lA
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM\LED_blinking\List
+#        -o
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM\LED_blinking\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C:\Program Files
+#        (x86)\IAR Systems\Embedded Workbench 8.2\arm\inc\c\DLib_Config_Full.h"
+#        -I
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM/..\Drivers\STM32F4xx_HAL_Driver\
+#        -I
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM/..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\
+#        -I
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM/..\Drivers\CMSIS\Include\
+#        -I
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM/..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\
+#        -I
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM/../Core/Inc\
+#        -I
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM/../Drivers/STM32F4xx_HAL_Driver/Inc\
+#        -Ol)
+#    Locale       =  C
+#    List file    =  
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM\LED_blinking\List\main.lst
+#    Object file  =  
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM\LED_blinking\Obj\main.o
+#
+###############################################################################
+
+D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\Core\Src\main.c
+      1          /* USER CODE BEGIN Header */
+      2          /**
+      3            ******************************************************************************
+      4            * @file           : main.c
+      5            * @brief          : Main program body
+      6            ******************************************************************************
+      7            * @attention
+      8            *
+      9            * Copyright (c) 2024 STMicroelectronics.
+     10            * All rights reserved.
+     11            *
+     12            * This software is licensed under terms that can be found in the LICENSE file
+     13            * in the root directory of this software component.
+     14            * If no LICENSE file comes with this software, it is provided AS-IS.
+     15            *
+     16            ******************************************************************************
+     17            */
+     18          /* USER CODE END Header */
+     19          /* Includes ------------------------------------------------------------------*/
+     20          #include "main.h"
+     21          
+     22          
+     23          void SystemClock_Config(void);
+     24          static void MX_GPIO_Init(void);
+     25          
+
+   \                                 In section .text, align 2, keep-with-next
+     26          int main(void)
+     27          {
+   \                     main: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+     28            HAL_Init();
+   \        0x2   0x....'....        BL       HAL_Init
+     29          
+     30            SystemClock_Config();
+   \        0x6   0x....'....        BL       SystemClock_Config
+     31          
+     32            MX_GPIO_Init();
+   \        0xA   0x....'....        BL       MX_GPIO_Init
+     33          
+     34            while (1)
+     35            {
+     36              //HAL_GPIO_WritePin(GPIOG, GPIO_PIN_12, GPIO_PIN_RESET);
+     37              //HAL_GPIO_WritePin(GPIOG, GPIO_PIN_12, GPIO_PIN_SET);
+     38              HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_12);
+   \                     ??main_0: (+1)
+   \        0xE   0x....             LDR.N    R4,??DataTable2  ;; 0x40021800
+   \       0x10   0xF44F 0x5180      MOV      R1,#+4096
+   \       0x14   0x0020             MOVS     R0,R4
+   \       0x16   0x....'....        BL       HAL_GPIO_TogglePin
+     39              HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13);
+   \       0x1A   0xF44F 0x5100      MOV      R1,#+8192
+   \       0x1E   0x0020             MOVS     R0,R4
+   \       0x20   0x....'....        BL       HAL_GPIO_TogglePin
+     40              HAL_Delay(100);
+   \       0x24   0x2064             MOVS     R0,#+100
+   \       0x26   0x....'....        BL       HAL_Delay
+   \       0x2A   0xE7F0             B.N      ??main_0
+     41             
+     42            }
+     43          }
+     44          
+     45          /**
+     46            * @brief System Clock Configuration
+     47            * @retval None
+     48            */
+
+   \                                 In section .text, align 2, keep-with-next
+     49          void SystemClock_Config(void)
+     50          {
+   \                     SystemClock_Config: (+1)
+   \        0x0   0xB580             PUSH     {R7,LR}
+   \        0x2   0xB092             SUB      SP,SP,#+72
+     51            RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+   \        0x4   0xA806             ADD      R0,SP,#+24
+   \        0x6   0x2130             MOVS     R1,#+48
+   \        0x8   0x....'....        BL       __aeabi_memclr4
+     52            RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+   \        0xC   0xA801             ADD      R0,SP,#+4
+   \        0xE   0x2114             MOVS     R1,#+20
+   \       0x10   0x....'....        BL       __aeabi_memclr4
+     53          
+     54            /** Configure the main internal regulator output voltage
+     55            */
+     56            __HAL_RCC_PWR_CLK_ENABLE();
+   \       0x14   0x2000             MOVS     R0,#+0
+   \       0x16   0x9000             STR      R0,[SP, #+0]
+   \       0x18   0x....             LDR.N    R0,??DataTable2_1  ;; 0x40023840
+   \       0x1A   0x6801             LDR      R1,[R0, #+0]
+   \       0x1C   0xF051 0x5180      ORRS     R1,R1,#0x10000000
+   \       0x20   0x6001             STR      R1,[R0, #+0]
+   \       0x22   0x6800             LDR      R0,[R0, #+0]
+   \       0x24   0xF010 0x5080      ANDS     R0,R0,#0x10000000
+   \       0x28   0x9000             STR      R0,[SP, #+0]
+   \       0x2A   0x9800             LDR      R0,[SP, #+0]
+     57            __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+   \       0x2C   0x2000             MOVS     R0,#+0
+   \       0x2E   0x9000             STR      R0,[SP, #+0]
+   \       0x30   0x....             LDR.N    R0,??DataTable2_2  ;; 0x40007000
+   \       0x32   0x6801             LDR      R1,[R0, #+0]
+   \       0x34   0xF451 0x4180      ORRS     R1,R1,#0x4000
+   \       0x38   0x6001             STR      R1,[R0, #+0]
+   \       0x3A   0x6800             LDR      R0,[R0, #+0]
+   \       0x3C   0xF410 0x4080      ANDS     R0,R0,#0x4000
+   \       0x40   0x9000             STR      R0,[SP, #+0]
+   \       0x42   0x9800             LDR      R0,[SP, #+0]
+     58          
+     59            /** Initializes the RCC Oscillators according to the specified parameters
+     60            * in the RCC_OscInitTypeDef structure.
+     61            */
+     62            RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+   \       0x44   0x2002             MOVS     R0,#+2
+   \       0x46   0x9006             STR      R0,[SP, #+24]
+     63            RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+   \       0x48   0x2001             MOVS     R0,#+1
+   \       0x4A   0x9009             STR      R0,[SP, #+36]
+     64            RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+   \       0x4C   0x2010             MOVS     R0,#+16
+   \       0x4E   0x900A             STR      R0,[SP, #+40]
+     65            RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+   \       0x50   0x2000             MOVS     R0,#+0
+   \       0x52   0x900C             STR      R0,[SP, #+48]
+     66            if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+   \       0x54   0xA806             ADD      R0,SP,#+24
+   \       0x56   0x....'....        BL       HAL_RCC_OscConfig
+   \       0x5A   0x2800             CMP      R0,#+0
+   \       0x5C   0xD001             BEQ.N    ??SystemClock_Config_0
+     67            {
+     68              Error_Handler();
+   \       0x5E   0x....'....        BL       Error_Handler
+     69            }
+     70          
+     71            /** Initializes the CPU, AHB and APB buses clocks
+     72            */
+     73            RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+     74                                        |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+   \                     ??SystemClock_Config_0: (+1)
+   \       0x62   0x200F             MOVS     R0,#+15
+   \       0x64   0x9001             STR      R0,[SP, #+4]
+     75            RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
+   \       0x66   0x2000             MOVS     R0,#+0
+   \       0x68   0x9002             STR      R0,[SP, #+8]
+     76            RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+   \       0x6A   0x2000             MOVS     R0,#+0
+   \       0x6C   0x9003             STR      R0,[SP, #+12]
+     77            RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+   \       0x6E   0x2000             MOVS     R0,#+0
+   \       0x70   0x9004             STR      R0,[SP, #+16]
+     78            RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+   \       0x72   0x2000             MOVS     R0,#+0
+   \       0x74   0x9005             STR      R0,[SP, #+20]
+     79          
+     80            if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
+   \       0x76   0x2100             MOVS     R1,#+0
+   \       0x78   0xA801             ADD      R0,SP,#+4
+   \       0x7A   0x....'....        BL       HAL_RCC_ClockConfig
+   \       0x7E   0x2800             CMP      R0,#+0
+   \       0x80   0xD001             BEQ.N    ??SystemClock_Config_1
+     81            {
+     82              Error_Handler();
+   \       0x82   0x....'....        BL       Error_Handler
+     83            }
+     84          }
+   \                     ??SystemClock_Config_1: (+1)
+   \       0x86   0xB013             ADD      SP,SP,#+76
+   \       0x88   0xBD00             POP      {PC}             ;; return
+     85          
+     86          /**
+     87            * @brief GPIO Initialization Function
+     88            * @param None
+     89            * @retval None
+     90            */
+
+   \                                 In section .text, align 2, keep-with-next
+     91          static void MX_GPIO_Init(void)
+     92          {
+   \                     MX_GPIO_Init: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+   \        0x2   0xB086             SUB      SP,SP,#+24
+     93            GPIO_InitTypeDef GPIO_InitStruct = {0};
+   \        0x4   0xA801             ADD      R0,SP,#+4
+   \        0x6   0x2114             MOVS     R1,#+20
+   \        0x8   0x....'....        BL       __aeabi_memclr4
+     94          /* USER CODE BEGIN MX_GPIO_Init_1 */
+     95          /* USER CODE END MX_GPIO_Init_1 */
+     96          
+     97            /* GPIO Ports Clock Enable */
+     98            __HAL_RCC_GPIOG_CLK_ENABLE();
+   \        0xC   0x2000             MOVS     R0,#+0
+   \        0xE   0x9000             STR      R0,[SP, #+0]
+   \       0x10   0x....             LDR.N    R0,??DataTable2_3  ;; 0x40023830
+   \       0x12   0x6801             LDR      R1,[R0, #+0]
+   \       0x14   0xF051 0x0140      ORRS     R1,R1,#0x40
+   \       0x18   0x6001             STR      R1,[R0, #+0]
+   \       0x1A   0x6800             LDR      R0,[R0, #+0]
+   \       0x1C   0xF010 0x0040      ANDS     R0,R0,#0x40
+   \       0x20   0x9000             STR      R0,[SP, #+0]
+   \       0x22   0x9800             LDR      R0,[SP, #+0]
+     99          
+    100            /*Configure GPIO pin Output Level */
+    101            HAL_GPIO_WritePin(GPIOG, GPIO_PIN_12|GPIO_PIN_13, GPIO_PIN_RESET);
+   \       0x24   0x....             LDR.N    R4,??DataTable2  ;; 0x40021800
+   \       0x26   0x2200             MOVS     R2,#+0
+   \       0x28   0xF44F 0x5140      MOV      R1,#+12288
+   \       0x2C   0x0020             MOVS     R0,R4
+   \       0x2E   0x....'....        BL       HAL_GPIO_WritePin
+    102          
+    103            /*Configure GPIO pins : PG12 PG13 */
+    104            GPIO_InitStruct.Pin = GPIO_PIN_12|GPIO_PIN_13;
+   \       0x32   0xF44F 0x5040      MOV      R0,#+12288
+   \       0x36   0x9001             STR      R0,[SP, #+4]
+    105            GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+   \       0x38   0x2001             MOVS     R0,#+1
+   \       0x3A   0x9002             STR      R0,[SP, #+8]
+    106            GPIO_InitStruct.Pull = GPIO_NOPULL;
+   \       0x3C   0x2000             MOVS     R0,#+0
+   \       0x3E   0x9003             STR      R0,[SP, #+12]
+    107            GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+   \       0x40   0x2000             MOVS     R0,#+0
+   \       0x42   0x9004             STR      R0,[SP, #+16]
+    108            HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
+   \       0x44   0xA901             ADD      R1,SP,#+4
+   \       0x46   0x0020             MOVS     R0,R4
+   \       0x48   0x....'....        BL       HAL_GPIO_Init
+    109          
+    110          /* USER CODE BEGIN MX_GPIO_Init_2 */
+    111          /* USER CODE END MX_GPIO_Init_2 */
+    112          }
+   \       0x4C   0xB006             ADD      SP,SP,#+24
+   \       0x4E   0xBD10             POP      {R4,PC}          ;; return
+    113          
+    114          /* USER CODE BEGIN 4 */
+    115          
+    116          /* USER CODE END 4 */
+    117          
+    118          /**
+    119            * @brief  This function is executed in case of error occurrence.
+    120            * @retval None
+    121            */
+
+   \                                 In section .text, align 2, keep-with-next
+    122          void Error_Handler(void)
+    123          {
+    124            /* USER CODE BEGIN Error_Handler_Debug */
+    125            /* User can add his own implementation to report the HAL error return state */
+    126            __disable_irq();
+   \                     Error_Handler: (+1)
+   \        0x0   0xB672             CPSID    I
+    127            while (1)
+   \                     ??Error_Handler_0: (+1)
+   \        0x2   0xE7FE             B.N      ??Error_Handler_0
+    128            {
+    129            }
+    130            /* USER CODE END Error_Handler_Debug */
+    131          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \        0x0   0x4002'1800        DC32     0x40021800
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \        0x0   0x4002'3840        DC32     0x40023840
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_2:
+   \        0x0   0x4000'7000        DC32     0x40007000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_3:
+   \        0x0   0x4002'3830        DC32     0x40023830
+
+   \                                 In section .rodata, align 4
+   \        0x0   0x0000'0000        DC32 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              0x0000'0000  
+   \              0x0000'0000  
+   \              0x0000'0000  
+   \              0x0000'0000  
+   \              0x0000'0000  
+   \              0x0000'0000  
+   \              0x0000'0000  
+   \              0x0000'0000  
+   \              0x0000'0000  
+   \              0x0000'0000  
+   \              0x0000'0000  
+
+   \                                 In section .rodata, align 4
+   \        0x0   0x0000'0000        DC32 0, 0, 0, 0, 0
+   \              0x0000'0000  
+   \              0x0000'0000  
+   \              0x0000'0000  
+   \              0x0000'0000  
+
+   \                                 In section .rodata, align 4
+   \        0x0   0x0000'0000        DC32 0, 0, 0, 0, 0
+   \              0x0000'0000  
+   \              0x0000'0000  
+   \              0x0000'0000  
+   \              0x0000'0000  
+    132          
+    133          #ifdef  USE_FULL_ASSERT
+    134          /**
+    135            * @brief  Reports the name of the source file and the source line number
+    136            *         where the assert_param error has occurred.
+    137            * @param  file: pointer to the source file name
+    138            * @param  line: assert_param error line source number
+    139            * @retval None
+    140            */
+    141          void assert_failed(uint8_t *file, uint32_t line)
+    142          {
+    143            /* USER CODE BEGIN 6 */
+    144            /* User can add his own implementation to report the file name and line number,
+    145               ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+    146            /* USER CODE END 6 */
+    147          }
+    148          #endif /* USE_FULL_ASSERT */
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   Error_Handler
+      32   MX_GPIO_Init
+        32   -> HAL_GPIO_Init
+        32   -> HAL_GPIO_WritePin
+        32   -> __aeabi_memclr4
+      80   SystemClock_Config
+        80   -> Error_Handler
+        80   -> HAL_RCC_ClockConfig
+        80   -> HAL_RCC_OscConfig
+        80   -> __aeabi_memclr4
+       8   main
+         8   -> HAL_Delay
+         8   -> HAL_GPIO_TogglePin
+         8   -> HAL_Init
+         8   -> MX_GPIO_Init
+         8   -> SystemClock_Config
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+       4  ??DataTable2_1
+       4  ??DataTable2_2
+       4  ??DataTable2_3
+      48  ?_0
+      20  ?_1
+      20  ?_2
+       4  Error_Handler
+      80  MX_GPIO_Init
+     138  SystemClock_Config
+      44  main
+
+ 
+  88 bytes in section .rodata
+ 282 bytes in section .text
+ 
+ 282 bytes of CODE  memory
+  88 bytes of CONST memory
+
+Errors: none
+Warnings: none

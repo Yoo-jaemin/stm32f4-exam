@@ -1,0 +1,2529 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.32.1.169/W32 for ARM         19/Jun/2024  10:36:56
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  
+#    Endian       =  little
+#    Source file  =  
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma_ex.c
+#    Command line =  
+#        -f C:\Users\JASAN1~1\AppData\Local\Temp\EW2DC.tmp
+#        (D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma_ex.c
+#        -D USE_HAL_DRIVER -D STM32F407xx -lC
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM\LED_blinking\List
+#        -lA
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM\LED_blinking\List
+#        -o
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM\LED_blinking\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C:\Program Files
+#        (x86)\IAR Systems\Embedded Workbench 8.2\arm\inc\c\DLib_Config_Full.h"
+#        -I
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM/..\Drivers\STM32F4xx_HAL_Driver\
+#        -I
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM/..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\
+#        -I
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM/..\Drivers\CMSIS\Include\
+#        -I
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM/..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\
+#        -I
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM/../Core/Inc\
+#        -I
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM/../Drivers/STM32F4xx_HAL_Driver/Inc\
+#        -Ol)
+#    Locale       =  C
+#    List file    =  
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM\LED_blinking\List\stm32f4xx_hal_dma_ex.lst
+#    Object file  =  
+#        D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\EWARM\LED_blinking\Obj\stm32f4xx_hal_dma_ex.o
+#
+###############################################################################
+
+D:\2_Projects\Exam\CubeMx\LED_blingking\LED_blinking\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma_ex.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    stm32f4xx_hal_dma_ex.c
+      4            * @author  MCD Application Team
+      5            * @brief   DMA Extension HAL module driver
+      6            *         This file provides firmware functions to manage the following 
+      7            *         functionalities of the DMA Extension peripheral:
+      8            *           + Extended features functions
+      9            *
+     10            @verbatim
+     11            ==============================================================================
+     12                                  ##### How to use this driver #####
+     13            ==============================================================================
+     14            [..]
+     15            The DMA Extension HAL driver can be used as follows:
+     16             (#) Start a multi buffer transfer using the HAL_DMA_MultiBufferStart() function
+     17                 for polling mode or HAL_DMA_MultiBufferStart_IT() for interrupt mode.
+     18                             
+     19               -@-  In Memory-to-Memory transfer mode, Multi (Double) Buffer mode is not allowed.
+     20               -@-  When Multi (Double) Buffer mode is enabled the, transfer is circular by default.
+     21               -@-  In Multi (Double) buffer mode, it is possible to update the base address for 
+     22                    the AHB memory port on the fly (DMA_SxM0AR or DMA_SxM1AR) when the stream is enabled. 
+     23            
+     24            @endverbatim
+     25            ******************************************************************************
+     26            * @attention
+     27            *
+     28            * Copyright (c) 2017 STMicroelectronics.
+     29            * All rights reserved.
+     30            *
+     31            * This software is licensed under terms that can be found in the LICENSE file in
+     32            * the root directory of this software component.
+     33            * If no LICENSE file comes with this software, it is provided AS-IS.
+     34            *
+     35            ******************************************************************************
+     36            */
+     37          
+     38          /* Includes ------------------------------------------------------------------*/
+     39          #include "stm32f4xx_hal.h"
+     40          
+     41          /** @addtogroup STM32F4xx_HAL_Driver
+     42            * @{
+     43            */
+     44          
+     45          /** @defgroup DMAEx DMAEx
+     46            * @brief DMA Extended HAL module driver
+     47            * @{
+     48            */
+     49          
+     50          #ifdef HAL_DMA_MODULE_ENABLED
+     51          
+     52          /* Private types -------------------------------------------------------------*/
+     53          /* Private variables ---------------------------------------------------------*/
+     54          /* Private Constants ---------------------------------------------------------*/
+     55          /* Private macros ------------------------------------------------------------*/
+     56          /* Private functions ---------------------------------------------------------*/
+     57          /** @addtogroup DMAEx_Private_Functions
+     58            * @{
+     59            */
+     60          static void DMA_MultiBufferSetConfig(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress, uint32_t DataLength);
+     61          /**
+     62            * @}
+     63            */
+     64          
+     65          /* Exported functions ---------------------------------------------------------*/
+     66          
+     67          /** @addtogroup DMAEx_Exported_Functions
+     68            * @{
+     69            */
+     70          
+     71          
+     72          /** @addtogroup DMAEx_Exported_Functions_Group1
+     73            *
+     74          @verbatim   
+     75           ===============================================================================
+     76                          #####  Extended features functions  #####
+     77           ===============================================================================  
+     78              [..]  This section provides functions allowing to:
+     79                (+) Configure the source, destination address and data length and 
+     80                    Start MultiBuffer DMA transfer
+     81                (+) Configure the source, destination address and data length and 
+     82                    Start MultiBuffer DMA transfer with interrupt
+     83                (+) Change on the fly the memory0 or memory1 address.
+     84                
+     85          @endverbatim
+     86            * @{
+     87            */
+     88          
+     89          
+     90          /**
+     91            * @brief  Starts the multi_buffer DMA Transfer.
+     92            * @param  hdma       pointer to a DMA_HandleTypeDef structure that contains
+     93            *                     the configuration information for the specified DMA Stream.  
+     94            * @param  SrcAddress The source memory Buffer address
+     95            * @param  DstAddress The destination memory Buffer address
+     96            * @param  SecondMemAddress The second memory Buffer address in case of multi buffer Transfer  
+     97            * @param  DataLength The length of data to be transferred from source to destination
+     98            * @retval HAL status
+     99            */
+
+   \                                 In section .text, align 2, keep-with-next
+    100          HAL_StatusTypeDef HAL_DMAEx_MultiBufferStart(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress, uint32_t SecondMemAddress, uint32_t DataLength)
+    101          {
+   \                     HAL_DMAEx_MultiBufferStart: (+1)
+   \        0x0   0xB5F8             PUSH     {R3-R7,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+    102            HAL_StatusTypeDef status = HAL_OK;
+   \        0x4   0x2500             MOVS     R5,#+0
+    103            
+    104            /* Check the parameters */
+    105            assert_param(IS_DMA_BUFFER_SIZE(DataLength));
+    106            
+    107            /* Memory-to-memory transfer not supported in double buffering mode */
+    108            if (hdma->Init.Direction == DMA_MEMORY_TO_MEMORY)
+   \        0x6   0x68A0             LDR      R0,[R4, #+8]
+   \        0x8   0x2880             CMP      R0,#+128
+   \        0xA   0xD104             BNE.N    ??HAL_DMAEx_MultiBufferStart_0
+    109            {
+    110              hdma->ErrorCode = HAL_DMA_ERROR_NOT_SUPPORTED;
+   \        0xC   0xF44F 0x7080      MOV      R0,#+256
+   \       0x10   0x6560             STR      R0,[R4, #+84]
+    111              status = HAL_ERROR;
+   \       0x12   0x2501             MOVS     R5,#+1
+   \       0x14   0xE024             B.N      ??HAL_DMAEx_MultiBufferStart_1
+    112            }
+    113            else
+    114            {
+    115              /* Process Locked */
+    116              __HAL_LOCK(hdma);
+   \                     ??HAL_DMAEx_MultiBufferStart_0: (+1)
+   \       0x16   0xF894 0x0034      LDRB     R0,[R4, #+52]
+   \       0x1A   0x2801             CMP      R0,#+1
+   \       0x1C   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_2
+   \       0x1E   0x2002             MOVS     R0,#+2
+   \       0x20   0xE020             B.N      ??HAL_DMAEx_MultiBufferStart_3
+   \                     ??HAL_DMAEx_MultiBufferStart_2: (+1)
+   \       0x22   0x2001             MOVS     R0,#+1
+   \       0x24   0xF884 0x0034      STRB     R0,[R4, #+52]
+    117              
+    118              if(HAL_DMA_STATE_READY == hdma->State)
+   \       0x28   0xF894 0x0035      LDRB     R0,[R4, #+53]
+   \       0x2C   0x2801             CMP      R0,#+1
+   \       0x2E   0xD116             BNE.N    ??HAL_DMAEx_MultiBufferStart_4
+   \       0x30   0x9806             LDR      R0,[SP, #+24]
+    119              {
+    120                /* Change DMA peripheral state */
+    121                hdma->State = HAL_DMA_STATE_BUSY; 
+   \       0x32   0x2602             MOVS     R6,#+2
+   \       0x34   0xF884 0x6035      STRB     R6,[R4, #+53]
+    122                
+    123                /* Enable the double buffer mode */
+    124                hdma->Instance->CR |= (uint32_t)DMA_SxCR_DBM;
+   \       0x38   0x6826             LDR      R6,[R4, #+0]
+   \       0x3A   0x6836             LDR      R6,[R6, #+0]
+   \       0x3C   0xF456 0x2680      ORRS     R6,R6,#0x40000
+   \       0x40   0x6827             LDR      R7,[R4, #+0]
+   \       0x42   0x603E             STR      R6,[R7, #+0]
+    125                
+    126                /* Configure DMA Stream destination address */
+    127                hdma->Instance->M1AR = SecondMemAddress;
+   \       0x44   0x6826             LDR      R6,[R4, #+0]
+   \       0x46   0x6133             STR      R3,[R6, #+16]
+    128                
+    129                /* Configure the source, destination address and the data length */
+    130                DMA_MultiBufferSetConfig(hdma, SrcAddress, DstAddress, DataLength);
+   \       0x48   0x0003             MOVS     R3,R0
+   \       0x4A   0x0020             MOVS     R0,R4
+   \       0x4C   0x....'....        BL       DMA_MultiBufferSetConfig
+    131                
+    132                /* Enable the peripheral */
+    133                __HAL_DMA_ENABLE(hdma);
+   \       0x50   0x6820             LDR      R0,[R4, #+0]
+   \       0x52   0x6800             LDR      R0,[R0, #+0]
+   \       0x54   0xF050 0x0001      ORRS     R0,R0,#0x1
+   \       0x58   0x6821             LDR      R1,[R4, #+0]
+   \       0x5A   0x6008             STR      R0,[R1, #+0]
+   \       0x5C   0xE000             B.N      ??HAL_DMAEx_MultiBufferStart_1
+    134              }
+    135              else
+    136              {
+    137                /* Return error status */
+    138                status = HAL_BUSY;
+   \                     ??HAL_DMAEx_MultiBufferStart_4: (+1)
+   \       0x5E   0x2502             MOVS     R5,#+2
+    139              }
+    140            }
+    141            return status;
+   \                     ??HAL_DMAEx_MultiBufferStart_1: (+1)
+   \       0x60   0x0028             MOVS     R0,R5
+   \       0x62   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \                     ??HAL_DMAEx_MultiBufferStart_3: (+1)
+   \       0x64   0xBDF2             POP      {R1,R4-R7,PC}    ;; return
+    142          }
+    143          
+    144          /**
+    145            * @brief  Starts the multi_buffer DMA Transfer with interrupt enabled.
+    146            * @param  hdma       pointer to a DMA_HandleTypeDef structure that contains
+    147            *                     the configuration information for the specified DMA Stream.  
+    148            * @param  SrcAddress The source memory Buffer address
+    149            * @param  DstAddress The destination memory Buffer address
+    150            * @param  SecondMemAddress The second memory Buffer address in case of multi buffer Transfer  
+    151            * @param  DataLength The length of data to be transferred from source to destination
+    152            * @retval HAL status
+    153            */
+
+   \                                 In section .text, align 4, keep-with-next
+    154          HAL_StatusTypeDef HAL_DMAEx_MultiBufferStart_IT(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress, uint32_t SecondMemAddress, uint32_t DataLength)
+    155          {
+   \                     HAL_DMAEx_MultiBufferStart_IT: (+1)
+   \        0x0   0xB5F8             PUSH     {R3-R7,LR}
+   \        0x2   0x0004             MOVS     R4,R0
+    156            HAL_StatusTypeDef status = HAL_OK;
+   \        0x4   0x2500             MOVS     R5,#+0
+    157            
+    158            /* Check the parameters */
+    159            assert_param(IS_DMA_BUFFER_SIZE(DataLength));
+    160            
+    161            /* Memory-to-memory transfer not supported in double buffering mode */
+    162            if (hdma->Init.Direction == DMA_MEMORY_TO_MEMORY)
+   \        0x6   0x68A0             LDR      R0,[R4, #+8]
+   \        0x8   0x2880             CMP      R0,#+128
+   \        0xA   0xD105             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_2
+    163            {
+    164              hdma->ErrorCode = HAL_DMA_ERROR_NOT_SUPPORTED;
+   \        0xC   0xF44F 0x7080      MOV      R0,#+256
+   \       0x10   0x6560             STR      R0,[R4, #+84]
+    165              return HAL_ERROR;
+   \       0x12   0x2001             MOVS     R0,#+1
+   \       0x14   0xF000 0xBFF5      B.W      ??HAL_DMAEx_MultiBufferStart_IT_3
+    166            }
+    167            
+    168            /* Check callback functions */
+    169            if ((NULL == hdma->XferCpltCallback) || (NULL == hdma->XferM1CpltCallback) || (NULL == hdma->XferErrorCallback))
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_2: (+1)
+   \       0x18   0x6BE0             LDR      R0,[R4, #+60]
+   \       0x1A   0x2800             CMP      R0,#+0
+   \       0x1C   0xD005             BEQ.N    ??HAL_DMAEx_MultiBufferStart_IT_4
+   \       0x1E   0x6C60             LDR      R0,[R4, #+68]
+   \       0x20   0x2800             CMP      R0,#+0
+   \       0x22   0xD002             BEQ.N    ??HAL_DMAEx_MultiBufferStart_IT_4
+   \       0x24   0x6CE0             LDR      R0,[R4, #+76]
+   \       0x26   0x2800             CMP      R0,#+0
+   \       0x28   0xD104             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_5
+    170            {
+    171              hdma->ErrorCode = HAL_DMA_ERROR_PARAM;
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_4: (+1)
+   \       0x2A   0x2040             MOVS     R0,#+64
+   \       0x2C   0x6560             STR      R0,[R4, #+84]
+    172              return HAL_ERROR;
+   \       0x2E   0x2001             MOVS     R0,#+1
+   \       0x30   0xF000 0xBFE7      B.W      ??HAL_DMAEx_MultiBufferStart_IT_3
+    173            }
+    174            
+    175            /* Process locked */
+    176            __HAL_LOCK(hdma);
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_5: (+1)
+   \       0x34   0xF894 0x0034      LDRB     R0,[R4, #+52]
+   \       0x38   0x2801             CMP      R0,#+1
+   \       0x3A   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_6
+   \       0x3C   0x2002             MOVS     R0,#+2
+   \       0x3E   0xF000 0xBFE0      B.W      ??HAL_DMAEx_MultiBufferStart_IT_3
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_6: (+1)
+   \       0x42   0x2001             MOVS     R0,#+1
+   \       0x44   0xF884 0x0034      STRB     R0,[R4, #+52]
+    177            
+    178            if(HAL_DMA_STATE_READY == hdma->State)
+   \       0x48   0xF894 0x0035      LDRB     R0,[R4, #+53]
+   \       0x4C   0x2801             CMP      R0,#+1
+   \       0x4E   0xF040 0x87D2      BNE.W    ??HAL_DMAEx_MultiBufferStart_IT_7
+   \       0x52   0x9806             LDR      R0,[SP, #+24]
+    179            {
+    180              /* Change DMA peripheral state */
+    181              hdma->State = HAL_DMA_STATE_BUSY;
+   \       0x54   0x2602             MOVS     R6,#+2
+   \       0x56   0xF884 0x6035      STRB     R6,[R4, #+53]
+    182              
+    183              /* Initialize the error code */
+    184              hdma->ErrorCode = HAL_DMA_ERROR_NONE;
+   \       0x5A   0x2600             MOVS     R6,#+0
+   \       0x5C   0x6566             STR      R6,[R4, #+84]
+    185              
+    186              /* Enable the Double buffer mode */
+    187              hdma->Instance->CR |= (uint32_t)DMA_SxCR_DBM;
+   \       0x5E   0x6826             LDR      R6,[R4, #+0]
+   \       0x60   0x6836             LDR      R6,[R6, #+0]
+   \       0x62   0xF456 0x2680      ORRS     R6,R6,#0x40000
+   \       0x66   0x6827             LDR      R7,[R4, #+0]
+   \       0x68   0x603E             STR      R6,[R7, #+0]
+    188              
+    189              /* Configure DMA Stream destination address */
+    190              hdma->Instance->M1AR = SecondMemAddress;
+   \       0x6A   0x6826             LDR      R6,[R4, #+0]
+   \       0x6C   0x6133             STR      R3,[R6, #+16]
+    191              
+    192              /* Configure the source, destination address and the data length */
+    193              DMA_MultiBufferSetConfig(hdma, SrcAddress, DstAddress, DataLength); 
+   \       0x6E   0x0003             MOVS     R3,R0
+   \       0x70   0x0020             MOVS     R0,R4
+   \       0x72   0x....'....        BL       DMA_MultiBufferSetConfig
+    194              
+    195              /* Clear all flags */
+    196              __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TC_FLAG_INDEX(hdma));
+   \       0x76   0xF8DF 0x085C      LDR.W    R0,??HAL_DMAEx_MultiBufferStart_IT_0  ;; 0x40026459
+   \       0x7A   0x6821             LDR      R1,[R4, #+0]
+   \       0x7C   0x4281             CMP      R1,R0
+   \       0x7E   0xD361             BCC.N    ??HAL_DMAEx_MultiBufferStart_IT_8
+   \       0x80   0x6821             LDR      R1,[R4, #+0]
+   \       0x82   0xF8DF 0x2854      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x4  ;; 0x40026010
+   \       0x86   0x4291             CMP      R1,R2
+   \       0x88   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_9
+   \       0x8A   0x2120             MOVS     R1,#+32
+   \       0x8C   0xE056             B.N      ??HAL_DMAEx_MultiBufferStart_IT_10
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_9: (+1)
+   \       0x8E   0x6821             LDR      R1,[R4, #+0]
+   \       0x90   0xF8DF 0x2848      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x8  ;; 0x40026410
+   \       0x94   0x4291             CMP      R1,R2
+   \       0x96   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_11
+   \       0x98   0x2120             MOVS     R1,#+32
+   \       0x9A   0xE04F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_10
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_11: (+1)
+   \       0x9C   0x6821             LDR      R1,[R4, #+0]
+   \       0x9E   0xF8DF 0x2840      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0xC  ;; 0x40026070
+   \       0xA2   0x4291             CMP      R1,R2
+   \       0xA4   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_12
+   \       0xA6   0x2120             MOVS     R1,#+32
+   \       0xA8   0xE048             B.N      ??HAL_DMAEx_MultiBufferStart_IT_10
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_12: (+1)
+   \       0xAA   0x6821             LDR      R1,[R4, #+0]
+   \       0xAC   0xF8DF 0x2834      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x10  ;; 0x40026470
+   \       0xB0   0x4291             CMP      R1,R2
+   \       0xB2   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_13
+   \       0xB4   0x2120             MOVS     R1,#+32
+   \       0xB6   0xE041             B.N      ??HAL_DMAEx_MultiBufferStart_IT_10
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_13: (+1)
+   \       0xB8   0x6821             LDR      R1,[R4, #+0]
+   \       0xBA   0xF8DF 0x282C      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x14  ;; 0x40026028
+   \       0xBE   0x4291             CMP      R1,R2
+   \       0xC0   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_14
+   \       0xC2   0xF44F 0x6100      MOV      R1,#+2048
+   \       0xC6   0xE039             B.N      ??HAL_DMAEx_MultiBufferStart_IT_10
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_14: (+1)
+   \       0xC8   0x6821             LDR      R1,[R4, #+0]
+   \       0xCA   0xF8DF 0x2820      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x18  ;; 0x40026428
+   \       0xCE   0x4291             CMP      R1,R2
+   \       0xD0   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_15
+   \       0xD2   0xF44F 0x6100      MOV      R1,#+2048
+   \       0xD6   0xE031             B.N      ??HAL_DMAEx_MultiBufferStart_IT_10
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_15: (+1)
+   \       0xD8   0x6821             LDR      R1,[R4, #+0]
+   \       0xDA   0xF8DF 0x2814      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x1C  ;; 0x40026088
+   \       0xDE   0x4291             CMP      R1,R2
+   \       0xE0   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_16
+   \       0xE2   0xF44F 0x6100      MOV      R1,#+2048
+   \       0xE6   0xE029             B.N      ??HAL_DMAEx_MultiBufferStart_IT_10
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_16: (+1)
+   \       0xE8   0x6821             LDR      R1,[R4, #+0]
+   \       0xEA   0xF8DF 0x2808      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x20  ;; 0x40026488
+   \       0xEE   0x4291             CMP      R1,R2
+   \       0xF0   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_17
+   \       0xF2   0xF44F 0x6100      MOV      R1,#+2048
+   \       0xF6   0xE021             B.N      ??HAL_DMAEx_MultiBufferStart_IT_10
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_17: (+1)
+   \       0xF8   0x6821             LDR      R1,[R4, #+0]
+   \       0xFA   0xF8DF 0x27FC      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x24  ;; 0x40026040
+   \       0xFE   0x4291             CMP      R1,R2
+   \      0x100   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_18
+   \      0x102   0xF45F 0x1100      MOVS     R1,#+2097152
+   \      0x106   0xE019             B.N      ??HAL_DMAEx_MultiBufferStart_IT_10
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_18: (+1)
+   \      0x108   0x6821             LDR      R1,[R4, #+0]
+   \      0x10A   0xF8DF 0x27F0      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x28  ;; 0x40026440
+   \      0x10E   0x4291             CMP      R1,R2
+   \      0x110   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_19
+   \      0x112   0xF45F 0x1100      MOVS     R1,#+2097152
+   \      0x116   0xE011             B.N      ??HAL_DMAEx_MultiBufferStart_IT_10
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_19: (+1)
+   \      0x118   0x6821             LDR      R1,[R4, #+0]
+   \      0x11A   0xF8DF 0x27E4      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x2C  ;; 0x400260a0
+   \      0x11E   0x4291             CMP      R1,R2
+   \      0x120   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_20
+   \      0x122   0xF45F 0x1100      MOVS     R1,#+2097152
+   \      0x126   0xE009             B.N      ??HAL_DMAEx_MultiBufferStart_IT_10
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_20: (+1)
+   \      0x128   0x6821             LDR      R1,[R4, #+0]
+   \      0x12A   0xF8DF 0x27D8      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x30  ;; 0x400264a0
+   \      0x12E   0x4291             CMP      R1,R2
+   \      0x130   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_21
+   \      0x132   0xF45F 0x1100      MOVS     R1,#+2097152
+   \      0x136   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_10
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_21: (+1)
+   \      0x138   0xF05F 0x6100      MOVS     R1,#+134217728
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_10: (+1)
+   \      0x13C   0xF8DF 0x27C8      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x34  ;; 0x4002640c
+   \      0x140   0x6011             STR      R1,[R2, #+0]
+   \      0x142   0xE12E             B.N      ??HAL_DMAEx_MultiBufferStart_IT_22
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_8: (+1)
+   \      0x144   0x6821             LDR      R1,[R4, #+0]
+   \      0x146   0xF8DF 0x27C4      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x38  ;; 0x400260b9
+   \      0x14A   0x4291             CMP      R1,R2
+   \      0x14C   0xD361             BCC.N    ??HAL_DMAEx_MultiBufferStart_IT_23
+   \      0x14E   0x6821             LDR      R1,[R4, #+0]
+   \      0x150   0xF8DF 0x2784      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x4  ;; 0x40026010
+   \      0x154   0x4291             CMP      R1,R2
+   \      0x156   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_24
+   \      0x158   0x2120             MOVS     R1,#+32
+   \      0x15A   0xE056             B.N      ??HAL_DMAEx_MultiBufferStart_IT_25
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_24: (+1)
+   \      0x15C   0x6821             LDR      R1,[R4, #+0]
+   \      0x15E   0xF8DF 0x277C      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x8  ;; 0x40026410
+   \      0x162   0x4291             CMP      R1,R2
+   \      0x164   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_26
+   \      0x166   0x2120             MOVS     R1,#+32
+   \      0x168   0xE04F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_25
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_26: (+1)
+   \      0x16A   0x6821             LDR      R1,[R4, #+0]
+   \      0x16C   0xF8DF 0x2770      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0xC  ;; 0x40026070
+   \      0x170   0x4291             CMP      R1,R2
+   \      0x172   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_27
+   \      0x174   0x2120             MOVS     R1,#+32
+   \      0x176   0xE048             B.N      ??HAL_DMAEx_MultiBufferStart_IT_25
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_27: (+1)
+   \      0x178   0x6821             LDR      R1,[R4, #+0]
+   \      0x17A   0xF8DF 0x2768      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x10  ;; 0x40026470
+   \      0x17E   0x4291             CMP      R1,R2
+   \      0x180   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_28
+   \      0x182   0x2120             MOVS     R1,#+32
+   \      0x184   0xE041             B.N      ??HAL_DMAEx_MultiBufferStart_IT_25
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_28: (+1)
+   \      0x186   0x6821             LDR      R1,[R4, #+0]
+   \      0x188   0xF8DF 0x275C      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x14  ;; 0x40026028
+   \      0x18C   0x4291             CMP      R1,R2
+   \      0x18E   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_29
+   \      0x190   0xF44F 0x6100      MOV      R1,#+2048
+   \      0x194   0xE039             B.N      ??HAL_DMAEx_MultiBufferStart_IT_25
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_29: (+1)
+   \      0x196   0x6821             LDR      R1,[R4, #+0]
+   \      0x198   0xF8DF 0x2750      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x18  ;; 0x40026428
+   \      0x19C   0x4291             CMP      R1,R2
+   \      0x19E   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_30
+   \      0x1A0   0xF44F 0x6100      MOV      R1,#+2048
+   \      0x1A4   0xE031             B.N      ??HAL_DMAEx_MultiBufferStart_IT_25
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_30: (+1)
+   \      0x1A6   0x6821             LDR      R1,[R4, #+0]
+   \      0x1A8   0xF8DF 0x2744      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x1C  ;; 0x40026088
+   \      0x1AC   0x4291             CMP      R1,R2
+   \      0x1AE   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_31
+   \      0x1B0   0xF44F 0x6100      MOV      R1,#+2048
+   \      0x1B4   0xE029             B.N      ??HAL_DMAEx_MultiBufferStart_IT_25
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_31: (+1)
+   \      0x1B6   0x6821             LDR      R1,[R4, #+0]
+   \      0x1B8   0xF8DF 0x2738      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x20  ;; 0x40026488
+   \      0x1BC   0x4291             CMP      R1,R2
+   \      0x1BE   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_32
+   \      0x1C0   0xF44F 0x6100      MOV      R1,#+2048
+   \      0x1C4   0xE021             B.N      ??HAL_DMAEx_MultiBufferStart_IT_25
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_32: (+1)
+   \      0x1C6   0x6821             LDR      R1,[R4, #+0]
+   \      0x1C8   0xF8DF 0x272C      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x24  ;; 0x40026040
+   \      0x1CC   0x4291             CMP      R1,R2
+   \      0x1CE   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_33
+   \      0x1D0   0xF45F 0x1100      MOVS     R1,#+2097152
+   \      0x1D4   0xE019             B.N      ??HAL_DMAEx_MultiBufferStart_IT_25
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_33: (+1)
+   \      0x1D6   0x6821             LDR      R1,[R4, #+0]
+   \      0x1D8   0xF8DF 0x2720      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x28  ;; 0x40026440
+   \      0x1DC   0x4291             CMP      R1,R2
+   \      0x1DE   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_34
+   \      0x1E0   0xF45F 0x1100      MOVS     R1,#+2097152
+   \      0x1E4   0xE011             B.N      ??HAL_DMAEx_MultiBufferStart_IT_25
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_34: (+1)
+   \      0x1E6   0x6821             LDR      R1,[R4, #+0]
+   \      0x1E8   0xF8DF 0x2714      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x2C  ;; 0x400260a0
+   \      0x1EC   0x4291             CMP      R1,R2
+   \      0x1EE   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_35
+   \      0x1F0   0xF45F 0x1100      MOVS     R1,#+2097152
+   \      0x1F4   0xE009             B.N      ??HAL_DMAEx_MultiBufferStart_IT_25
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_35: (+1)
+   \      0x1F6   0x6821             LDR      R1,[R4, #+0]
+   \      0x1F8   0xF8DF 0x2708      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x30  ;; 0x400264a0
+   \      0x1FC   0x4291             CMP      R1,R2
+   \      0x1FE   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_36
+   \      0x200   0xF45F 0x1100      MOVS     R1,#+2097152
+   \      0x204   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_25
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_36: (+1)
+   \      0x206   0xF05F 0x6100      MOVS     R1,#+134217728
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_25: (+1)
+   \      0x20A   0xF8DF 0x2704      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x3C  ;; 0x40026408
+   \      0x20E   0x6011             STR      R1,[R2, #+0]
+   \      0x210   0xE0C7             B.N      ??HAL_DMAEx_MultiBufferStart_IT_22
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_23: (+1)
+   \      0x212   0x6821             LDR      R1,[R4, #+0]
+   \      0x214   0xF8DF 0x26FC      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x40  ;; 0x40026059
+   \      0x218   0x4291             CMP      R1,R2
+   \      0x21A   0xD361             BCC.N    ??HAL_DMAEx_MultiBufferStart_IT_37
+   \      0x21C   0x6821             LDR      R1,[R4, #+0]
+   \      0x21E   0xF8DF 0x26B8      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x4  ;; 0x40026010
+   \      0x222   0x4291             CMP      R1,R2
+   \      0x224   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_38
+   \      0x226   0x2120             MOVS     R1,#+32
+   \      0x228   0xE056             B.N      ??HAL_DMAEx_MultiBufferStart_IT_39
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_38: (+1)
+   \      0x22A   0x6821             LDR      R1,[R4, #+0]
+   \      0x22C   0xF8DF 0x26AC      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x8  ;; 0x40026410
+   \      0x230   0x4291             CMP      R1,R2
+   \      0x232   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_40
+   \      0x234   0x2120             MOVS     R1,#+32
+   \      0x236   0xE04F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_39
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_40: (+1)
+   \      0x238   0x6821             LDR      R1,[R4, #+0]
+   \      0x23A   0xF8DF 0x26A4      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0xC  ;; 0x40026070
+   \      0x23E   0x4291             CMP      R1,R2
+   \      0x240   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_41
+   \      0x242   0x2120             MOVS     R1,#+32
+   \      0x244   0xE048             B.N      ??HAL_DMAEx_MultiBufferStart_IT_39
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_41: (+1)
+   \      0x246   0x6821             LDR      R1,[R4, #+0]
+   \      0x248   0xF8DF 0x2698      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x10  ;; 0x40026470
+   \      0x24C   0x4291             CMP      R1,R2
+   \      0x24E   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_42
+   \      0x250   0x2120             MOVS     R1,#+32
+   \      0x252   0xE041             B.N      ??HAL_DMAEx_MultiBufferStart_IT_39
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_42: (+1)
+   \      0x254   0x6821             LDR      R1,[R4, #+0]
+   \      0x256   0xF8DF 0x2690      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x14  ;; 0x40026028
+   \      0x25A   0x4291             CMP      R1,R2
+   \      0x25C   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_43
+   \      0x25E   0xF44F 0x6100      MOV      R1,#+2048
+   \      0x262   0xE039             B.N      ??HAL_DMAEx_MultiBufferStart_IT_39
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_43: (+1)
+   \      0x264   0x6821             LDR      R1,[R4, #+0]
+   \      0x266   0xF8DF 0x2684      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x18  ;; 0x40026428
+   \      0x26A   0x4291             CMP      R1,R2
+   \      0x26C   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_44
+   \      0x26E   0xF44F 0x6100      MOV      R1,#+2048
+   \      0x272   0xE031             B.N      ??HAL_DMAEx_MultiBufferStart_IT_39
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_44: (+1)
+   \      0x274   0x6821             LDR      R1,[R4, #+0]
+   \      0x276   0xF8DF 0x2678      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x1C  ;; 0x40026088
+   \      0x27A   0x4291             CMP      R1,R2
+   \      0x27C   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_45
+   \      0x27E   0xF44F 0x6100      MOV      R1,#+2048
+   \      0x282   0xE029             B.N      ??HAL_DMAEx_MultiBufferStart_IT_39
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_45: (+1)
+   \      0x284   0x6821             LDR      R1,[R4, #+0]
+   \      0x286   0xF8DF 0x266C      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x20  ;; 0x40026488
+   \      0x28A   0x4291             CMP      R1,R2
+   \      0x28C   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_46
+   \      0x28E   0xF44F 0x6100      MOV      R1,#+2048
+   \      0x292   0xE021             B.N      ??HAL_DMAEx_MultiBufferStart_IT_39
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_46: (+1)
+   \      0x294   0x6821             LDR      R1,[R4, #+0]
+   \      0x296   0xF8DF 0x2660      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x24  ;; 0x40026040
+   \      0x29A   0x4291             CMP      R1,R2
+   \      0x29C   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_47
+   \      0x29E   0xF45F 0x1100      MOVS     R1,#+2097152
+   \      0x2A2   0xE019             B.N      ??HAL_DMAEx_MultiBufferStart_IT_39
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_47: (+1)
+   \      0x2A4   0x6821             LDR      R1,[R4, #+0]
+   \      0x2A6   0xF8DF 0x2654      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x28  ;; 0x40026440
+   \      0x2AA   0x4291             CMP      R1,R2
+   \      0x2AC   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_48
+   \      0x2AE   0xF45F 0x1100      MOVS     R1,#+2097152
+   \      0x2B2   0xE011             B.N      ??HAL_DMAEx_MultiBufferStart_IT_39
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_48: (+1)
+   \      0x2B4   0x6821             LDR      R1,[R4, #+0]
+   \      0x2B6   0xF8DF 0x2648      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x2C  ;; 0x400260a0
+   \      0x2BA   0x4291             CMP      R1,R2
+   \      0x2BC   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_49
+   \      0x2BE   0xF45F 0x1100      MOVS     R1,#+2097152
+   \      0x2C2   0xE009             B.N      ??HAL_DMAEx_MultiBufferStart_IT_39
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_49: (+1)
+   \      0x2C4   0x6821             LDR      R1,[R4, #+0]
+   \      0x2C6   0xF8DF 0x263C      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x30  ;; 0x400264a0
+   \      0x2CA   0x4291             CMP      R1,R2
+   \      0x2CC   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_50
+   \      0x2CE   0xF45F 0x1100      MOVS     R1,#+2097152
+   \      0x2D2   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_39
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_50: (+1)
+   \      0x2D4   0xF05F 0x6100      MOVS     R1,#+134217728
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_39: (+1)
+   \      0x2D8   0xF8DF 0x263C      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x44  ;; 0x4002600c
+   \      0x2DC   0x6011             STR      R1,[R2, #+0]
+   \      0x2DE   0xE060             B.N      ??HAL_DMAEx_MultiBufferStart_IT_22
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_37: (+1)
+   \      0x2E0   0x6821             LDR      R1,[R4, #+0]
+   \      0x2E2   0xF8DF 0x25F4      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x4  ;; 0x40026010
+   \      0x2E6   0x4291             CMP      R1,R2
+   \      0x2E8   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_51
+   \      0x2EA   0x2120             MOVS     R1,#+32
+   \      0x2EC   0xE056             B.N      ??HAL_DMAEx_MultiBufferStart_IT_52
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_51: (+1)
+   \      0x2EE   0x6821             LDR      R1,[R4, #+0]
+   \      0x2F0   0xF8DF 0x25E8      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x8  ;; 0x40026410
+   \      0x2F4   0x4291             CMP      R1,R2
+   \      0x2F6   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_53
+   \      0x2F8   0x2120             MOVS     R1,#+32
+   \      0x2FA   0xE04F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_52
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_53: (+1)
+   \      0x2FC   0x6821             LDR      R1,[R4, #+0]
+   \      0x2FE   0xF8DF 0x25E0      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0xC  ;; 0x40026070
+   \      0x302   0x4291             CMP      R1,R2
+   \      0x304   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_54
+   \      0x306   0x2120             MOVS     R1,#+32
+   \      0x308   0xE048             B.N      ??HAL_DMAEx_MultiBufferStart_IT_52
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_54: (+1)
+   \      0x30A   0x6821             LDR      R1,[R4, #+0]
+   \      0x30C   0xF8DF 0x25D4      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x10  ;; 0x40026470
+   \      0x310   0x4291             CMP      R1,R2
+   \      0x312   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_55
+   \      0x314   0x2120             MOVS     R1,#+32
+   \      0x316   0xE041             B.N      ??HAL_DMAEx_MultiBufferStart_IT_52
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_55: (+1)
+   \      0x318   0x6821             LDR      R1,[R4, #+0]
+   \      0x31A   0xF8DF 0x25CC      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x14  ;; 0x40026028
+   \      0x31E   0x4291             CMP      R1,R2
+   \      0x320   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_56
+   \      0x322   0xF44F 0x6100      MOV      R1,#+2048
+   \      0x326   0xE039             B.N      ??HAL_DMAEx_MultiBufferStart_IT_52
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_56: (+1)
+   \      0x328   0x6821             LDR      R1,[R4, #+0]
+   \      0x32A   0xF8DF 0x25C0      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x18  ;; 0x40026428
+   \      0x32E   0x4291             CMP      R1,R2
+   \      0x330   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_57
+   \      0x332   0xF44F 0x6100      MOV      R1,#+2048
+   \      0x336   0xE031             B.N      ??HAL_DMAEx_MultiBufferStart_IT_52
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_57: (+1)
+   \      0x338   0x6821             LDR      R1,[R4, #+0]
+   \      0x33A   0xF8DF 0x25B4      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x1C  ;; 0x40026088
+   \      0x33E   0x4291             CMP      R1,R2
+   \      0x340   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_58
+   \      0x342   0xF44F 0x6100      MOV      R1,#+2048
+   \      0x346   0xE029             B.N      ??HAL_DMAEx_MultiBufferStart_IT_52
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_58: (+1)
+   \      0x348   0x6821             LDR      R1,[R4, #+0]
+   \      0x34A   0xF8DF 0x25A8      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x20  ;; 0x40026488
+   \      0x34E   0x4291             CMP      R1,R2
+   \      0x350   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_59
+   \      0x352   0xF44F 0x6100      MOV      R1,#+2048
+   \      0x356   0xE021             B.N      ??HAL_DMAEx_MultiBufferStart_IT_52
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_59: (+1)
+   \      0x358   0x6821             LDR      R1,[R4, #+0]
+   \      0x35A   0xF8DF 0x259C      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x24  ;; 0x40026040
+   \      0x35E   0x4291             CMP      R1,R2
+   \      0x360   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_60
+   \      0x362   0xF45F 0x1100      MOVS     R1,#+2097152
+   \      0x366   0xE019             B.N      ??HAL_DMAEx_MultiBufferStart_IT_52
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_60: (+1)
+   \      0x368   0x6821             LDR      R1,[R4, #+0]
+   \      0x36A   0xF8DF 0x2590      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x28  ;; 0x40026440
+   \      0x36E   0x4291             CMP      R1,R2
+   \      0x370   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_61
+   \      0x372   0xF45F 0x1100      MOVS     R1,#+2097152
+   \      0x376   0xE011             B.N      ??HAL_DMAEx_MultiBufferStart_IT_52
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_61: (+1)
+   \      0x378   0x6821             LDR      R1,[R4, #+0]
+   \      0x37A   0xF8DF 0x2584      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x2C  ;; 0x400260a0
+   \      0x37E   0x4291             CMP      R1,R2
+   \      0x380   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_62
+   \      0x382   0xF45F 0x1100      MOVS     R1,#+2097152
+   \      0x386   0xE009             B.N      ??HAL_DMAEx_MultiBufferStart_IT_52
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_62: (+1)
+   \      0x388   0x6821             LDR      R1,[R4, #+0]
+   \      0x38A   0xF8DF 0x2578      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x30  ;; 0x400264a0
+   \      0x38E   0x4291             CMP      R1,R2
+   \      0x390   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_63
+   \      0x392   0xF45F 0x1100      MOVS     R1,#+2097152
+   \      0x396   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_52
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_63: (+1)
+   \      0x398   0xF05F 0x6100      MOVS     R1,#+134217728
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_52: (+1)
+   \      0x39C   0xF8DF 0x2A20      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_1  ;; 0x40026008
+   \      0x3A0   0x6011             STR      R1,[R2, #+0]
+    197              __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_HT_FLAG_INDEX(hdma));
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_22: (+1)
+   \      0x3A2   0x6821             LDR      R1,[R4, #+0]
+   \      0x3A4   0x4281             CMP      R1,R0
+   \      0x3A6   0xD361             BCC.N    ??HAL_DMAEx_MultiBufferStart_IT_64
+   \      0x3A8   0x6821             LDR      R1,[R4, #+0]
+   \      0x3AA   0xF8DF 0x252C      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x4  ;; 0x40026010
+   \      0x3AE   0x4291             CMP      R1,R2
+   \      0x3B0   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_65
+   \      0x3B2   0x2110             MOVS     R1,#+16
+   \      0x3B4   0xE056             B.N      ??HAL_DMAEx_MultiBufferStart_IT_66
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_65: (+1)
+   \      0x3B6   0x6821             LDR      R1,[R4, #+0]
+   \      0x3B8   0xF8DF 0x2520      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x8  ;; 0x40026410
+   \      0x3BC   0x4291             CMP      R1,R2
+   \      0x3BE   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_67
+   \      0x3C0   0x2110             MOVS     R1,#+16
+   \      0x3C2   0xE04F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_66
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_67: (+1)
+   \      0x3C4   0x6821             LDR      R1,[R4, #+0]
+   \      0x3C6   0xF8DF 0x2518      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0xC  ;; 0x40026070
+   \      0x3CA   0x4291             CMP      R1,R2
+   \      0x3CC   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_68
+   \      0x3CE   0x2110             MOVS     R1,#+16
+   \      0x3D0   0xE048             B.N      ??HAL_DMAEx_MultiBufferStart_IT_66
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_68: (+1)
+   \      0x3D2   0x6821             LDR      R1,[R4, #+0]
+   \      0x3D4   0xF8DF 0x250C      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x10  ;; 0x40026470
+   \      0x3D8   0x4291             CMP      R1,R2
+   \      0x3DA   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_69
+   \      0x3DC   0x2110             MOVS     R1,#+16
+   \      0x3DE   0xE041             B.N      ??HAL_DMAEx_MultiBufferStart_IT_66
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_69: (+1)
+   \      0x3E0   0x6821             LDR      R1,[R4, #+0]
+   \      0x3E2   0xF8DF 0x2504      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x14  ;; 0x40026028
+   \      0x3E6   0x4291             CMP      R1,R2
+   \      0x3E8   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_70
+   \      0x3EA   0xF44F 0x6180      MOV      R1,#+1024
+   \      0x3EE   0xE039             B.N      ??HAL_DMAEx_MultiBufferStart_IT_66
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_70: (+1)
+   \      0x3F0   0x6821             LDR      R1,[R4, #+0]
+   \      0x3F2   0xF8DF 0x24F8      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x18  ;; 0x40026428
+   \      0x3F6   0x4291             CMP      R1,R2
+   \      0x3F8   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_71
+   \      0x3FA   0xF44F 0x6180      MOV      R1,#+1024
+   \      0x3FE   0xE031             B.N      ??HAL_DMAEx_MultiBufferStart_IT_66
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_71: (+1)
+   \      0x400   0x6821             LDR      R1,[R4, #+0]
+   \      0x402   0xF8DF 0x24EC      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x1C  ;; 0x40026088
+   \      0x406   0x4291             CMP      R1,R2
+   \      0x408   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_72
+   \      0x40A   0xF44F 0x6180      MOV      R1,#+1024
+   \      0x40E   0xE029             B.N      ??HAL_DMAEx_MultiBufferStart_IT_66
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_72: (+1)
+   \      0x410   0x6821             LDR      R1,[R4, #+0]
+   \      0x412   0xF8DF 0x24E0      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x20  ;; 0x40026488
+   \      0x416   0x4291             CMP      R1,R2
+   \      0x418   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_73
+   \      0x41A   0xF44F 0x6180      MOV      R1,#+1024
+   \      0x41E   0xE021             B.N      ??HAL_DMAEx_MultiBufferStart_IT_66
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_73: (+1)
+   \      0x420   0x6821             LDR      R1,[R4, #+0]
+   \      0x422   0xF8DF 0x24D4      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x24  ;; 0x40026040
+   \      0x426   0x4291             CMP      R1,R2
+   \      0x428   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_74
+   \      0x42A   0xF45F 0x1180      MOVS     R1,#+1048576
+   \      0x42E   0xE019             B.N      ??HAL_DMAEx_MultiBufferStart_IT_66
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_74: (+1)
+   \      0x430   0x6821             LDR      R1,[R4, #+0]
+   \      0x432   0xF8DF 0x24C8      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x28  ;; 0x40026440
+   \      0x436   0x4291             CMP      R1,R2
+   \      0x438   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_75
+   \      0x43A   0xF45F 0x1180      MOVS     R1,#+1048576
+   \      0x43E   0xE011             B.N      ??HAL_DMAEx_MultiBufferStart_IT_66
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_75: (+1)
+   \      0x440   0x6821             LDR      R1,[R4, #+0]
+   \      0x442   0xF8DF 0x24BC      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x2C  ;; 0x400260a0
+   \      0x446   0x4291             CMP      R1,R2
+   \      0x448   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_76
+   \      0x44A   0xF45F 0x1180      MOVS     R1,#+1048576
+   \      0x44E   0xE009             B.N      ??HAL_DMAEx_MultiBufferStart_IT_66
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_76: (+1)
+   \      0x450   0x6821             LDR      R1,[R4, #+0]
+   \      0x452   0xF8DF 0x24B0      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x30  ;; 0x400264a0
+   \      0x456   0x4291             CMP      R1,R2
+   \      0x458   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_77
+   \      0x45A   0xF45F 0x1180      MOVS     R1,#+1048576
+   \      0x45E   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_66
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_77: (+1)
+   \      0x460   0xF05F 0x6180      MOVS     R1,#+67108864
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_66: (+1)
+   \      0x464   0xF8DF 0x24A0      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x34  ;; 0x4002640c
+   \      0x468   0x6011             STR      R1,[R2, #+0]
+   \      0x46A   0xE129             B.N      ??HAL_DMAEx_MultiBufferStart_IT_78
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_64: (+1)
+   \      0x46C   0x6821             LDR      R1,[R4, #+0]
+   \      0x46E   0xF8DF 0x249C      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x38  ;; 0x400260b9
+   \      0x472   0x4291             CMP      R1,R2
+   \      0x474   0xD361             BCC.N    ??HAL_DMAEx_MultiBufferStart_IT_79
+   \      0x476   0x6821             LDR      R1,[R4, #+0]
+   \      0x478   0xF8DF 0x245C      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x4  ;; 0x40026010
+   \      0x47C   0x4291             CMP      R1,R2
+   \      0x47E   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_80
+   \      0x480   0x2110             MOVS     R1,#+16
+   \      0x482   0xE056             B.N      ??HAL_DMAEx_MultiBufferStart_IT_81
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_80: (+1)
+   \      0x484   0x6821             LDR      R1,[R4, #+0]
+   \      0x486   0xF8DF 0x2454      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x8  ;; 0x40026410
+   \      0x48A   0x4291             CMP      R1,R2
+   \      0x48C   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_82
+   \      0x48E   0x2110             MOVS     R1,#+16
+   \      0x490   0xE04F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_81
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_82: (+1)
+   \      0x492   0x6821             LDR      R1,[R4, #+0]
+   \      0x494   0xF8DF 0x2448      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0xC  ;; 0x40026070
+   \      0x498   0x4291             CMP      R1,R2
+   \      0x49A   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_83
+   \      0x49C   0x2110             MOVS     R1,#+16
+   \      0x49E   0xE048             B.N      ??HAL_DMAEx_MultiBufferStart_IT_81
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_83: (+1)
+   \      0x4A0   0x6821             LDR      R1,[R4, #+0]
+   \      0x4A2   0xF8DF 0x2440      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x10  ;; 0x40026470
+   \      0x4A6   0x4291             CMP      R1,R2
+   \      0x4A8   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_84
+   \      0x4AA   0x2110             MOVS     R1,#+16
+   \      0x4AC   0xE041             B.N      ??HAL_DMAEx_MultiBufferStart_IT_81
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_84: (+1)
+   \      0x4AE   0x6821             LDR      R1,[R4, #+0]
+   \      0x4B0   0xF8DF 0x2434      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x14  ;; 0x40026028
+   \      0x4B4   0x4291             CMP      R1,R2
+   \      0x4B6   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_85
+   \      0x4B8   0xF44F 0x6180      MOV      R1,#+1024
+   \      0x4BC   0xE039             B.N      ??HAL_DMAEx_MultiBufferStart_IT_81
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_85: (+1)
+   \      0x4BE   0x6821             LDR      R1,[R4, #+0]
+   \      0x4C0   0xF8DF 0x2428      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x18  ;; 0x40026428
+   \      0x4C4   0x4291             CMP      R1,R2
+   \      0x4C6   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_86
+   \      0x4C8   0xF44F 0x6180      MOV      R1,#+1024
+   \      0x4CC   0xE031             B.N      ??HAL_DMAEx_MultiBufferStart_IT_81
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_86: (+1)
+   \      0x4CE   0x6821             LDR      R1,[R4, #+0]
+   \      0x4D0   0xF8DF 0x241C      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x1C  ;; 0x40026088
+   \      0x4D4   0x4291             CMP      R1,R2
+   \      0x4D6   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_87
+   \      0x4D8   0xF44F 0x6180      MOV      R1,#+1024
+   \      0x4DC   0xE029             B.N      ??HAL_DMAEx_MultiBufferStart_IT_81
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_87: (+1)
+   \      0x4DE   0x6821             LDR      R1,[R4, #+0]
+   \      0x4E0   0xF8DF 0x2410      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x20  ;; 0x40026488
+   \      0x4E4   0x4291             CMP      R1,R2
+   \      0x4E6   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_88
+   \      0x4E8   0xF44F 0x6180      MOV      R1,#+1024
+   \      0x4EC   0xE021             B.N      ??HAL_DMAEx_MultiBufferStart_IT_81
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_88: (+1)
+   \      0x4EE   0x6821             LDR      R1,[R4, #+0]
+   \      0x4F0   0xF8DF 0x2404      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x24  ;; 0x40026040
+   \      0x4F4   0x4291             CMP      R1,R2
+   \      0x4F6   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_89
+   \      0x4F8   0xF45F 0x1180      MOVS     R1,#+1048576
+   \      0x4FC   0xE019             B.N      ??HAL_DMAEx_MultiBufferStart_IT_81
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_89: (+1)
+   \      0x4FE   0x6821             LDR      R1,[R4, #+0]
+   \      0x500   0xF8DF 0x23F8      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x28  ;; 0x40026440
+   \      0x504   0x4291             CMP      R1,R2
+   \      0x506   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_90
+   \      0x508   0xF45F 0x1180      MOVS     R1,#+1048576
+   \      0x50C   0xE011             B.N      ??HAL_DMAEx_MultiBufferStart_IT_81
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_90: (+1)
+   \      0x50E   0x6821             LDR      R1,[R4, #+0]
+   \      0x510   0xF8DF 0x23EC      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x2C  ;; 0x400260a0
+   \      0x514   0x4291             CMP      R1,R2
+   \      0x516   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_91
+   \      0x518   0xF45F 0x1180      MOVS     R1,#+1048576
+   \      0x51C   0xE009             B.N      ??HAL_DMAEx_MultiBufferStart_IT_81
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_91: (+1)
+   \      0x51E   0x6821             LDR      R1,[R4, #+0]
+   \      0x520   0xF8DF 0x23E0      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x30  ;; 0x400264a0
+   \      0x524   0x4291             CMP      R1,R2
+   \      0x526   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_92
+   \      0x528   0xF45F 0x1180      MOVS     R1,#+1048576
+   \      0x52C   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_81
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_92: (+1)
+   \      0x52E   0xF05F 0x6180      MOVS     R1,#+67108864
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_81: (+1)
+   \      0x532   0xF8DF 0x23DC      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x3C  ;; 0x40026408
+   \      0x536   0x6011             STR      R1,[R2, #+0]
+   \      0x538   0xE0C2             B.N      ??HAL_DMAEx_MultiBufferStart_IT_78
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_79: (+1)
+   \      0x53A   0x6821             LDR      R1,[R4, #+0]
+   \      0x53C   0xF8DF 0x23D4      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x40  ;; 0x40026059
+   \      0x540   0x4291             CMP      R1,R2
+   \      0x542   0xD361             BCC.N    ??HAL_DMAEx_MultiBufferStart_IT_93
+   \      0x544   0x6821             LDR      R1,[R4, #+0]
+   \      0x546   0xF8DF 0x2390      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x4  ;; 0x40026010
+   \      0x54A   0x4291             CMP      R1,R2
+   \      0x54C   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_94
+   \      0x54E   0x2110             MOVS     R1,#+16
+   \      0x550   0xE056             B.N      ??HAL_DMAEx_MultiBufferStart_IT_95
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_94: (+1)
+   \      0x552   0x6821             LDR      R1,[R4, #+0]
+   \      0x554   0xF8DF 0x2384      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x8  ;; 0x40026410
+   \      0x558   0x4291             CMP      R1,R2
+   \      0x55A   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_96
+   \      0x55C   0x2110             MOVS     R1,#+16
+   \      0x55E   0xE04F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_95
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_96: (+1)
+   \      0x560   0x6821             LDR      R1,[R4, #+0]
+   \      0x562   0xF8DF 0x237C      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0xC  ;; 0x40026070
+   \      0x566   0x4291             CMP      R1,R2
+   \      0x568   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_97
+   \      0x56A   0x2110             MOVS     R1,#+16
+   \      0x56C   0xE048             B.N      ??HAL_DMAEx_MultiBufferStart_IT_95
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_97: (+1)
+   \      0x56E   0x6821             LDR      R1,[R4, #+0]
+   \      0x570   0xF8DF 0x2370      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x10  ;; 0x40026470
+   \      0x574   0x4291             CMP      R1,R2
+   \      0x576   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_98
+   \      0x578   0x2110             MOVS     R1,#+16
+   \      0x57A   0xE041             B.N      ??HAL_DMAEx_MultiBufferStart_IT_95
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_98: (+1)
+   \      0x57C   0x6821             LDR      R1,[R4, #+0]
+   \      0x57E   0xF8DF 0x2368      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x14  ;; 0x40026028
+   \      0x582   0x4291             CMP      R1,R2
+   \      0x584   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_99
+   \      0x586   0xF44F 0x6180      MOV      R1,#+1024
+   \      0x58A   0xE039             B.N      ??HAL_DMAEx_MultiBufferStart_IT_95
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_99: (+1)
+   \      0x58C   0x6821             LDR      R1,[R4, #+0]
+   \      0x58E   0xF8DF 0x235C      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x18  ;; 0x40026428
+   \      0x592   0x4291             CMP      R1,R2
+   \      0x594   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_100
+   \      0x596   0xF44F 0x6180      MOV      R1,#+1024
+   \      0x59A   0xE031             B.N      ??HAL_DMAEx_MultiBufferStart_IT_95
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_100: (+1)
+   \      0x59C   0x6821             LDR      R1,[R4, #+0]
+   \      0x59E   0xF8DF 0x2350      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x1C  ;; 0x40026088
+   \      0x5A2   0x4291             CMP      R1,R2
+   \      0x5A4   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_101
+   \      0x5A6   0xF44F 0x6180      MOV      R1,#+1024
+   \      0x5AA   0xE029             B.N      ??HAL_DMAEx_MultiBufferStart_IT_95
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_101: (+1)
+   \      0x5AC   0x6821             LDR      R1,[R4, #+0]
+   \      0x5AE   0xF8DF 0x2344      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x20  ;; 0x40026488
+   \      0x5B2   0x4291             CMP      R1,R2
+   \      0x5B4   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_102
+   \      0x5B6   0xF44F 0x6180      MOV      R1,#+1024
+   \      0x5BA   0xE021             B.N      ??HAL_DMAEx_MultiBufferStart_IT_95
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_102: (+1)
+   \      0x5BC   0x6821             LDR      R1,[R4, #+0]
+   \      0x5BE   0xF8DF 0x2338      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x24  ;; 0x40026040
+   \      0x5C2   0x4291             CMP      R1,R2
+   \      0x5C4   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_103
+   \      0x5C6   0xF45F 0x1180      MOVS     R1,#+1048576
+   \      0x5CA   0xE019             B.N      ??HAL_DMAEx_MultiBufferStart_IT_95
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_103: (+1)
+   \      0x5CC   0x6821             LDR      R1,[R4, #+0]
+   \      0x5CE   0xF8DF 0x232C      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x28  ;; 0x40026440
+   \      0x5D2   0x4291             CMP      R1,R2
+   \      0x5D4   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_104
+   \      0x5D6   0xF45F 0x1180      MOVS     R1,#+1048576
+   \      0x5DA   0xE011             B.N      ??HAL_DMAEx_MultiBufferStart_IT_95
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_104: (+1)
+   \      0x5DC   0x6821             LDR      R1,[R4, #+0]
+   \      0x5DE   0xF8DF 0x2320      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x2C  ;; 0x400260a0
+   \      0x5E2   0x4291             CMP      R1,R2
+   \      0x5E4   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_105
+   \      0x5E6   0xF45F 0x1180      MOVS     R1,#+1048576
+   \      0x5EA   0xE009             B.N      ??HAL_DMAEx_MultiBufferStart_IT_95
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_105: (+1)
+   \      0x5EC   0x6821             LDR      R1,[R4, #+0]
+   \      0x5EE   0xF8DF 0x2314      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x30  ;; 0x400264a0
+   \      0x5F2   0x4291             CMP      R1,R2
+   \      0x5F4   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_106
+   \      0x5F6   0xF45F 0x1180      MOVS     R1,#+1048576
+   \      0x5FA   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_95
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_106: (+1)
+   \      0x5FC   0xF05F 0x6180      MOVS     R1,#+67108864
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_95: (+1)
+   \      0x600   0xF8DF 0x2314      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x44  ;; 0x4002600c
+   \      0x604   0x6011             STR      R1,[R2, #+0]
+   \      0x606   0xE05B             B.N      ??HAL_DMAEx_MultiBufferStart_IT_78
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_93: (+1)
+   \      0x608   0x6821             LDR      R1,[R4, #+0]
+   \      0x60A   0xF8DF 0x22CC      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x4  ;; 0x40026010
+   \      0x60E   0x4291             CMP      R1,R2
+   \      0x610   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_107
+   \      0x612   0x2110             MOVS     R1,#+16
+   \      0x614   0xE051             B.N      ??HAL_DMAEx_MultiBufferStart_IT_108
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_107: (+1)
+   \      0x616   0x6821             LDR      R1,[R4, #+0]
+   \      0x618   0xF8DF 0x22C0      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x8  ;; 0x40026410
+   \      0x61C   0x4291             CMP      R1,R2
+   \      0x61E   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_109
+   \      0x620   0x2110             MOVS     R1,#+16
+   \      0x622   0xE04A             B.N      ??HAL_DMAEx_MultiBufferStart_IT_108
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_109: (+1)
+   \      0x624   0x6821             LDR      R1,[R4, #+0]
+   \      0x626   0xF8DF 0x22B8      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0xC  ;; 0x40026070
+   \      0x62A   0x4291             CMP      R1,R2
+   \      0x62C   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_110
+   \      0x62E   0x2110             MOVS     R1,#+16
+   \      0x630   0xE043             B.N      ??HAL_DMAEx_MultiBufferStart_IT_108
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_110: (+1)
+   \      0x632   0x6821             LDR      R1,[R4, #+0]
+   \      0x634   0xF8DF 0x22AC      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x10  ;; 0x40026470
+   \      0x638   0x4291             CMP      R1,R2
+   \      0x63A   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_111
+   \      0x63C   0x2110             MOVS     R1,#+16
+   \      0x63E   0xE03C             B.N      ??HAL_DMAEx_MultiBufferStart_IT_108
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_111: (+1)
+   \      0x640   0x6821             LDR      R1,[R4, #+0]
+   \      0x642   0xF8DF 0x22A4      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x14  ;; 0x40026028
+   \      0x646   0x4291             CMP      R1,R2
+   \      0x648   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_112
+   \      0x64A   0xF44F 0x6180      MOV      R1,#+1024
+   \      0x64E   0xE034             B.N      ??HAL_DMAEx_MultiBufferStart_IT_108
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_112: (+1)
+   \      0x650   0x6821             LDR      R1,[R4, #+0]
+   \      0x652   0xF8DF 0x2298      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x18  ;; 0x40026428
+   \      0x656   0x4291             CMP      R1,R2
+   \      0x658   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_113
+   \      0x65A   0xF44F 0x6180      MOV      R1,#+1024
+   \      0x65E   0xE02C             B.N      ??HAL_DMAEx_MultiBufferStart_IT_108
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_113: (+1)
+   \      0x660   0x6821             LDR      R1,[R4, #+0]
+   \      0x662   0xF8DF 0x228C      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x1C  ;; 0x40026088
+   \      0x666   0x4291             CMP      R1,R2
+   \      0x668   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_114
+   \      0x66A   0xF44F 0x6180      MOV      R1,#+1024
+   \      0x66E   0xE024             B.N      ??HAL_DMAEx_MultiBufferStart_IT_108
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_114: (+1)
+   \      0x670   0x6821             LDR      R1,[R4, #+0]
+   \      0x672   0x4AA0             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x20  ;; 0x40026488
+   \      0x674   0x4291             CMP      R1,R2
+   \      0x676   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_115
+   \      0x678   0xF44F 0x6180      MOV      R1,#+1024
+   \      0x67C   0xE01D             B.N      ??HAL_DMAEx_MultiBufferStart_IT_108
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_115: (+1)
+   \      0x67E   0x6821             LDR      R1,[R4, #+0]
+   \      0x680   0x4A9D             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x24  ;; 0x40026040
+   \      0x682   0x4291             CMP      R1,R2
+   \      0x684   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_116
+   \      0x686   0xF45F 0x1180      MOVS     R1,#+1048576
+   \      0x68A   0xE016             B.N      ??HAL_DMAEx_MultiBufferStart_IT_108
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_116: (+1)
+   \      0x68C   0x6821             LDR      R1,[R4, #+0]
+   \      0x68E   0x4A9B             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x28  ;; 0x40026440
+   \      0x690   0x4291             CMP      R1,R2
+   \      0x692   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_117
+   \      0x694   0xF45F 0x1180      MOVS     R1,#+1048576
+   \      0x698   0xE00F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_108
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_117: (+1)
+   \      0x69A   0x6821             LDR      R1,[R4, #+0]
+   \      0x69C   0x4A98             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x2C  ;; 0x400260a0
+   \      0x69E   0x4291             CMP      R1,R2
+   \      0x6A0   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_118
+   \      0x6A2   0xF45F 0x1180      MOVS     R1,#+1048576
+   \      0x6A6   0xE008             B.N      ??HAL_DMAEx_MultiBufferStart_IT_108
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_118: (+1)
+   \      0x6A8   0x6821             LDR      R1,[R4, #+0]
+   \      0x6AA   0x4A96             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x30  ;; 0x400264a0
+   \      0x6AC   0x4291             CMP      R1,R2
+   \      0x6AE   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_119
+   \      0x6B0   0xF45F 0x1180      MOVS     R1,#+1048576
+   \      0x6B4   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_108
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_119: (+1)
+   \      0x6B6   0xF05F 0x6180      MOVS     R1,#+67108864
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_108: (+1)
+   \      0x6BA   0xF8DF 0x2704      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_1  ;; 0x40026008
+   \      0x6BE   0x6011             STR      R1,[R2, #+0]
+    198              __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_TE_FLAG_INDEX(hdma));
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_78: (+1)
+   \      0x6C0   0x6821             LDR      R1,[R4, #+0]
+   \      0x6C2   0x4281             CMP      R1,R0
+   \      0x6C4   0xD354             BCC.N    ??HAL_DMAEx_MultiBufferStart_IT_120
+   \      0x6C6   0x6821             LDR      R1,[R4, #+0]
+   \      0x6C8   0x4A83             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x4  ;; 0x40026010
+   \      0x6CA   0x4291             CMP      R1,R2
+   \      0x6CC   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_121
+   \      0x6CE   0x2108             MOVS     R1,#+8
+   \      0x6D0   0xE04B             B.N      ??HAL_DMAEx_MultiBufferStart_IT_122
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_121: (+1)
+   \      0x6D2   0x6821             LDR      R1,[R4, #+0]
+   \      0x6D4   0x4A81             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x8  ;; 0x40026410
+   \      0x6D6   0x4291             CMP      R1,R2
+   \      0x6D8   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_123
+   \      0x6DA   0x2108             MOVS     R1,#+8
+   \      0x6DC   0xE045             B.N      ??HAL_DMAEx_MultiBufferStart_IT_122
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_123: (+1)
+   \      0x6DE   0x6821             LDR      R1,[R4, #+0]
+   \      0x6E0   0x4A7F             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0xC  ;; 0x40026070
+   \      0x6E2   0x4291             CMP      R1,R2
+   \      0x6E4   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_124
+   \      0x6E6   0x2108             MOVS     R1,#+8
+   \      0x6E8   0xE03F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_122
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_124: (+1)
+   \      0x6EA   0x6821             LDR      R1,[R4, #+0]
+   \      0x6EC   0x4A7D             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x10  ;; 0x40026470
+   \      0x6EE   0x4291             CMP      R1,R2
+   \      0x6F0   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_125
+   \      0x6F2   0x2108             MOVS     R1,#+8
+   \      0x6F4   0xE039             B.N      ??HAL_DMAEx_MultiBufferStart_IT_122
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_125: (+1)
+   \      0x6F6   0x6821             LDR      R1,[R4, #+0]
+   \      0x6F8   0x4A7B             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x14  ;; 0x40026028
+   \      0x6FA   0x4291             CMP      R1,R2
+   \      0x6FC   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_126
+   \      0x6FE   0xF44F 0x7100      MOV      R1,#+512
+   \      0x702   0xE032             B.N      ??HAL_DMAEx_MultiBufferStart_IT_122
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_126: (+1)
+   \      0x704   0x6821             LDR      R1,[R4, #+0]
+   \      0x706   0x4A79             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x18  ;; 0x40026428
+   \      0x708   0x4291             CMP      R1,R2
+   \      0x70A   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_127
+   \      0x70C   0xF44F 0x7100      MOV      R1,#+512
+   \      0x710   0xE02B             B.N      ??HAL_DMAEx_MultiBufferStart_IT_122
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_127: (+1)
+   \      0x712   0x6821             LDR      R1,[R4, #+0]
+   \      0x714   0x4A76             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x1C  ;; 0x40026088
+   \      0x716   0x4291             CMP      R1,R2
+   \      0x718   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_128
+   \      0x71A   0xF44F 0x7100      MOV      R1,#+512
+   \      0x71E   0xE024             B.N      ??HAL_DMAEx_MultiBufferStart_IT_122
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_128: (+1)
+   \      0x720   0x6821             LDR      R1,[R4, #+0]
+   \      0x722   0x4A74             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x20  ;; 0x40026488
+   \      0x724   0x4291             CMP      R1,R2
+   \      0x726   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_129
+   \      0x728   0xF44F 0x7100      MOV      R1,#+512
+   \      0x72C   0xE01D             B.N      ??HAL_DMAEx_MultiBufferStart_IT_122
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_129: (+1)
+   \      0x72E   0x6821             LDR      R1,[R4, #+0]
+   \      0x730   0x4A71             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x24  ;; 0x40026040
+   \      0x732   0x4291             CMP      R1,R2
+   \      0x734   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_130
+   \      0x736   0xF45F 0x2100      MOVS     R1,#+524288
+   \      0x73A   0xE016             B.N      ??HAL_DMAEx_MultiBufferStart_IT_122
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_130: (+1)
+   \      0x73C   0x6821             LDR      R1,[R4, #+0]
+   \      0x73E   0x4A6F             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x28  ;; 0x40026440
+   \      0x740   0x4291             CMP      R1,R2
+   \      0x742   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_131
+   \      0x744   0xF45F 0x2100      MOVS     R1,#+524288
+   \      0x748   0xE00F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_122
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_131: (+1)
+   \      0x74A   0x6821             LDR      R1,[R4, #+0]
+   \      0x74C   0x4A6C             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x2C  ;; 0x400260a0
+   \      0x74E   0x4291             CMP      R1,R2
+   \      0x750   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_132
+   \      0x752   0xF45F 0x2100      MOVS     R1,#+524288
+   \      0x756   0xE008             B.N      ??HAL_DMAEx_MultiBufferStart_IT_122
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_132: (+1)
+   \      0x758   0x6821             LDR      R1,[R4, #+0]
+   \      0x75A   0x4A6A             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x30  ;; 0x400264a0
+   \      0x75C   0x4291             CMP      R1,R2
+   \      0x75E   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_133
+   \      0x760   0xF45F 0x2100      MOVS     R1,#+524288
+   \      0x764   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_122
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_133: (+1)
+   \      0x766   0xF05F 0x7100      MOVS     R1,#+33554432
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_122: (+1)
+   \      0x76A   0x4A67             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x34  ;; 0x4002640c
+   \      0x76C   0x6011             STR      R1,[R2, #+0]
+   \      0x76E   0xE136             B.N      ??HAL_DMAEx_MultiBufferStart_IT_134
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_120: (+1)
+   \      0x770   0x6821             LDR      R1,[R4, #+0]
+   \      0x772   0x4A66             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x38  ;; 0x400260b9
+   \      0x774   0x4291             CMP      R1,R2
+   \      0x776   0xD354             BCC.N    ??HAL_DMAEx_MultiBufferStart_IT_135
+   \      0x778   0x6821             LDR      R1,[R4, #+0]
+   \      0x77A   0x4A57             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x4  ;; 0x40026010
+   \      0x77C   0x4291             CMP      R1,R2
+   \      0x77E   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_136
+   \      0x780   0x2108             MOVS     R1,#+8
+   \      0x782   0xE04B             B.N      ??HAL_DMAEx_MultiBufferStart_IT_137
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_136: (+1)
+   \      0x784   0x6821             LDR      R1,[R4, #+0]
+   \      0x786   0x4A55             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x8  ;; 0x40026410
+   \      0x788   0x4291             CMP      R1,R2
+   \      0x78A   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_138
+   \      0x78C   0x2108             MOVS     R1,#+8
+   \      0x78E   0xE045             B.N      ??HAL_DMAEx_MultiBufferStart_IT_137
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_138: (+1)
+   \      0x790   0x6821             LDR      R1,[R4, #+0]
+   \      0x792   0x4A53             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0xC  ;; 0x40026070
+   \      0x794   0x4291             CMP      R1,R2
+   \      0x796   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_139
+   \      0x798   0x2108             MOVS     R1,#+8
+   \      0x79A   0xE03F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_137
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_139: (+1)
+   \      0x79C   0x6821             LDR      R1,[R4, #+0]
+   \      0x79E   0x4A51             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x10  ;; 0x40026470
+   \      0x7A0   0x4291             CMP      R1,R2
+   \      0x7A2   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_140
+   \      0x7A4   0x2108             MOVS     R1,#+8
+   \      0x7A6   0xE039             B.N      ??HAL_DMAEx_MultiBufferStart_IT_137
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_140: (+1)
+   \      0x7A8   0x6821             LDR      R1,[R4, #+0]
+   \      0x7AA   0x4A4F             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x14  ;; 0x40026028
+   \      0x7AC   0x4291             CMP      R1,R2
+   \      0x7AE   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_141
+   \      0x7B0   0xF44F 0x7100      MOV      R1,#+512
+   \      0x7B4   0xE032             B.N      ??HAL_DMAEx_MultiBufferStart_IT_137
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_141: (+1)
+   \      0x7B6   0x6821             LDR      R1,[R4, #+0]
+   \      0x7B8   0x4A4C             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x18  ;; 0x40026428
+   \      0x7BA   0x4291             CMP      R1,R2
+   \      0x7BC   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_142
+   \      0x7BE   0xF44F 0x7100      MOV      R1,#+512
+   \      0x7C2   0xE02B             B.N      ??HAL_DMAEx_MultiBufferStart_IT_137
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_142: (+1)
+   \      0x7C4   0x6821             LDR      R1,[R4, #+0]
+   \      0x7C6   0x4A4A             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x1C  ;; 0x40026088
+   \      0x7C8   0x4291             CMP      R1,R2
+   \      0x7CA   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_143
+   \      0x7CC   0xF44F 0x7100      MOV      R1,#+512
+   \      0x7D0   0xE024             B.N      ??HAL_DMAEx_MultiBufferStart_IT_137
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_143: (+1)
+   \      0x7D2   0x6821             LDR      R1,[R4, #+0]
+   \      0x7D4   0x4A47             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x20  ;; 0x40026488
+   \      0x7D6   0x4291             CMP      R1,R2
+   \      0x7D8   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_144
+   \      0x7DA   0xF44F 0x7100      MOV      R1,#+512
+   \      0x7DE   0xE01D             B.N      ??HAL_DMAEx_MultiBufferStart_IT_137
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_144: (+1)
+   \      0x7E0   0x6821             LDR      R1,[R4, #+0]
+   \      0x7E2   0x4A45             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x24  ;; 0x40026040
+   \      0x7E4   0x4291             CMP      R1,R2
+   \      0x7E6   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_145
+   \      0x7E8   0xF45F 0x2100      MOVS     R1,#+524288
+   \      0x7EC   0xE016             B.N      ??HAL_DMAEx_MultiBufferStart_IT_137
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_145: (+1)
+   \      0x7EE   0x6821             LDR      R1,[R4, #+0]
+   \      0x7F0   0x4A42             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x28  ;; 0x40026440
+   \      0x7F2   0x4291             CMP      R1,R2
+   \      0x7F4   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_146
+   \      0x7F6   0xF45F 0x2100      MOVS     R1,#+524288
+   \      0x7FA   0xE00F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_137
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_146: (+1)
+   \      0x7FC   0x6821             LDR      R1,[R4, #+0]
+   \      0x7FE   0x4A40             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x2C  ;; 0x400260a0
+   \      0x800   0x4291             CMP      R1,R2
+   \      0x802   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_147
+   \      0x804   0xF45F 0x2100      MOVS     R1,#+524288
+   \      0x808   0xE008             B.N      ??HAL_DMAEx_MultiBufferStart_IT_137
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_147: (+1)
+   \      0x80A   0x6821             LDR      R1,[R4, #+0]
+   \      0x80C   0x4A3D             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x30  ;; 0x400264a0
+   \      0x80E   0x4291             CMP      R1,R2
+   \      0x810   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_148
+   \      0x812   0xF45F 0x2100      MOVS     R1,#+524288
+   \      0x816   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_137
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_148: (+1)
+   \      0x818   0xF05F 0x7100      MOVS     R1,#+33554432
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_137: (+1)
+   \      0x81C   0x4A3C             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x3C  ;; 0x40026408
+   \      0x81E   0x6011             STR      R1,[R2, #+0]
+   \      0x820   0xE0DD             B.N      ??HAL_DMAEx_MultiBufferStart_IT_134
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_135: (+1)
+   \      0x822   0x6821             LDR      R1,[R4, #+0]
+   \      0x824   0x4A3B             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x40  ;; 0x40026059
+   \      0x826   0x4291             CMP      R1,R2
+   \      0x828   0xD378             BCC.N    ??HAL_DMAEx_MultiBufferStart_IT_149
+   \      0x82A   0x6821             LDR      R1,[R4, #+0]
+   \      0x82C   0x4A2A             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x4  ;; 0x40026010
+   \      0x82E   0x4291             CMP      R1,R2
+   \      0x830   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_150
+   \      0x832   0x2108             MOVS     R1,#+8
+   \      0x834   0xE04B             B.N      ??HAL_DMAEx_MultiBufferStart_IT_151
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_150: (+1)
+   \      0x836   0x6821             LDR      R1,[R4, #+0]
+   \      0x838   0x4A28             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x8  ;; 0x40026410
+   \      0x83A   0x4291             CMP      R1,R2
+   \      0x83C   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_152
+   \      0x83E   0x2108             MOVS     R1,#+8
+   \      0x840   0xE045             B.N      ??HAL_DMAEx_MultiBufferStart_IT_151
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_152: (+1)
+   \      0x842   0x6821             LDR      R1,[R4, #+0]
+   \      0x844   0x4A26             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0xC  ;; 0x40026070
+   \      0x846   0x4291             CMP      R1,R2
+   \      0x848   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_153
+   \      0x84A   0x2108             MOVS     R1,#+8
+   \      0x84C   0xE03F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_151
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_153: (+1)
+   \      0x84E   0x6821             LDR      R1,[R4, #+0]
+   \      0x850   0x4A24             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x10  ;; 0x40026470
+   \      0x852   0x4291             CMP      R1,R2
+   \      0x854   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_154
+   \      0x856   0x2108             MOVS     R1,#+8
+   \      0x858   0xE039             B.N      ??HAL_DMAEx_MultiBufferStart_IT_151
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_154: (+1)
+   \      0x85A   0x6821             LDR      R1,[R4, #+0]
+   \      0x85C   0x4A22             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x14  ;; 0x40026028
+   \      0x85E   0x4291             CMP      R1,R2
+   \      0x860   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_155
+   \      0x862   0xF44F 0x7100      MOV      R1,#+512
+   \      0x866   0xE032             B.N      ??HAL_DMAEx_MultiBufferStart_IT_151
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_155: (+1)
+   \      0x868   0x6821             LDR      R1,[R4, #+0]
+   \      0x86A   0x4A20             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x18  ;; 0x40026428
+   \      0x86C   0x4291             CMP      R1,R2
+   \      0x86E   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_156
+   \      0x870   0xF44F 0x7100      MOV      R1,#+512
+   \      0x874   0xE02B             B.N      ??HAL_DMAEx_MultiBufferStart_IT_151
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_156: (+1)
+   \      0x876   0x6821             LDR      R1,[R4, #+0]
+   \      0x878   0x4A1D             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x1C  ;; 0x40026088
+   \      0x87A   0x4291             CMP      R1,R2
+   \      0x87C   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_157
+   \      0x87E   0xF44F 0x7100      MOV      R1,#+512
+   \      0x882   0xE024             B.N      ??HAL_DMAEx_MultiBufferStart_IT_151
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_157: (+1)
+   \      0x884   0x6821             LDR      R1,[R4, #+0]
+   \      0x886   0x4A1B             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x20  ;; 0x40026488
+   \      0x888   0x4291             CMP      R1,R2
+   \      0x88A   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_158
+   \      0x88C   0xF44F 0x7100      MOV      R1,#+512
+   \      0x890   0xE01D             B.N      ??HAL_DMAEx_MultiBufferStart_IT_151
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_158: (+1)
+   \      0x892   0x6821             LDR      R1,[R4, #+0]
+   \      0x894   0x4A18             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x24  ;; 0x40026040
+   \      0x896   0x4291             CMP      R1,R2
+   \      0x898   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_159
+   \      0x89A   0xF45F 0x2100      MOVS     R1,#+524288
+   \      0x89E   0xE016             B.N      ??HAL_DMAEx_MultiBufferStart_IT_151
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_159: (+1)
+   \      0x8A0   0x6821             LDR      R1,[R4, #+0]
+   \      0x8A2   0x4A16             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x28  ;; 0x40026440
+   \      0x8A4   0x4291             CMP      R1,R2
+   \      0x8A6   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_160
+   \      0x8A8   0xF45F 0x2100      MOVS     R1,#+524288
+   \      0x8AC   0xE00F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_151
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_160: (+1)
+   \      0x8AE   0x6821             LDR      R1,[R4, #+0]
+   \      0x8B0   0x4A13             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x2C  ;; 0x400260a0
+   \      0x8B2   0x4291             CMP      R1,R2
+   \      0x8B4   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_161
+   \      0x8B6   0xF45F 0x2100      MOVS     R1,#+524288
+   \      0x8BA   0xE008             B.N      ??HAL_DMAEx_MultiBufferStart_IT_151
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_161: (+1)
+   \      0x8BC   0x6821             LDR      R1,[R4, #+0]
+   \      0x8BE   0x4A11             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x30  ;; 0x400264a0
+   \      0x8C0   0x4291             CMP      R1,R2
+   \      0x8C2   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_162
+   \      0x8C4   0xF45F 0x2100      MOVS     R1,#+524288
+   \      0x8C8   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_151
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_162: (+1)
+   \      0x8CA   0xF05F 0x7100      MOVS     R1,#+33554432
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_151: (+1)
+   \      0x8CE   0x4A12             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_0+0x44  ;; 0x4002600c
+   \      0x8D0   0x6011             STR      R1,[R2, #+0]
+   \      0x8D2   0xE084             B.N      ??HAL_DMAEx_MultiBufferStart_IT_134
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_0:
+   \      0x8D4   0x4002'6459        DC32     0x40026459
+   \      0x8D8   0x4002'6010        DC32     0x40026010
+   \      0x8DC   0x4002'6410        DC32     0x40026410
+   \      0x8E0   0x4002'6070        DC32     0x40026070
+   \      0x8E4   0x4002'6470        DC32     0x40026470
+   \      0x8E8   0x4002'6028        DC32     0x40026028
+   \      0x8EC   0x4002'6428        DC32     0x40026428
+   \      0x8F0   0x4002'6088        DC32     0x40026088
+   \      0x8F4   0x4002'6488        DC32     0x40026488
+   \      0x8F8   0x4002'6040        DC32     0x40026040
+   \      0x8FC   0x4002'6440        DC32     0x40026440
+   \      0x900   0x4002'60A0        DC32     0x400260a0
+   \      0x904   0x4002'64A0        DC32     0x400264a0
+   \      0x908   0x4002'640C        DC32     0x4002640c
+   \      0x90C   0x4002'60B9        DC32     0x400260b9
+   \      0x910   0x4002'6408        DC32     0x40026408
+   \      0x914   0x4002'6059        DC32     0x40026059
+   \      0x918   0x4002'600C        DC32     0x4002600c
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_149: (+1)
+   \      0x91C   0x6821             LDR      R1,[R4, #+0]
+   \      0x91E   0x....'....        LDR.W    R2,??DataTable1  ;; 0x40026010
+   \      0x922   0x4291             CMP      R1,R2
+   \      0x924   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_163
+   \      0x926   0x2108             MOVS     R1,#+8
+   \      0x928   0xE056             B.N      ??HAL_DMAEx_MultiBufferStart_IT_164
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_163: (+1)
+   \      0x92A   0x6821             LDR      R1,[R4, #+0]
+   \      0x92C   0x....'....        LDR.W    R2,??DataTable1_1  ;; 0x40026410
+   \      0x930   0x4291             CMP      R1,R2
+   \      0x932   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_165
+   \      0x934   0x2108             MOVS     R1,#+8
+   \      0x936   0xE04F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_164
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_165: (+1)
+   \      0x938   0x6821             LDR      R1,[R4, #+0]
+   \      0x93A   0x....'....        LDR.W    R2,??DataTable1_2  ;; 0x40026070
+   \      0x93E   0x4291             CMP      R1,R2
+   \      0x940   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_166
+   \      0x942   0x2108             MOVS     R1,#+8
+   \      0x944   0xE048             B.N      ??HAL_DMAEx_MultiBufferStart_IT_164
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_166: (+1)
+   \      0x946   0x6821             LDR      R1,[R4, #+0]
+   \      0x948   0x....'....        LDR.W    R2,??DataTable1_3  ;; 0x40026470
+   \      0x94C   0x4291             CMP      R1,R2
+   \      0x94E   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_167
+   \      0x950   0x2108             MOVS     R1,#+8
+   \      0x952   0xE041             B.N      ??HAL_DMAEx_MultiBufferStart_IT_164
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_167: (+1)
+   \      0x954   0x6821             LDR      R1,[R4, #+0]
+   \      0x956   0x....'....        LDR.W    R2,??DataTable1_4  ;; 0x40026028
+   \      0x95A   0x4291             CMP      R1,R2
+   \      0x95C   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_168
+   \      0x95E   0xF44F 0x7100      MOV      R1,#+512
+   \      0x962   0xE039             B.N      ??HAL_DMAEx_MultiBufferStart_IT_164
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_168: (+1)
+   \      0x964   0x6821             LDR      R1,[R4, #+0]
+   \      0x966   0x....'....        LDR.W    R2,??DataTable1_5  ;; 0x40026428
+   \      0x96A   0x4291             CMP      R1,R2
+   \      0x96C   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_169
+   \      0x96E   0xF44F 0x7100      MOV      R1,#+512
+   \      0x972   0xE031             B.N      ??HAL_DMAEx_MultiBufferStart_IT_164
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_169: (+1)
+   \      0x974   0x6821             LDR      R1,[R4, #+0]
+   \      0x976   0x....'....        LDR.W    R2,??DataTable1_6  ;; 0x40026088
+   \      0x97A   0x4291             CMP      R1,R2
+   \      0x97C   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_170
+   \      0x97E   0xF44F 0x7100      MOV      R1,#+512
+   \      0x982   0xE029             B.N      ??HAL_DMAEx_MultiBufferStart_IT_164
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_170: (+1)
+   \      0x984   0x6821             LDR      R1,[R4, #+0]
+   \      0x986   0x....'....        LDR.W    R2,??DataTable1_7  ;; 0x40026488
+   \      0x98A   0x4291             CMP      R1,R2
+   \      0x98C   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_171
+   \      0x98E   0xF44F 0x7100      MOV      R1,#+512
+   \      0x992   0xE021             B.N      ??HAL_DMAEx_MultiBufferStart_IT_164
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_171: (+1)
+   \      0x994   0x6821             LDR      R1,[R4, #+0]
+   \      0x996   0x....'....        LDR.W    R2,??DataTable1_8  ;; 0x40026040
+   \      0x99A   0x4291             CMP      R1,R2
+   \      0x99C   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_172
+   \      0x99E   0xF45F 0x2100      MOVS     R1,#+524288
+   \      0x9A2   0xE019             B.N      ??HAL_DMAEx_MultiBufferStart_IT_164
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_172: (+1)
+   \      0x9A4   0x6821             LDR      R1,[R4, #+0]
+   \      0x9A6   0x....'....        LDR.W    R2,??DataTable1_9  ;; 0x40026440
+   \      0x9AA   0x4291             CMP      R1,R2
+   \      0x9AC   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_173
+   \      0x9AE   0xF45F 0x2100      MOVS     R1,#+524288
+   \      0x9B2   0xE011             B.N      ??HAL_DMAEx_MultiBufferStart_IT_164
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_173: (+1)
+   \      0x9B4   0x6821             LDR      R1,[R4, #+0]
+   \      0x9B6   0x....'....        LDR.W    R2,??DataTable1_10  ;; 0x400260a0
+   \      0x9BA   0x4291             CMP      R1,R2
+   \      0x9BC   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_174
+   \      0x9BE   0xF45F 0x2100      MOVS     R1,#+524288
+   \      0x9C2   0xE009             B.N      ??HAL_DMAEx_MultiBufferStart_IT_164
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_174: (+1)
+   \      0x9C4   0x6821             LDR      R1,[R4, #+0]
+   \      0x9C6   0x....'....        LDR.W    R2,??DataTable1_11  ;; 0x400264a0
+   \      0x9CA   0x4291             CMP      R1,R2
+   \      0x9CC   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_175
+   \      0x9CE   0xF45F 0x2100      MOVS     R1,#+524288
+   \      0x9D2   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_164
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_175: (+1)
+   \      0x9D4   0xF05F 0x7100      MOVS     R1,#+33554432
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_164: (+1)
+   \      0x9D8   0xF8DF 0x23E4      LDR.W    R2,??HAL_DMAEx_MultiBufferStart_IT_1  ;; 0x40026008
+   \      0x9DC   0x6011             STR      R1,[R2, #+0]
+    199              __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_DME_FLAG_INDEX(hdma));
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_134: (+1)
+   \      0x9DE   0x6821             LDR      R1,[R4, #+0]
+   \      0x9E0   0x4281             CMP      R1,R0
+   \      0x9E2   0xD361             BCC.N    ??HAL_DMAEx_MultiBufferStart_IT_176
+   \      0x9E4   0x6821             LDR      R1,[R4, #+0]
+   \      0x9E6   0x....'....        LDR.W    R2,??DataTable1  ;; 0x40026010
+   \      0x9EA   0x4291             CMP      R1,R2
+   \      0x9EC   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_177
+   \      0x9EE   0x2104             MOVS     R1,#+4
+   \      0x9F0   0xE056             B.N      ??HAL_DMAEx_MultiBufferStart_IT_178
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_177: (+1)
+   \      0x9F2   0x6821             LDR      R1,[R4, #+0]
+   \      0x9F4   0x....'....        LDR.W    R2,??DataTable1_1  ;; 0x40026410
+   \      0x9F8   0x4291             CMP      R1,R2
+   \      0x9FA   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_179
+   \      0x9FC   0x2104             MOVS     R1,#+4
+   \      0x9FE   0xE04F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_178
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_179: (+1)
+   \      0xA00   0x6821             LDR      R1,[R4, #+0]
+   \      0xA02   0x....'....        LDR.W    R2,??DataTable1_2  ;; 0x40026070
+   \      0xA06   0x4291             CMP      R1,R2
+   \      0xA08   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_180
+   \      0xA0A   0x2104             MOVS     R1,#+4
+   \      0xA0C   0xE048             B.N      ??HAL_DMAEx_MultiBufferStart_IT_178
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_180: (+1)
+   \      0xA0E   0x6821             LDR      R1,[R4, #+0]
+   \      0xA10   0x....'....        LDR.W    R2,??DataTable1_3  ;; 0x40026470
+   \      0xA14   0x4291             CMP      R1,R2
+   \      0xA16   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_181
+   \      0xA18   0x2104             MOVS     R1,#+4
+   \      0xA1A   0xE041             B.N      ??HAL_DMAEx_MultiBufferStart_IT_178
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_181: (+1)
+   \      0xA1C   0x6821             LDR      R1,[R4, #+0]
+   \      0xA1E   0x....'....        LDR.W    R2,??DataTable1_4  ;; 0x40026028
+   \      0xA22   0x4291             CMP      R1,R2
+   \      0xA24   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_182
+   \      0xA26   0xF44F 0x7180      MOV      R1,#+256
+   \      0xA2A   0xE039             B.N      ??HAL_DMAEx_MultiBufferStart_IT_178
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_182: (+1)
+   \      0xA2C   0x6821             LDR      R1,[R4, #+0]
+   \      0xA2E   0x....'....        LDR.W    R2,??DataTable1_5  ;; 0x40026428
+   \      0xA32   0x4291             CMP      R1,R2
+   \      0xA34   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_183
+   \      0xA36   0xF44F 0x7180      MOV      R1,#+256
+   \      0xA3A   0xE031             B.N      ??HAL_DMAEx_MultiBufferStart_IT_178
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_183: (+1)
+   \      0xA3C   0x6821             LDR      R1,[R4, #+0]
+   \      0xA3E   0x....'....        LDR.W    R2,??DataTable1_6  ;; 0x40026088
+   \      0xA42   0x4291             CMP      R1,R2
+   \      0xA44   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_184
+   \      0xA46   0xF44F 0x7180      MOV      R1,#+256
+   \      0xA4A   0xE029             B.N      ??HAL_DMAEx_MultiBufferStart_IT_178
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_184: (+1)
+   \      0xA4C   0x6821             LDR      R1,[R4, #+0]
+   \      0xA4E   0x....'....        LDR.W    R2,??DataTable1_7  ;; 0x40026488
+   \      0xA52   0x4291             CMP      R1,R2
+   \      0xA54   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_185
+   \      0xA56   0xF44F 0x7180      MOV      R1,#+256
+   \      0xA5A   0xE021             B.N      ??HAL_DMAEx_MultiBufferStart_IT_178
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_185: (+1)
+   \      0xA5C   0x6821             LDR      R1,[R4, #+0]
+   \      0xA5E   0x....'....        LDR.W    R2,??DataTable1_8  ;; 0x40026040
+   \      0xA62   0x4291             CMP      R1,R2
+   \      0xA64   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_186
+   \      0xA66   0xF45F 0x2180      MOVS     R1,#+262144
+   \      0xA6A   0xE019             B.N      ??HAL_DMAEx_MultiBufferStart_IT_178
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_186: (+1)
+   \      0xA6C   0x6821             LDR      R1,[R4, #+0]
+   \      0xA6E   0x....'....        LDR.W    R2,??DataTable1_9  ;; 0x40026440
+   \      0xA72   0x4291             CMP      R1,R2
+   \      0xA74   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_187
+   \      0xA76   0xF45F 0x2180      MOVS     R1,#+262144
+   \      0xA7A   0xE011             B.N      ??HAL_DMAEx_MultiBufferStart_IT_178
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_187: (+1)
+   \      0xA7C   0x6821             LDR      R1,[R4, #+0]
+   \      0xA7E   0x....'....        LDR.W    R2,??DataTable1_10  ;; 0x400260a0
+   \      0xA82   0x4291             CMP      R1,R2
+   \      0xA84   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_188
+   \      0xA86   0xF45F 0x2180      MOVS     R1,#+262144
+   \      0xA8A   0xE009             B.N      ??HAL_DMAEx_MultiBufferStart_IT_178
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_188: (+1)
+   \      0xA8C   0x6821             LDR      R1,[R4, #+0]
+   \      0xA8E   0x....'....        LDR.W    R2,??DataTable1_11  ;; 0x400264a0
+   \      0xA92   0x4291             CMP      R1,R2
+   \      0xA94   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_189
+   \      0xA96   0xF45F 0x2180      MOVS     R1,#+262144
+   \      0xA9A   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_178
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_189: (+1)
+   \      0xA9C   0xF05F 0x7180      MOVS     R1,#+16777216
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_178: (+1)
+   \      0xAA0   0x....'....        LDR.W    R2,??DataTable1_12  ;; 0x4002640c
+   \      0xAA4   0x6011             STR      R1,[R2, #+0]
+   \      0xAA6   0xE12D             B.N      ??HAL_DMAEx_MultiBufferStart_IT_190
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_176: (+1)
+   \      0xAA8   0x6821             LDR      R1,[R4, #+0]
+   \      0xAAA   0x....'....        LDR.W    R2,??DataTable1_13  ;; 0x400260b9
+   \      0xAAE   0x4291             CMP      R1,R2
+   \      0xAB0   0xD361             BCC.N    ??HAL_DMAEx_MultiBufferStart_IT_191
+   \      0xAB2   0x6821             LDR      R1,[R4, #+0]
+   \      0xAB4   0x....'....        LDR.W    R2,??DataTable1  ;; 0x40026010
+   \      0xAB8   0x4291             CMP      R1,R2
+   \      0xABA   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_192
+   \      0xABC   0x2104             MOVS     R1,#+4
+   \      0xABE   0xE056             B.N      ??HAL_DMAEx_MultiBufferStart_IT_193
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_192: (+1)
+   \      0xAC0   0x6821             LDR      R1,[R4, #+0]
+   \      0xAC2   0x....'....        LDR.W    R2,??DataTable1_1  ;; 0x40026410
+   \      0xAC6   0x4291             CMP      R1,R2
+   \      0xAC8   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_194
+   \      0xACA   0x2104             MOVS     R1,#+4
+   \      0xACC   0xE04F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_193
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_194: (+1)
+   \      0xACE   0x6821             LDR      R1,[R4, #+0]
+   \      0xAD0   0x....'....        LDR.W    R2,??DataTable1_2  ;; 0x40026070
+   \      0xAD4   0x4291             CMP      R1,R2
+   \      0xAD6   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_195
+   \      0xAD8   0x2104             MOVS     R1,#+4
+   \      0xADA   0xE048             B.N      ??HAL_DMAEx_MultiBufferStart_IT_193
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_195: (+1)
+   \      0xADC   0x6821             LDR      R1,[R4, #+0]
+   \      0xADE   0x....'....        LDR.W    R2,??DataTable1_3  ;; 0x40026470
+   \      0xAE2   0x4291             CMP      R1,R2
+   \      0xAE4   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_196
+   \      0xAE6   0x2104             MOVS     R1,#+4
+   \      0xAE8   0xE041             B.N      ??HAL_DMAEx_MultiBufferStart_IT_193
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_196: (+1)
+   \      0xAEA   0x6821             LDR      R1,[R4, #+0]
+   \      0xAEC   0x....'....        LDR.W    R2,??DataTable1_4  ;; 0x40026028
+   \      0xAF0   0x4291             CMP      R1,R2
+   \      0xAF2   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_197
+   \      0xAF4   0xF44F 0x7180      MOV      R1,#+256
+   \      0xAF8   0xE039             B.N      ??HAL_DMAEx_MultiBufferStart_IT_193
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_197: (+1)
+   \      0xAFA   0x6821             LDR      R1,[R4, #+0]
+   \      0xAFC   0x....'....        LDR.W    R2,??DataTable1_5  ;; 0x40026428
+   \      0xB00   0x4291             CMP      R1,R2
+   \      0xB02   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_198
+   \      0xB04   0xF44F 0x7180      MOV      R1,#+256
+   \      0xB08   0xE031             B.N      ??HAL_DMAEx_MultiBufferStart_IT_193
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_198: (+1)
+   \      0xB0A   0x6821             LDR      R1,[R4, #+0]
+   \      0xB0C   0x....'....        LDR.W    R2,??DataTable1_6  ;; 0x40026088
+   \      0xB10   0x4291             CMP      R1,R2
+   \      0xB12   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_199
+   \      0xB14   0xF44F 0x7180      MOV      R1,#+256
+   \      0xB18   0xE029             B.N      ??HAL_DMAEx_MultiBufferStart_IT_193
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_199: (+1)
+   \      0xB1A   0x6821             LDR      R1,[R4, #+0]
+   \      0xB1C   0x....'....        LDR.W    R2,??DataTable1_7  ;; 0x40026488
+   \      0xB20   0x4291             CMP      R1,R2
+   \      0xB22   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_200
+   \      0xB24   0xF44F 0x7180      MOV      R1,#+256
+   \      0xB28   0xE021             B.N      ??HAL_DMAEx_MultiBufferStart_IT_193
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_200: (+1)
+   \      0xB2A   0x6821             LDR      R1,[R4, #+0]
+   \      0xB2C   0x....'....        LDR.W    R2,??DataTable1_8  ;; 0x40026040
+   \      0xB30   0x4291             CMP      R1,R2
+   \      0xB32   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_201
+   \      0xB34   0xF45F 0x2180      MOVS     R1,#+262144
+   \      0xB38   0xE019             B.N      ??HAL_DMAEx_MultiBufferStart_IT_193
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_201: (+1)
+   \      0xB3A   0x6821             LDR      R1,[R4, #+0]
+   \      0xB3C   0x....'....        LDR.W    R2,??DataTable1_9  ;; 0x40026440
+   \      0xB40   0x4291             CMP      R1,R2
+   \      0xB42   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_202
+   \      0xB44   0xF45F 0x2180      MOVS     R1,#+262144
+   \      0xB48   0xE011             B.N      ??HAL_DMAEx_MultiBufferStart_IT_193
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_202: (+1)
+   \      0xB4A   0x6821             LDR      R1,[R4, #+0]
+   \      0xB4C   0x....'....        LDR.W    R2,??DataTable1_10  ;; 0x400260a0
+   \      0xB50   0x4291             CMP      R1,R2
+   \      0xB52   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_203
+   \      0xB54   0xF45F 0x2180      MOVS     R1,#+262144
+   \      0xB58   0xE009             B.N      ??HAL_DMAEx_MultiBufferStart_IT_193
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_203: (+1)
+   \      0xB5A   0x6821             LDR      R1,[R4, #+0]
+   \      0xB5C   0x....'....        LDR.W    R2,??DataTable1_11  ;; 0x400264a0
+   \      0xB60   0x4291             CMP      R1,R2
+   \      0xB62   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_204
+   \      0xB64   0xF45F 0x2180      MOVS     R1,#+262144
+   \      0xB68   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_193
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_204: (+1)
+   \      0xB6A   0xF05F 0x7180      MOVS     R1,#+16777216
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_193: (+1)
+   \      0xB6E   0x....'....        LDR.W    R2,??DataTable1_14  ;; 0x40026408
+   \      0xB72   0x6011             STR      R1,[R2, #+0]
+   \      0xB74   0xE0C6             B.N      ??HAL_DMAEx_MultiBufferStart_IT_190
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_191: (+1)
+   \      0xB76   0x6821             LDR      R1,[R4, #+0]
+   \      0xB78   0x....'....        LDR.W    R2,??DataTable1_15  ;; 0x40026059
+   \      0xB7C   0x4291             CMP      R1,R2
+   \      0xB7E   0xD361             BCC.N    ??HAL_DMAEx_MultiBufferStart_IT_205
+   \      0xB80   0x6821             LDR      R1,[R4, #+0]
+   \      0xB82   0x....'....        LDR.W    R2,??DataTable1  ;; 0x40026010
+   \      0xB86   0x4291             CMP      R1,R2
+   \      0xB88   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_206
+   \      0xB8A   0x2104             MOVS     R1,#+4
+   \      0xB8C   0xE056             B.N      ??HAL_DMAEx_MultiBufferStart_IT_207
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_206: (+1)
+   \      0xB8E   0x6821             LDR      R1,[R4, #+0]
+   \      0xB90   0x....'....        LDR.W    R2,??DataTable1_1  ;; 0x40026410
+   \      0xB94   0x4291             CMP      R1,R2
+   \      0xB96   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_208
+   \      0xB98   0x2104             MOVS     R1,#+4
+   \      0xB9A   0xE04F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_207
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_208: (+1)
+   \      0xB9C   0x6821             LDR      R1,[R4, #+0]
+   \      0xB9E   0x....'....        LDR.W    R2,??DataTable1_2  ;; 0x40026070
+   \      0xBA2   0x4291             CMP      R1,R2
+   \      0xBA4   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_209
+   \      0xBA6   0x2104             MOVS     R1,#+4
+   \      0xBA8   0xE048             B.N      ??HAL_DMAEx_MultiBufferStart_IT_207
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_209: (+1)
+   \      0xBAA   0x6821             LDR      R1,[R4, #+0]
+   \      0xBAC   0x....'....        LDR.W    R2,??DataTable1_3  ;; 0x40026470
+   \      0xBB0   0x4291             CMP      R1,R2
+   \      0xBB2   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_210
+   \      0xBB4   0x2104             MOVS     R1,#+4
+   \      0xBB6   0xE041             B.N      ??HAL_DMAEx_MultiBufferStart_IT_207
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_210: (+1)
+   \      0xBB8   0x6821             LDR      R1,[R4, #+0]
+   \      0xBBA   0x....'....        LDR.W    R2,??DataTable1_4  ;; 0x40026028
+   \      0xBBE   0x4291             CMP      R1,R2
+   \      0xBC0   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_211
+   \      0xBC2   0xF44F 0x7180      MOV      R1,#+256
+   \      0xBC6   0xE039             B.N      ??HAL_DMAEx_MultiBufferStart_IT_207
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_211: (+1)
+   \      0xBC8   0x6821             LDR      R1,[R4, #+0]
+   \      0xBCA   0x....'....        LDR.W    R2,??DataTable1_5  ;; 0x40026428
+   \      0xBCE   0x4291             CMP      R1,R2
+   \      0xBD0   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_212
+   \      0xBD2   0xF44F 0x7180      MOV      R1,#+256
+   \      0xBD6   0xE031             B.N      ??HAL_DMAEx_MultiBufferStart_IT_207
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_212: (+1)
+   \      0xBD8   0x6821             LDR      R1,[R4, #+0]
+   \      0xBDA   0x....'....        LDR.W    R2,??DataTable1_6  ;; 0x40026088
+   \      0xBDE   0x4291             CMP      R1,R2
+   \      0xBE0   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_213
+   \      0xBE2   0xF44F 0x7180      MOV      R1,#+256
+   \      0xBE6   0xE029             B.N      ??HAL_DMAEx_MultiBufferStart_IT_207
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_213: (+1)
+   \      0xBE8   0x6821             LDR      R1,[R4, #+0]
+   \      0xBEA   0x....'....        LDR.W    R2,??DataTable1_7  ;; 0x40026488
+   \      0xBEE   0x4291             CMP      R1,R2
+   \      0xBF0   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_214
+   \      0xBF2   0xF44F 0x7180      MOV      R1,#+256
+   \      0xBF6   0xE021             B.N      ??HAL_DMAEx_MultiBufferStart_IT_207
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_214: (+1)
+   \      0xBF8   0x6821             LDR      R1,[R4, #+0]
+   \      0xBFA   0x....'....        LDR.W    R2,??DataTable1_8  ;; 0x40026040
+   \      0xBFE   0x4291             CMP      R1,R2
+   \      0xC00   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_215
+   \      0xC02   0xF45F 0x2180      MOVS     R1,#+262144
+   \      0xC06   0xE019             B.N      ??HAL_DMAEx_MultiBufferStart_IT_207
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_215: (+1)
+   \      0xC08   0x6821             LDR      R1,[R4, #+0]
+   \      0xC0A   0x....'....        LDR.W    R2,??DataTable1_9  ;; 0x40026440
+   \      0xC0E   0x4291             CMP      R1,R2
+   \      0xC10   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_216
+   \      0xC12   0xF45F 0x2180      MOVS     R1,#+262144
+   \      0xC16   0xE011             B.N      ??HAL_DMAEx_MultiBufferStart_IT_207
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_216: (+1)
+   \      0xC18   0x6821             LDR      R1,[R4, #+0]
+   \      0xC1A   0x....'....        LDR.W    R2,??DataTable1_10  ;; 0x400260a0
+   \      0xC1E   0x4291             CMP      R1,R2
+   \      0xC20   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_217
+   \      0xC22   0xF45F 0x2180      MOVS     R1,#+262144
+   \      0xC26   0xE009             B.N      ??HAL_DMAEx_MultiBufferStart_IT_207
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_217: (+1)
+   \      0xC28   0x6821             LDR      R1,[R4, #+0]
+   \      0xC2A   0x....'....        LDR.W    R2,??DataTable1_11  ;; 0x400264a0
+   \      0xC2E   0x4291             CMP      R1,R2
+   \      0xC30   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_218
+   \      0xC32   0xF45F 0x2180      MOVS     R1,#+262144
+   \      0xC36   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_207
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_218: (+1)
+   \      0xC38   0xF05F 0x7180      MOVS     R1,#+16777216
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_207: (+1)
+   \      0xC3C   0x....'....        LDR.W    R2,??DataTable1_16  ;; 0x4002600c
+   \      0xC40   0x6011             STR      R1,[R2, #+0]
+   \      0xC42   0xE05F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_190
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_205: (+1)
+   \      0xC44   0x6821             LDR      R1,[R4, #+0]
+   \      0xC46   0x....'....        LDR.W    R2,??DataTable1  ;; 0x40026010
+   \      0xC4A   0x4291             CMP      R1,R2
+   \      0xC4C   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_219
+   \      0xC4E   0x2104             MOVS     R1,#+4
+   \      0xC50   0xE056             B.N      ??HAL_DMAEx_MultiBufferStart_IT_220
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_219: (+1)
+   \      0xC52   0x6821             LDR      R1,[R4, #+0]
+   \      0xC54   0x....'....        LDR.W    R2,??DataTable1_1  ;; 0x40026410
+   \      0xC58   0x4291             CMP      R1,R2
+   \      0xC5A   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_221
+   \      0xC5C   0x2104             MOVS     R1,#+4
+   \      0xC5E   0xE04F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_220
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_221: (+1)
+   \      0xC60   0x6821             LDR      R1,[R4, #+0]
+   \      0xC62   0x....'....        LDR.W    R2,??DataTable1_2  ;; 0x40026070
+   \      0xC66   0x4291             CMP      R1,R2
+   \      0xC68   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_222
+   \      0xC6A   0x2104             MOVS     R1,#+4
+   \      0xC6C   0xE048             B.N      ??HAL_DMAEx_MultiBufferStart_IT_220
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_222: (+1)
+   \      0xC6E   0x6821             LDR      R1,[R4, #+0]
+   \      0xC70   0x....'....        LDR.W    R2,??DataTable1_3  ;; 0x40026470
+   \      0xC74   0x4291             CMP      R1,R2
+   \      0xC76   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_223
+   \      0xC78   0x2104             MOVS     R1,#+4
+   \      0xC7A   0xE041             B.N      ??HAL_DMAEx_MultiBufferStart_IT_220
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_223: (+1)
+   \      0xC7C   0x6821             LDR      R1,[R4, #+0]
+   \      0xC7E   0x....'....        LDR.W    R2,??DataTable1_4  ;; 0x40026028
+   \      0xC82   0x4291             CMP      R1,R2
+   \      0xC84   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_224
+   \      0xC86   0xF44F 0x7180      MOV      R1,#+256
+   \      0xC8A   0xE039             B.N      ??HAL_DMAEx_MultiBufferStart_IT_220
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_224: (+1)
+   \      0xC8C   0x6821             LDR      R1,[R4, #+0]
+   \      0xC8E   0x....'....        LDR.W    R2,??DataTable1_5  ;; 0x40026428
+   \      0xC92   0x4291             CMP      R1,R2
+   \      0xC94   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_225
+   \      0xC96   0xF44F 0x7180      MOV      R1,#+256
+   \      0xC9A   0xE031             B.N      ??HAL_DMAEx_MultiBufferStart_IT_220
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_225: (+1)
+   \      0xC9C   0x6821             LDR      R1,[R4, #+0]
+   \      0xC9E   0x....'....        LDR.W    R2,??DataTable1_6  ;; 0x40026088
+   \      0xCA2   0x4291             CMP      R1,R2
+   \      0xCA4   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_226
+   \      0xCA6   0xF44F 0x7180      MOV      R1,#+256
+   \      0xCAA   0xE029             B.N      ??HAL_DMAEx_MultiBufferStart_IT_220
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_226: (+1)
+   \      0xCAC   0x6821             LDR      R1,[R4, #+0]
+   \      0xCAE   0x....'....        LDR.W    R2,??DataTable1_7  ;; 0x40026488
+   \      0xCB2   0x4291             CMP      R1,R2
+   \      0xCB4   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_227
+   \      0xCB6   0xF44F 0x7180      MOV      R1,#+256
+   \      0xCBA   0xE021             B.N      ??HAL_DMAEx_MultiBufferStart_IT_220
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_227: (+1)
+   \      0xCBC   0x6821             LDR      R1,[R4, #+0]
+   \      0xCBE   0x....'....        LDR.W    R2,??DataTable1_8  ;; 0x40026040
+   \      0xCC2   0x4291             CMP      R1,R2
+   \      0xCC4   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_228
+   \      0xCC6   0xF45F 0x2180      MOVS     R1,#+262144
+   \      0xCCA   0xE019             B.N      ??HAL_DMAEx_MultiBufferStart_IT_220
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_228: (+1)
+   \      0xCCC   0x6821             LDR      R1,[R4, #+0]
+   \      0xCCE   0x....'....        LDR.W    R2,??DataTable1_9  ;; 0x40026440
+   \      0xCD2   0x4291             CMP      R1,R2
+   \      0xCD4   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_229
+   \      0xCD6   0xF45F 0x2180      MOVS     R1,#+262144
+   \      0xCDA   0xE011             B.N      ??HAL_DMAEx_MultiBufferStart_IT_220
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_229: (+1)
+   \      0xCDC   0x6821             LDR      R1,[R4, #+0]
+   \      0xCDE   0x....'....        LDR.W    R2,??DataTable1_10  ;; 0x400260a0
+   \      0xCE2   0x4291             CMP      R1,R2
+   \      0xCE4   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_230
+   \      0xCE6   0xF45F 0x2180      MOVS     R1,#+262144
+   \      0xCEA   0xE009             B.N      ??HAL_DMAEx_MultiBufferStart_IT_220
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_230: (+1)
+   \      0xCEC   0x6821             LDR      R1,[R4, #+0]
+   \      0xCEE   0x....'....        LDR.W    R2,??DataTable1_11  ;; 0x400264a0
+   \      0xCF2   0x4291             CMP      R1,R2
+   \      0xCF4   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_231
+   \      0xCF6   0xF45F 0x2180      MOVS     R1,#+262144
+   \      0xCFA   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_220
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_231: (+1)
+   \      0xCFC   0xF05F 0x7180      MOVS     R1,#+16777216
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_220: (+1)
+   \      0xD00   0x4A2F             LDR.N    R2,??HAL_DMAEx_MultiBufferStart_IT_1  ;; 0x40026008
+   \      0xD02   0x6011             STR      R1,[R2, #+0]
+    200              __HAL_DMA_CLEAR_FLAG (hdma, __HAL_DMA_GET_FE_FLAG_INDEX(hdma));
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_190: (+1)
+   \      0xD04   0x6821             LDR      R1,[R4, #+0]
+   \      0xD06   0x4281             CMP      R1,R0
+   \      0xD08   0xD35C             BCC.N    ??HAL_DMAEx_MultiBufferStart_IT_232
+   \      0xD0A   0x6820             LDR      R0,[R4, #+0]
+   \      0xD0C   0x....'....        LDR.W    R1,??DataTable1  ;; 0x40026010
+   \      0xD10   0x4288             CMP      R0,R1
+   \      0xD12   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_233
+   \      0xD14   0x2001             MOVS     R0,#+1
+   \      0xD16   0xE050             B.N      ??HAL_DMAEx_MultiBufferStart_IT_234
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_233: (+1)
+   \      0xD18   0x6820             LDR      R0,[R4, #+0]
+   \      0xD1A   0x....'....        LDR.W    R1,??DataTable1_1  ;; 0x40026410
+   \      0xD1E   0x4288             CMP      R0,R1
+   \      0xD20   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_235
+   \      0xD22   0x2001             MOVS     R0,#+1
+   \      0xD24   0xE049             B.N      ??HAL_DMAEx_MultiBufferStart_IT_234
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_235: (+1)
+   \      0xD26   0x6820             LDR      R0,[R4, #+0]
+   \      0xD28   0x....'....        LDR.W    R1,??DataTable1_2  ;; 0x40026070
+   \      0xD2C   0x4288             CMP      R0,R1
+   \      0xD2E   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_236
+   \      0xD30   0x2001             MOVS     R0,#+1
+   \      0xD32   0xE042             B.N      ??HAL_DMAEx_MultiBufferStart_IT_234
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_236: (+1)
+   \      0xD34   0x6820             LDR      R0,[R4, #+0]
+   \      0xD36   0x....'....        LDR.W    R1,??DataTable1_3  ;; 0x40026470
+   \      0xD3A   0x4288             CMP      R0,R1
+   \      0xD3C   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_237
+   \      0xD3E   0x2001             MOVS     R0,#+1
+   \      0xD40   0xE03B             B.N      ??HAL_DMAEx_MultiBufferStart_IT_234
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_237: (+1)
+   \      0xD42   0x6820             LDR      R0,[R4, #+0]
+   \      0xD44   0x....'....        LDR.W    R1,??DataTable1_4  ;; 0x40026028
+   \      0xD48   0x4288             CMP      R0,R1
+   \      0xD4A   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_238
+   \      0xD4C   0x2040             MOVS     R0,#+64
+   \      0xD4E   0xE034             B.N      ??HAL_DMAEx_MultiBufferStart_IT_234
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_238: (+1)
+   \      0xD50   0x6820             LDR      R0,[R4, #+0]
+   \      0xD52   0x....'....        LDR.W    R1,??DataTable1_5  ;; 0x40026428
+   \      0xD56   0x4288             CMP      R0,R1
+   \      0xD58   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_239
+   \      0xD5A   0x2040             MOVS     R0,#+64
+   \      0xD5C   0xE02D             B.N      ??HAL_DMAEx_MultiBufferStart_IT_234
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_239: (+1)
+   \      0xD5E   0x6820             LDR      R0,[R4, #+0]
+   \      0xD60   0x....'....        LDR.W    R1,??DataTable1_6  ;; 0x40026088
+   \      0xD64   0x4288             CMP      R0,R1
+   \      0xD66   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_240
+   \      0xD68   0x2040             MOVS     R0,#+64
+   \      0xD6A   0xE026             B.N      ??HAL_DMAEx_MultiBufferStart_IT_234
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_240: (+1)
+   \      0xD6C   0x6820             LDR      R0,[R4, #+0]
+   \      0xD6E   0x....'....        LDR.W    R1,??DataTable1_7  ;; 0x40026488
+   \      0xD72   0x4288             CMP      R0,R1
+   \      0xD74   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_241
+   \      0xD76   0x2040             MOVS     R0,#+64
+   \      0xD78   0xE01F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_234
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_241: (+1)
+   \      0xD7A   0x6820             LDR      R0,[R4, #+0]
+   \      0xD7C   0x....'....        LDR.W    R1,??DataTable1_8  ;; 0x40026040
+   \      0xD80   0x4288             CMP      R0,R1
+   \      0xD82   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_242
+   \      0xD84   0xF45F 0x3080      MOVS     R0,#+65536
+   \      0xD88   0xE017             B.N      ??HAL_DMAEx_MultiBufferStart_IT_234
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_242: (+1)
+   \      0xD8A   0x6820             LDR      R0,[R4, #+0]
+   \      0xD8C   0x....'....        LDR.W    R1,??DataTable1_9  ;; 0x40026440
+   \      0xD90   0x4288             CMP      R0,R1
+   \      0xD92   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_243
+   \      0xD94   0xF45F 0x3080      MOVS     R0,#+65536
+   \      0xD98   0xE00F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_234
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_243: (+1)
+   \      0xD9A   0x6820             LDR      R0,[R4, #+0]
+   \      0xD9C   0x....             LDR.N    R1,??DataTable1_10  ;; 0x400260a0
+   \      0xD9E   0x4288             CMP      R0,R1
+   \      0xDA0   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_244
+   \      0xDA2   0xF45F 0x3080      MOVS     R0,#+65536
+   \      0xDA6   0xE008             B.N      ??HAL_DMAEx_MultiBufferStart_IT_234
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_244: (+1)
+   \      0xDA8   0x6820             LDR      R0,[R4, #+0]
+   \      0xDAA   0x....             LDR.N    R1,??DataTable1_11  ;; 0x400264a0
+   \      0xDAC   0x4288             CMP      R0,R1
+   \      0xDAE   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_245
+   \      0xDB0   0xF45F 0x3080      MOVS     R0,#+65536
+   \      0xDB4   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_234
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_245: (+1)
+   \      0xDB6   0xF45F 0x0080      MOVS     R0,#+4194304
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_234: (+1)
+   \      0xDBA   0x....             LDR.N    R1,??DataTable1_12  ;; 0x4002640c
+   \      0xDBC   0x6008             STR      R0,[R1, #+0]
+   \      0xDBE   0xE0FB             B.N      ??HAL_DMAEx_MultiBufferStart_IT_246
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_1:
+   \      0xDC0   0x4002'6008        DC32     0x40026008
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_232: (+1)
+   \      0xDC4   0x6820             LDR      R0,[R4, #+0]
+   \      0xDC6   0x....             LDR.N    R1,??DataTable1_13  ;; 0x400260b9
+   \      0xDC8   0x4288             CMP      R0,R1
+   \      0xDCA   0xD350             BCC.N    ??HAL_DMAEx_MultiBufferStart_IT_247
+   \      0xDCC   0x6820             LDR      R0,[R4, #+0]
+   \      0xDCE   0x....             LDR.N    R1,??DataTable1  ;; 0x40026010
+   \      0xDD0   0x4288             CMP      R0,R1
+   \      0xDD2   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_248
+   \      0xDD4   0x2001             MOVS     R0,#+1
+   \      0xDD6   0xE047             B.N      ??HAL_DMAEx_MultiBufferStart_IT_249
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_248: (+1)
+   \      0xDD8   0x6820             LDR      R0,[R4, #+0]
+   \      0xDDA   0x....             LDR.N    R1,??DataTable1_1  ;; 0x40026410
+   \      0xDDC   0x4288             CMP      R0,R1
+   \      0xDDE   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_250
+   \      0xDE0   0x2001             MOVS     R0,#+1
+   \      0xDE2   0xE041             B.N      ??HAL_DMAEx_MultiBufferStart_IT_249
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_250: (+1)
+   \      0xDE4   0x6820             LDR      R0,[R4, #+0]
+   \      0xDE6   0x....             LDR.N    R1,??DataTable1_2  ;; 0x40026070
+   \      0xDE8   0x4288             CMP      R0,R1
+   \      0xDEA   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_251
+   \      0xDEC   0x2001             MOVS     R0,#+1
+   \      0xDEE   0xE03B             B.N      ??HAL_DMAEx_MultiBufferStart_IT_249
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_251: (+1)
+   \      0xDF0   0x6820             LDR      R0,[R4, #+0]
+   \      0xDF2   0x....             LDR.N    R1,??DataTable1_3  ;; 0x40026470
+   \      0xDF4   0x4288             CMP      R0,R1
+   \      0xDF6   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_252
+   \      0xDF8   0x2001             MOVS     R0,#+1
+   \      0xDFA   0xE035             B.N      ??HAL_DMAEx_MultiBufferStart_IT_249
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_252: (+1)
+   \      0xDFC   0x6820             LDR      R0,[R4, #+0]
+   \      0xDFE   0x....             LDR.N    R1,??DataTable1_4  ;; 0x40026028
+   \      0xE00   0x4288             CMP      R0,R1
+   \      0xE02   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_253
+   \      0xE04   0x2040             MOVS     R0,#+64
+   \      0xE06   0xE02F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_249
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_253: (+1)
+   \      0xE08   0x6820             LDR      R0,[R4, #+0]
+   \      0xE0A   0x....             LDR.N    R1,??DataTable1_5  ;; 0x40026428
+   \      0xE0C   0x4288             CMP      R0,R1
+   \      0xE0E   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_254
+   \      0xE10   0x2040             MOVS     R0,#+64
+   \      0xE12   0xE029             B.N      ??HAL_DMAEx_MultiBufferStart_IT_249
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_254: (+1)
+   \      0xE14   0x6820             LDR      R0,[R4, #+0]
+   \      0xE16   0x....             LDR.N    R1,??DataTable1_6  ;; 0x40026088
+   \      0xE18   0x4288             CMP      R0,R1
+   \      0xE1A   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_255
+   \      0xE1C   0x2040             MOVS     R0,#+64
+   \      0xE1E   0xE023             B.N      ??HAL_DMAEx_MultiBufferStart_IT_249
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_255: (+1)
+   \      0xE20   0x6820             LDR      R0,[R4, #+0]
+   \      0xE22   0x....             LDR.N    R1,??DataTable1_7  ;; 0x40026488
+   \      0xE24   0x4288             CMP      R0,R1
+   \      0xE26   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_256
+   \      0xE28   0x2040             MOVS     R0,#+64
+   \      0xE2A   0xE01D             B.N      ??HAL_DMAEx_MultiBufferStart_IT_249
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_256: (+1)
+   \      0xE2C   0x6820             LDR      R0,[R4, #+0]
+   \      0xE2E   0x....             LDR.N    R1,??DataTable1_8  ;; 0x40026040
+   \      0xE30   0x4288             CMP      R0,R1
+   \      0xE32   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_257
+   \      0xE34   0xF45F 0x3080      MOVS     R0,#+65536
+   \      0xE38   0xE016             B.N      ??HAL_DMAEx_MultiBufferStart_IT_249
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_257: (+1)
+   \      0xE3A   0x6820             LDR      R0,[R4, #+0]
+   \      0xE3C   0x....             LDR.N    R1,??DataTable1_9  ;; 0x40026440
+   \      0xE3E   0x4288             CMP      R0,R1
+   \      0xE40   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_258
+   \      0xE42   0xF45F 0x3080      MOVS     R0,#+65536
+   \      0xE46   0xE00F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_249
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_258: (+1)
+   \      0xE48   0x6820             LDR      R0,[R4, #+0]
+   \      0xE4A   0x....             LDR.N    R1,??DataTable1_10  ;; 0x400260a0
+   \      0xE4C   0x4288             CMP      R0,R1
+   \      0xE4E   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_259
+   \      0xE50   0xF45F 0x3080      MOVS     R0,#+65536
+   \      0xE54   0xE008             B.N      ??HAL_DMAEx_MultiBufferStart_IT_249
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_259: (+1)
+   \      0xE56   0x6820             LDR      R0,[R4, #+0]
+   \      0xE58   0x....             LDR.N    R1,??DataTable1_11  ;; 0x400264a0
+   \      0xE5A   0x4288             CMP      R0,R1
+   \      0xE5C   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_260
+   \      0xE5E   0xF45F 0x3080      MOVS     R0,#+65536
+   \      0xE62   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_249
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_260: (+1)
+   \      0xE64   0xF45F 0x0080      MOVS     R0,#+4194304
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_249: (+1)
+   \      0xE68   0x....             LDR.N    R1,??DataTable1_14  ;; 0x40026408
+   \      0xE6A   0x6008             STR      R0,[R1, #+0]
+   \      0xE6C   0xE0A4             B.N      ??HAL_DMAEx_MultiBufferStart_IT_246
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_247: (+1)
+   \      0xE6E   0x6820             LDR      R0,[R4, #+0]
+   \      0xE70   0x....             LDR.N    R1,??DataTable1_15  ;; 0x40026059
+   \      0xE72   0x4288             CMP      R0,R1
+   \      0xE74   0xD350             BCC.N    ??HAL_DMAEx_MultiBufferStart_IT_261
+   \      0xE76   0x6820             LDR      R0,[R4, #+0]
+   \      0xE78   0x....             LDR.N    R1,??DataTable1  ;; 0x40026010
+   \      0xE7A   0x4288             CMP      R0,R1
+   \      0xE7C   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_262
+   \      0xE7E   0x2001             MOVS     R0,#+1
+   \      0xE80   0xE047             B.N      ??HAL_DMAEx_MultiBufferStart_IT_263
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_262: (+1)
+   \      0xE82   0x6820             LDR      R0,[R4, #+0]
+   \      0xE84   0x....             LDR.N    R1,??DataTable1_1  ;; 0x40026410
+   \      0xE86   0x4288             CMP      R0,R1
+   \      0xE88   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_264
+   \      0xE8A   0x2001             MOVS     R0,#+1
+   \      0xE8C   0xE041             B.N      ??HAL_DMAEx_MultiBufferStart_IT_263
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_264: (+1)
+   \      0xE8E   0x6820             LDR      R0,[R4, #+0]
+   \      0xE90   0x....             LDR.N    R1,??DataTable1_2  ;; 0x40026070
+   \      0xE92   0x4288             CMP      R0,R1
+   \      0xE94   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_265
+   \      0xE96   0x2001             MOVS     R0,#+1
+   \      0xE98   0xE03B             B.N      ??HAL_DMAEx_MultiBufferStart_IT_263
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_265: (+1)
+   \      0xE9A   0x6820             LDR      R0,[R4, #+0]
+   \      0xE9C   0x....             LDR.N    R1,??DataTable1_3  ;; 0x40026470
+   \      0xE9E   0x4288             CMP      R0,R1
+   \      0xEA0   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_266
+   \      0xEA2   0x2001             MOVS     R0,#+1
+   \      0xEA4   0xE035             B.N      ??HAL_DMAEx_MultiBufferStart_IT_263
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_266: (+1)
+   \      0xEA6   0x6820             LDR      R0,[R4, #+0]
+   \      0xEA8   0x....             LDR.N    R1,??DataTable1_4  ;; 0x40026028
+   \      0xEAA   0x4288             CMP      R0,R1
+   \      0xEAC   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_267
+   \      0xEAE   0x2040             MOVS     R0,#+64
+   \      0xEB0   0xE02F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_263
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_267: (+1)
+   \      0xEB2   0x6820             LDR      R0,[R4, #+0]
+   \      0xEB4   0x....             LDR.N    R1,??DataTable1_5  ;; 0x40026428
+   \      0xEB6   0x4288             CMP      R0,R1
+   \      0xEB8   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_268
+   \      0xEBA   0x2040             MOVS     R0,#+64
+   \      0xEBC   0xE029             B.N      ??HAL_DMAEx_MultiBufferStart_IT_263
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_268: (+1)
+   \      0xEBE   0x6820             LDR      R0,[R4, #+0]
+   \      0xEC0   0x....             LDR.N    R1,??DataTable1_6  ;; 0x40026088
+   \      0xEC2   0x4288             CMP      R0,R1
+   \      0xEC4   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_269
+   \      0xEC6   0x2040             MOVS     R0,#+64
+   \      0xEC8   0xE023             B.N      ??HAL_DMAEx_MultiBufferStart_IT_263
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_269: (+1)
+   \      0xECA   0x6820             LDR      R0,[R4, #+0]
+   \      0xECC   0x....             LDR.N    R1,??DataTable1_7  ;; 0x40026488
+   \      0xECE   0x4288             CMP      R0,R1
+   \      0xED0   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_270
+   \      0xED2   0x2040             MOVS     R0,#+64
+   \      0xED4   0xE01D             B.N      ??HAL_DMAEx_MultiBufferStart_IT_263
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_270: (+1)
+   \      0xED6   0x6820             LDR      R0,[R4, #+0]
+   \      0xED8   0x....             LDR.N    R1,??DataTable1_8  ;; 0x40026040
+   \      0xEDA   0x4288             CMP      R0,R1
+   \      0xEDC   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_271
+   \      0xEDE   0xF45F 0x3080      MOVS     R0,#+65536
+   \      0xEE2   0xE016             B.N      ??HAL_DMAEx_MultiBufferStart_IT_263
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_271: (+1)
+   \      0xEE4   0x6820             LDR      R0,[R4, #+0]
+   \      0xEE6   0x....             LDR.N    R1,??DataTable1_9  ;; 0x40026440
+   \      0xEE8   0x4288             CMP      R0,R1
+   \      0xEEA   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_272
+   \      0xEEC   0xF45F 0x3080      MOVS     R0,#+65536
+   \      0xEF0   0xE00F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_263
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_272: (+1)
+   \      0xEF2   0x6820             LDR      R0,[R4, #+0]
+   \      0xEF4   0x....             LDR.N    R1,??DataTable1_10  ;; 0x400260a0
+   \      0xEF6   0x4288             CMP      R0,R1
+   \      0xEF8   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_273
+   \      0xEFA   0xF45F 0x3080      MOVS     R0,#+65536
+   \      0xEFE   0xE008             B.N      ??HAL_DMAEx_MultiBufferStart_IT_263
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_273: (+1)
+   \      0xF00   0x6820             LDR      R0,[R4, #+0]
+   \      0xF02   0x....             LDR.N    R1,??DataTable1_11  ;; 0x400264a0
+   \      0xF04   0x4288             CMP      R0,R1
+   \      0xF06   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_274
+   \      0xF08   0xF45F 0x3080      MOVS     R0,#+65536
+   \      0xF0C   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_263
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_274: (+1)
+   \      0xF0E   0xF45F 0x0080      MOVS     R0,#+4194304
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_263: (+1)
+   \      0xF12   0x....             LDR.N    R1,??DataTable1_16  ;; 0x4002600c
+   \      0xF14   0x6008             STR      R0,[R1, #+0]
+   \      0xF16   0xE04F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_246
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_261: (+1)
+   \      0xF18   0x6820             LDR      R0,[R4, #+0]
+   \      0xF1A   0x....             LDR.N    R1,??DataTable1  ;; 0x40026010
+   \      0xF1C   0x4288             CMP      R0,R1
+   \      0xF1E   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_275
+   \      0xF20   0x2001             MOVS     R0,#+1
+   \      0xF22   0xE047             B.N      ??HAL_DMAEx_MultiBufferStart_IT_276
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_275: (+1)
+   \      0xF24   0x6820             LDR      R0,[R4, #+0]
+   \      0xF26   0x....             LDR.N    R1,??DataTable1_1  ;; 0x40026410
+   \      0xF28   0x4288             CMP      R0,R1
+   \      0xF2A   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_277
+   \      0xF2C   0x2001             MOVS     R0,#+1
+   \      0xF2E   0xE041             B.N      ??HAL_DMAEx_MultiBufferStart_IT_276
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_277: (+1)
+   \      0xF30   0x6820             LDR      R0,[R4, #+0]
+   \      0xF32   0x....             LDR.N    R1,??DataTable1_2  ;; 0x40026070
+   \      0xF34   0x4288             CMP      R0,R1
+   \      0xF36   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_278
+   \      0xF38   0x2001             MOVS     R0,#+1
+   \      0xF3A   0xE03B             B.N      ??HAL_DMAEx_MultiBufferStart_IT_276
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_278: (+1)
+   \      0xF3C   0x6820             LDR      R0,[R4, #+0]
+   \      0xF3E   0x....             LDR.N    R1,??DataTable1_3  ;; 0x40026470
+   \      0xF40   0x4288             CMP      R0,R1
+   \      0xF42   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_279
+   \      0xF44   0x2001             MOVS     R0,#+1
+   \      0xF46   0xE035             B.N      ??HAL_DMAEx_MultiBufferStart_IT_276
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_279: (+1)
+   \      0xF48   0x6820             LDR      R0,[R4, #+0]
+   \      0xF4A   0x....             LDR.N    R1,??DataTable1_4  ;; 0x40026028
+   \      0xF4C   0x4288             CMP      R0,R1
+   \      0xF4E   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_280
+   \      0xF50   0x2040             MOVS     R0,#+64
+   \      0xF52   0xE02F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_276
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_280: (+1)
+   \      0xF54   0x6820             LDR      R0,[R4, #+0]
+   \      0xF56   0x....             LDR.N    R1,??DataTable1_5  ;; 0x40026428
+   \      0xF58   0x4288             CMP      R0,R1
+   \      0xF5A   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_281
+   \      0xF5C   0x2040             MOVS     R0,#+64
+   \      0xF5E   0xE029             B.N      ??HAL_DMAEx_MultiBufferStart_IT_276
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_281: (+1)
+   \      0xF60   0x6820             LDR      R0,[R4, #+0]
+   \      0xF62   0x....             LDR.N    R1,??DataTable1_6  ;; 0x40026088
+   \      0xF64   0x4288             CMP      R0,R1
+   \      0xF66   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_282
+   \      0xF68   0x2040             MOVS     R0,#+64
+   \      0xF6A   0xE023             B.N      ??HAL_DMAEx_MultiBufferStart_IT_276
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_282: (+1)
+   \      0xF6C   0x6820             LDR      R0,[R4, #+0]
+   \      0xF6E   0x....             LDR.N    R1,??DataTable1_7  ;; 0x40026488
+   \      0xF70   0x4288             CMP      R0,R1
+   \      0xF72   0xD101             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_283
+   \      0xF74   0x2040             MOVS     R0,#+64
+   \      0xF76   0xE01D             B.N      ??HAL_DMAEx_MultiBufferStart_IT_276
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_283: (+1)
+   \      0xF78   0x6820             LDR      R0,[R4, #+0]
+   \      0xF7A   0x....             LDR.N    R1,??DataTable1_8  ;; 0x40026040
+   \      0xF7C   0x4288             CMP      R0,R1
+   \      0xF7E   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_284
+   \      0xF80   0xF45F 0x3080      MOVS     R0,#+65536
+   \      0xF84   0xE016             B.N      ??HAL_DMAEx_MultiBufferStart_IT_276
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_284: (+1)
+   \      0xF86   0x6820             LDR      R0,[R4, #+0]
+   \      0xF88   0x....             LDR.N    R1,??DataTable1_9  ;; 0x40026440
+   \      0xF8A   0x4288             CMP      R0,R1
+   \      0xF8C   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_285
+   \      0xF8E   0xF45F 0x3080      MOVS     R0,#+65536
+   \      0xF92   0xE00F             B.N      ??HAL_DMAEx_MultiBufferStart_IT_276
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_285: (+1)
+   \      0xF94   0x6820             LDR      R0,[R4, #+0]
+   \      0xF96   0x....             LDR.N    R1,??DataTable1_10  ;; 0x400260a0
+   \      0xF98   0x4288             CMP      R0,R1
+   \      0xF9A   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_286
+   \      0xF9C   0xF45F 0x3080      MOVS     R0,#+65536
+   \      0xFA0   0xE008             B.N      ??HAL_DMAEx_MultiBufferStart_IT_276
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_286: (+1)
+   \      0xFA2   0x6820             LDR      R0,[R4, #+0]
+   \      0xFA4   0x....             LDR.N    R1,??DataTable1_11  ;; 0x400264a0
+   \      0xFA6   0x4288             CMP      R0,R1
+   \      0xFA8   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_287
+   \      0xFAA   0xF45F 0x3080      MOVS     R0,#+65536
+   \      0xFAE   0xE001             B.N      ??HAL_DMAEx_MultiBufferStart_IT_276
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_287: (+1)
+   \      0xFB0   0xF45F 0x0080      MOVS     R0,#+4194304
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_276: (+1)
+   \      0xFB4   0x....             LDR.N    R1,??DataTable1_17  ;; 0x40026008
+   \      0xFB6   0x6008             STR      R0,[R1, #+0]
+    201          
+    202              /* Enable Common interrupts*/
+    203              hdma->Instance->CR  |= DMA_IT_TC | DMA_IT_TE | DMA_IT_DME;
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_246: (+1)
+   \      0xFB8   0x6820             LDR      R0,[R4, #+0]
+   \      0xFBA   0x6800             LDR      R0,[R0, #+0]
+   \      0xFBC   0xF050 0x0016      ORRS     R0,R0,#0x16
+   \      0xFC0   0x6821             LDR      R1,[R4, #+0]
+   \      0xFC2   0x6008             STR      R0,[R1, #+0]
+    204              hdma->Instance->FCR |= DMA_IT_FE;
+   \      0xFC4   0x6820             LDR      R0,[R4, #+0]
+   \      0xFC6   0x6940             LDR      R0,[R0, #+20]
+   \      0xFC8   0xF050 0x0080      ORRS     R0,R0,#0x80
+   \      0xFCC   0x6821             LDR      R1,[R4, #+0]
+   \      0xFCE   0x6148             STR      R0,[R1, #+20]
+    205              
+    206              if((hdma->XferHalfCpltCallback != NULL) || (hdma->XferM1HalfCpltCallback != NULL))
+   \      0xFD0   0x6C20             LDR      R0,[R4, #+64]
+   \      0xFD2   0x2800             CMP      R0,#+0
+   \      0xFD4   0xD102             BNE.N    ??HAL_DMAEx_MultiBufferStart_IT_288
+   \      0xFD6   0x6CA0             LDR      R0,[R4, #+72]
+   \      0xFD8   0x2800             CMP      R0,#+0
+   \      0xFDA   0xD005             BEQ.N    ??HAL_DMAEx_MultiBufferStart_IT_289
+    207              {
+    208                hdma->Instance->CR  |= DMA_IT_HT;
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_288: (+1)
+   \      0xFDC   0x6820             LDR      R0,[R4, #+0]
+   \      0xFDE   0x6800             LDR      R0,[R0, #+0]
+   \      0xFE0   0xF050 0x0008      ORRS     R0,R0,#0x8
+   \      0xFE4   0x6821             LDR      R1,[R4, #+0]
+   \      0xFE6   0x6008             STR      R0,[R1, #+0]
+    209              }
+    210              
+    211              /* Enable the peripheral */
+    212              __HAL_DMA_ENABLE(hdma); 
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_289: (+1)
+   \      0xFE8   0x6820             LDR      R0,[R4, #+0]
+   \      0xFEA   0x6800             LDR      R0,[R0, #+0]
+   \      0xFEC   0xF050 0x0001      ORRS     R0,R0,#0x1
+   \      0xFF0   0x6821             LDR      R1,[R4, #+0]
+   \      0xFF2   0x6008             STR      R0,[R1, #+0]
+   \      0xFF4   0xE003             B.N      ??HAL_DMAEx_MultiBufferStart_IT_290
+    213            }
+    214            else
+    215            {     
+    216              /* Process unlocked */
+    217              __HAL_UNLOCK(hdma);	  
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_7: (+1)
+   \      0xFF6   0x2000             MOVS     R0,#+0
+   \      0xFF8   0xF884 0x0034      STRB     R0,[R4, #+52]
+    218              
+    219              /* Return error status */
+    220              status = HAL_BUSY;
+   \      0xFFC   0x2502             MOVS     R5,#+2
+    221            }  
+    222            return status; 
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_290: (+1)
+   \      0xFFE   0x0028             MOVS     R0,R5
+   \     0x1000   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \                     ??HAL_DMAEx_MultiBufferStart_IT_3: (+1)
+   \     0x1002   0xBDF2             POP      {R1,R4-R7,PC}    ;; return
+    223          }
+    224          
+    225          /**
+    226            * @brief  Change the memory0 or memory1 address on the fly.
+    227            * @param  hdma       pointer to a DMA_HandleTypeDef structure that contains
+    228            *                     the configuration information for the specified DMA Stream.  
+    229            * @param  Address    The new address
+    230            * @param  memory     the memory to be changed, This parameter can be one of 
+    231            *                     the following values:
+    232            *                      MEMORY0 /
+    233            *                      MEMORY1
+    234            * @note   The MEMORY0 address can be changed only when the current transfer use
+    235            *         MEMORY1 and the MEMORY1 address can be changed only when the current 
+    236            *         transfer use MEMORY0.
+    237            * @retval HAL status
+    238            */
+
+   \                                 In section .text, align 2, keep-with-next
+    239          HAL_StatusTypeDef HAL_DMAEx_ChangeMemory(DMA_HandleTypeDef *hdma, uint32_t Address, HAL_DMA_MemoryTypeDef memory)
+    240          {
+    241            if(memory == MEMORY0)
+   \                     HAL_DMAEx_ChangeMemory: (+1)
+   \        0x0   0xB2D2             UXTB     R2,R2            ;; ZeroExt  R2,R2,#+24,#+24
+   \        0x2   0x2A00             CMP      R2,#+0
+   \        0x4   0xD102             BNE.N    ??HAL_DMAEx_ChangeMemory_0
+    242            {
+    243              /* change the memory0 address */
+    244              hdma->Instance->M0AR = Address;
+   \        0x6   0x6800             LDR      R0,[R0, #+0]
+   \        0x8   0x60C1             STR      R1,[R0, #+12]
+   \        0xA   0xE001             B.N      ??HAL_DMAEx_ChangeMemory_1
+    245            }
+    246            else
+    247            {
+    248              /* change the memory1 address */
+    249              hdma->Instance->M1AR = Address;
+   \                     ??HAL_DMAEx_ChangeMemory_0: (+1)
+   \        0xC   0x6800             LDR      R0,[R0, #+0]
+   \        0xE   0x6101             STR      R1,[R0, #+16]
+    250            }
+    251          
+    252            return HAL_OK;
+   \                     ??HAL_DMAEx_ChangeMemory_1: (+1)
+   \       0x10   0x2000             MOVS     R0,#+0
+   \       0x12   0x4770             BX       LR               ;; return
+    253          }
+    254          
+    255          /**
+    256            * @}
+    257            */
+    258          
+    259          /**
+    260            * @}
+    261            */
+    262          
+    263          /** @addtogroup DMAEx_Private_Functions
+    264            * @{
+    265            */
+    266          
+    267          /**
+    268            * @brief  Set the DMA Transfer parameter.
+    269            * @param  hdma       pointer to a DMA_HandleTypeDef structure that contains
+    270            *                     the configuration information for the specified DMA Stream.  
+    271            * @param  SrcAddress The source memory Buffer address
+    272            * @param  DstAddress The destination memory Buffer address
+    273            * @param  DataLength The length of data to be transferred from source to destination
+    274            * @retval HAL status
+    275            */
+
+   \                                 In section .text, align 2, keep-with-next
+    276          static void DMA_MultiBufferSetConfig(DMA_HandleTypeDef *hdma, uint32_t SrcAddress, uint32_t DstAddress, uint32_t DataLength)
+    277          {  
+   \                     DMA_MultiBufferSetConfig: (+1)
+   \        0x0   0xB410             PUSH     {R4}
+    278            /* Configure DMA Stream data length */
+    279            hdma->Instance->NDTR = DataLength;
+   \        0x2   0x6804             LDR      R4,[R0, #+0]
+   \        0x4   0x6063             STR      R3,[R4, #+4]
+    280            
+    281            /* Peripheral to Memory */
+    282            if((hdma->Init.Direction) == DMA_MEMORY_TO_PERIPH)
+   \        0x6   0x6883             LDR      R3,[R0, #+8]
+   \        0x8   0x2B40             CMP      R3,#+64
+   \        0xA   0xD104             BNE.N    ??DMA_MultiBufferSetConfig_0
+    283            {   
+    284              /* Configure DMA Stream destination address */
+    285              hdma->Instance->PAR = DstAddress;
+   \        0xC   0x6803             LDR      R3,[R0, #+0]
+   \        0xE   0x609A             STR      R2,[R3, #+8]
+    286              
+    287              /* Configure DMA Stream source address */
+    288              hdma->Instance->M0AR = SrcAddress;
+   \       0x10   0x6800             LDR      R0,[R0, #+0]
+   \       0x12   0x60C1             STR      R1,[R0, #+12]
+   \       0x14   0xE003             B.N      ??DMA_MultiBufferSetConfig_1
+    289            }
+    290            /* Memory to Peripheral */
+    291            else
+    292            {
+    293              /* Configure DMA Stream source address */
+    294              hdma->Instance->PAR = SrcAddress;
+   \                     ??DMA_MultiBufferSetConfig_0: (+1)
+   \       0x16   0x6803             LDR      R3,[R0, #+0]
+   \       0x18   0x6099             STR      R1,[R3, #+8]
+    295              
+    296              /* Configure DMA Stream destination address */
+    297              hdma->Instance->M0AR = DstAddress;
+   \       0x1A   0x6800             LDR      R0,[R0, #+0]
+   \       0x1C   0x60C2             STR      R2,[R0, #+12]
+    298            }
+    299          }
+   \                     ??DMA_MultiBufferSetConfig_1: (+1)
+   \       0x1E   0xBC10             POP      {R4}
+   \       0x20   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1:
+   \        0x0   0x4002'6010        DC32     0x40026010
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_1:
+   \        0x0   0x4002'6410        DC32     0x40026410
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_2:
+   \        0x0   0x4002'6070        DC32     0x40026070
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_3:
+   \        0x0   0x4002'6470        DC32     0x40026470
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_4:
+   \        0x0   0x4002'6028        DC32     0x40026028
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_5:
+   \        0x0   0x4002'6428        DC32     0x40026428
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_6:
+   \        0x0   0x4002'6088        DC32     0x40026088
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_7:
+   \        0x0   0x4002'6488        DC32     0x40026488
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_8:
+   \        0x0   0x4002'6040        DC32     0x40026040
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_9:
+   \        0x0   0x4002'6440        DC32     0x40026440
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_10:
+   \        0x0   0x4002'60A0        DC32     0x400260a0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_11:
+   \        0x0   0x4002'64A0        DC32     0x400264a0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_12:
+   \        0x0   0x4002'640C        DC32     0x4002640c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_13:
+   \        0x0   0x4002'60B9        DC32     0x400260b9
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_14:
+   \        0x0   0x4002'6408        DC32     0x40026408
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_15:
+   \        0x0   0x4002'6059        DC32     0x40026059
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_16:
+   \        0x0   0x4002'600C        DC32     0x4002600c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_17:
+   \        0x0   0x4002'6008        DC32     0x40026008
+    300          
+    301          /**
+    302            * @}
+    303            */
+    304          
+    305          #endif /* HAL_DMA_MODULE_ENABLED */
+    306          /**
+    307            * @}
+    308            */
+    309          
+    310          /**
+    311            * @}
+    312            */
+    313          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       4   DMA_MultiBufferSetConfig
+       0   HAL_DMAEx_ChangeMemory
+      24   HAL_DMAEx_MultiBufferStart
+        24   -> DMA_MultiBufferSetConfig
+      24   HAL_DMAEx_MultiBufferStart_IT
+        24   -> DMA_MultiBufferSetConfig
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable1
+       4  ??DataTable1_1
+       4  ??DataTable1_10
+       4  ??DataTable1_11
+       4  ??DataTable1_12
+       4  ??DataTable1_13
+       4  ??DataTable1_14
+       4  ??DataTable1_15
+       4  ??DataTable1_16
+       4  ??DataTable1_17
+       4  ??DataTable1_2
+       4  ??DataTable1_3
+       4  ??DataTable1_4
+       4  ??DataTable1_5
+       4  ??DataTable1_6
+       4  ??DataTable1_7
+       4  ??DataTable1_8
+       4  ??DataTable1_9
+      34  DMA_MultiBufferSetConfig
+      20  HAL_DMAEx_ChangeMemory
+     102  HAL_DMAEx_MultiBufferStart
+    4100  HAL_DMAEx_MultiBufferStart_IT
+
+ 
+ 4 328 bytes in section .text
+ 
+ 4 328 bytes of CODE memory
+
+Errors: none
+Warnings: none
