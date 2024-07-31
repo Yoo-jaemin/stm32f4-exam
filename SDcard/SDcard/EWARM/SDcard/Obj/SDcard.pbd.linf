@@ -1,12 +1,11 @@
 ﻿D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\SDcard.pbd
-D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\bsp_driver_sd.pbi
-D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\ccsbcs.pbi
-D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\diskio.pbi
-D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\fatfs.pbi
-D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\ff.pbi
-D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\ff_gen_drv.pbi
 D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\main.pbi
+D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\stm32f4xx_hal_msp.pbi
+D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\stm32f4xx_it.pbi
+D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\fatfs.pbi
+D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\bsp_driver_sd.pbi
 D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\sd_diskio.pbi
+D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\system_stm32f4xx.pbi
 D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\stm32f4xx_hal.pbi
 D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\stm32f4xx_hal_cortex.pbi
 D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\stm32f4xx_hal_dma.pbi
@@ -16,7 +15,6 @@ D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\stm32f4xx_hal_flash.pbi
 D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\stm32f4xx_hal_flash_ex.pbi
 D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\stm32f4xx_hal_flash_ramfunc.pbi
 D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\stm32f4xx_hal_gpio.pbi
-D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\stm32f4xx_hal_msp.pbi
 D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\stm32f4xx_hal_pwr.pbi
 D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\stm32f4xx_hal_pwr_ex.pbi
 D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\stm32f4xx_hal_rcc.pbi
@@ -25,7 +23,9 @@ D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\stm32f4xx_hal_sd.pbi
 D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\stm32f4xx_hal_tim.pbi
 D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\stm32f4xx_hal_tim_ex.pbi
 D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\stm32f4xx_hal_uart.pbi
-D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\stm32f4xx_it.pbi
 D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\stm32f4xx_ll_sdmmc.pbi
+D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\ccsbcs.pbi
+D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\diskio.pbi
+D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\ff.pbi
+D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\ff_gen_drv.pbi
 D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\syscall.pbi
-D:\2_Projects\Exam\CubeMx\SDcard\SDcard\EWARM\SDcard\Obj\system_stm32f4xx.pbi

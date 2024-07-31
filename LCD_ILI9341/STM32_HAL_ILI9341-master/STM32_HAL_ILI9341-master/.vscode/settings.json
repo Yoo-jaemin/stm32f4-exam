@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "ili9341_gfx.h": "c",
+        "ili9341_stm32_driver.h": "c"
+    }
+}
