@@ -1,0 +1,1964 @@
+###############################################################################
+#
+# IAR ELF Linker V8.32.1.169/W32 for ARM                  20/Aug/2024  17:00:58
+# Copyright 2007-2018 IAR Systems AB.
+#
+#    Output file  =  
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Exe\SD_BootLoader_MX.out
+#    Map file     =  
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\List\SD_BootLoader_MX.map
+#    Command line =  
+#        -f C:\Users\JASAN1~1\AppData\Local\Temp\EW5A68.tmp
+#        (D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\api_lib.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\api_msg.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\app_ethernet.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\autoip.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\bsp_driver_sd.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\CRC.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\def.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\dhcp.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\diskio.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\Display.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\dns.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\dp83848.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\err.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\etharp.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\ethernet.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\ethernetif.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\fatfs.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\ff.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\ff_gen_drv.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\Flash.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\flash_if.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\fonts.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\fsmc.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\gdi.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\gpio.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\icmp.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\igmp.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\ili9225g.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\inet_chksum.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\init.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\IO_Ctrl.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\ip.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\ip4.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\ip4_addr.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\ip4_frag.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\lcd.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\main.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\mem.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\memp.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\netbuf.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\netdb.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\netif.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\netifapi.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\pbuf.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\raw.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\SD_Card.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\sd_diskio.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\Sensor_Upload.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\sockets.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\startup_stm32f407xx.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stats.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_adc.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_adc_ex.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_can.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_cec.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_cortex.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_crc.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_cryp.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_cryp_ex.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_dac.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_dac_ex.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_dcmi.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_dcmi_ex.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_dfsdm.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_dma.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_dma2d.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_dma_ex.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_dsi.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_eth.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_exti.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_flash.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_flash_ex.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_flash_ramfunc.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_fmpi2c.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_fmpi2c_ex.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_gpio.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_hash.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_hash_ex.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_hcd.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_i2c.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_i2c_ex.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_i2s.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_i2s_ex.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_irda.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_iwdg.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_lptim.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_ltdc.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_ltdc_ex.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_mmc.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_msp.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_nand.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_nor.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_pccard.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_pcd.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_pcd_ex.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_pwr.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_pwr_ex.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_qspi.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_rcc.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_rcc_ex.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_rng.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_rtc.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_rtc_ex.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_sai.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_sai_ex.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_sd.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_sdram.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_smartcard.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_smbus.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_spdifrx.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_spi.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_sram.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_tim.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_tim_ex.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_uart.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_usart.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_hal_wwdg.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_it.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_adc.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_crc.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_dac.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_dma.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_dma2d.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_exti.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_fmc.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_fsmc.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_gpio.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_i2c.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_lptim.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_pwr.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_rcc.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_rng.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_rtc.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_sdmmc.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_spi.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_tim.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_usart.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_usb.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\stm32f4xx_ll_utils.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\sys.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\system_stm32f4xx.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\Task.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\tcp.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\tcp_in.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\tcp_out.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\tcpip.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\tftp.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\tftp_example.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\tftpserver.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\timeouts.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\udp.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\udpClientRAW.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\udpServerRAW.o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj\usart.o
+#        --redirect _Printf=_PrintfFull --redirect _Scanf=_ScanfFull
+#        --no_out_extension -o
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Exe\SD_BootLoader_MX.out
+#        --map
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\List\SD_BootLoader_MX.map
+#        --config
+#        D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Base\stm32f407xx_flash.icf
+#        --semihosting --entry __iar_program_start --vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__Heap_Handler  = Basic
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because no calls to memory allocation
+functions were found in the application outside of system library
+functions, and there are calls to deallocation functions in the
+application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x800'0000 { ro section .intvec };
+"P1":  place in [from 0x800'0000 to 0x80f'ffff] { ro };
+define block CSTACK with size = 16K, alignment = 8 { };
+define block HEAP with size = 32K, alignment = 8 { };
+"P2":  place in [from 0x2000'0000 to 0x2001'ffff] {
+          rw, block CSTACK, block HEAP };
+initialize by copy { rw };
+
+  Section            Kind         Address     Size  Object
+  -------            ----         -------     ----  ------
+"A0":                                        0x188
+  .intvec            ro code   0x800'0000    0x188  startup_stm32f407xx.o [1]
+                             - 0x800'0188    0x188
+
+"P1":                                      0x193d3
+  .rodata            const     0x800'0188   0x4740  fonts.o [1]
+  .text              ro code   0x800'48c8   0x1758  tcp_in.o [1]
+  .text              ro code   0x800'6020     0x28  printf.o [2]
+  .text              ro code   0x800'6048    0x228  ip4_addr.o [1]
+  .text              ro code   0x800'6270     0x2c  def.o [1]
+  .text              ro code   0x800'629c    0xab0  pbuf.o [1]
+  .text              ro code   0x800'6d4c   0x10f4  tcp.o [1]
+  .text              ro code   0x800'7e40   0x111c  tcp_out.o [1]
+  .text              ro code   0x800'8f5c    0x214  timeouts.o [1]
+  .text              ro code   0x800'9170    0x408  ip4.o [1]
+  .text              ro code   0x800'9578    0xf46  xprintffull.o [2]
+  .text              ro code   0x800'a4be      0xa  isdigit.o [2]
+  .text              ro code   0x800'a4c8     0x1e  isxdigit.o [2]
+  .text              ro code   0x800'a4e6     0x14  islower.o [2]
+  .text              ro code   0x800'a4fa     0x14  isspace.o [2]
+  .text              ro code   0x800'a50e     0x7a  lz77_init_single.o [4]
+  .text              ro code   0x800'a588    0x178  memp.o [1]
+  .text              ro code   0x800'a700    0x60c  mem.o [1]
+  .text              ro code   0x800'ad0c     0xa6  ABImemcpy.o [4]
+  .text              ro code   0x800'adb2     0x3a  zero_init3.o [4]
+  .text              ro code   0x800'adec     0xa4  rand.o [2]
+  .text              ro code   0x800'ae90     0x66  ABImemset.o [4]
+  .text              ro code   0x800'aef6     0x1e  xencoding_8859_1.o [2]
+  .text              ro code   0x800'af14    0x444  netif.o [1]
+  .text              ro code   0x800'b358    0x520  ethernetif.o [1]
+  .text              ro code   0x800'b878    0xa80  ip4_frag.o [1]
+  .text              ro code   0x800'c2f8    0x7e0  udp.o [1]
+  .text              ro code   0x800'cad8    0x2d4  icmp.o [1]
+  .text              ro code   0x800'cdac     0x9c  xlocale_c.o [2]
+  .text              ro code   0x800'ce48     0x16  strchr.o [4]
+  .text              ro code   0x800'ce5e     0x1a  xsnprout.o [2]
+  .text              ro code   0x800'ce78     0x40  xfail_s.o [2]
+  .text              ro code   0x800'ceb8     0x36  strlen.o [4]
+  .text              ro code   0x800'ceee      0xa  xsprout.o [2]
+  .text              ro code   0x800'cef8     0x58  memchr.o [4]
+  .text              ro code   0x800'cf50      0xa  xmbcurmax.o [2]
+  .text              ro code   0x800'cf5c    0x230  I64DivMod.o [4]
+  .text              ro code   0x800'd18c    0x1a2  DblMul.o [3]
+  .text              ro code   0x800'd330     0x70  frexp.o [3]
+  .text              ro code   0x800'd3a0     0x2e  DblCmpLe.o [3]
+  .text              ro code   0x800'd3d0     0x2e  DblCmpGe.o [3]
+  .text              ro code   0x800'd400    0x13a  ldexp.o [3]
+  .text              ro code   0x800'd53c     0x3a  DblToS32.o [3]
+  .text              ro code   0x800'd578     0x22  S32ToDbl.o [3]
+  .text              ro code   0x800'd59c     0xe2  DblSub.o [3]
+  .text              ro code   0x800'd680    0x246  DblDiv.o [3]
+  .text              ro code   0x800'd8c8     0x28  DblToU32.o [3]
+  .text              ro code   0x800'd8f0     0x1a  U32ToDbl.o [3]
+  .text              ro code   0x800'd90c    0xb28  etharp.o [1]
+  .text              ro code   0x800'e434    0xcc8  stm32f4xx_hal_eth.o [1]
+  .text              ro code   0x800'f0fc    0x1e6  dp83848.o [1]
+  .text              ro code   0x800'f2e4      0x6  ABImemclr4.o [4]
+  .text              ro code   0x800'f2ec      0xc  stm32f4xx_hal.o [1]
+  .text              ro code   0x800'f2f8    0x438  stm32f4xx_hal_gpio.o [1]
+  .text              ro code   0x800'f730    0x2d0  stm32f4xx_hal_rcc.o [1]
+  .text              ro code   0x800'fa00     0xd6  inet_chksum.o [1]
+  .text              ro code   0x800'fad6      0x6  abort.o [2]
+  .text              ro code   0x800'fadc      0x2  I64DivZer.o [4]
+  .text              ro code   0x800'fae0    0x16a  DblAdd.o [3]
+  .text              ro code   0x800'fc4c    0x158  ethernet.o [1]
+  .text              ro code   0x800'fda4     0x28  stm32f4xx_hal.o [1]
+  .text              ro code   0x800'fdcc     0x32  ABImemset48.o [4]
+  .text              ro code   0x800'fe00    0x278  main.o [1]
+  .text              ro code   0x801'0078     0x4c  stm32f4xx_hal.o [1]
+  .text              ro code   0x801'00c4     0x14  exit.o [5]
+  .text              ro code   0x801'00d8     0x68  memcmp.o [4]
+  .text              ro code   0x801'0140    0x1e0  tftp_example.o [1]
+  .text              ro code   0x801'0320    0x15c  Task.o [1]
+  .text              ro code   0x801'047c    0x15c  CRC.o [1]
+  .text              ro code   0x801'05d8    0x55c  usart.o [1]
+  .text              ro code   0x801'0b34     0x1c  SD_Card.o [1]
+  .text              ro code   0x801'0b50    0x58c  gdi.o [1]
+  .text              ro code   0x801'10dc    0x1e0  fsmc.o [1]
+  .text              ro code   0x801'12bc    0x188  gpio.o [1]
+  .text              ro code   0x801'1444     0x48  app_ethernet.o [1]
+  .text              ro code   0x801'148c     0x34  stm32f4xx_hal.o [1]
+  .text              ro code   0x801'14c0     0x44  init.o [1]
+  .text              ro code   0x801'1504    0x380  stm32f4xx_hal_rcc.o [1]
+  .text              ro code   0x801'1884    0x1b8  stm32f4xx_hal_cortex.o [1]
+  .text              ro code   0x801'1a3c     0x80  iarttio.o [5]
+  .text              ro code   0x801'1abc     0x44  snprintf.o [2]
+  .text              ro code   0x801'1b00     0x2a  fopen.o [2]
+  .text              ro code   0x801'1b2a     0x7e  fclose.o [2]
+  .text              ro code   0x801'1ba8     0x8c  fread.o [2]
+  .text              ro code   0x801'1c34     0xb2  fwrite.o [2]
+  .text              ro code   0x801'1ce8    0x8ec  tftp.o [1]
+  .text              ro code   0x801'25d4     0xd8  IO_Ctrl.o [1]
+  .text              ro code   0x801'26ac    0x690  Sensor_Upload.o [1]
+  .text              ro code   0x801'2d3c    0x25c  Display.o [1]
+  .text              ro code   0x801'2f98     0xa0  stm32f4xx_hal_crc.o [1]
+  .text              ro code   0x801'3038    0x880  stm32f4xx_hal_uart.o [1]
+  .text              ro code   0x801'38b8     0x14  bsp_driver_sd.o [1]
+  .text              ro code   0x801'38cc     0x18  fatfs.o [1]
+  .text              ro code   0x801'38e4     0x80  stm32f4xx_hal_sram.o [1]
+  .text              ro code   0x801'3964    0x18c  stm32f4xx_hal_msp.o [1]
+  .text              ro code   0x801'3af0     0x3c  XShttio.o [2]
+  .text              ro code   0x801'3b2c     0xd4  xfofind.o [2]
+  .text              ro code   0x801'3c00     0xfc  xfoprep.o [2]
+  .text              ro code   0x801'3cfc     0xac  fflush.o [2]
+  .text              ro code   0x801'3da8      0x4  heaptramp0.o [2]
+  .text              ro code   0x801'3dac     0x18  close.o [5]
+  .text              ro code   0x801'3dc4     0x14  remove.o [5]
+  .text              ro code   0x801'3dd8     0xb6  xfrprep.o [2]
+  .text              ro code   0x801'3e8e     0xb4  xfwprep.o [2]
+  .text              ro code   0x801'3f44     0xb8  flash_if.o [1]
+  .text              ro code   0x801'3ffc     0x48  FltToDbl.o [3]
+  .text              ro code   0x801'4044     0x40  sprintf.o [2]
+  .text              ro code   0x801'4084      0x2  stm32f4xx_hal_crc.o [1]
+  .text              ro code   0x801'4088     0x28  stm32f4xx_hal_dma.o [1]
+  .text              ro code   0x801'40b0      0x2  stm32f4xx_hal_uart.o [1]
+  .text              ro code   0x801'40b4     0x3a  stm32f4xx_hal_sd.o [1]
+  .text              ro code   0x801'40f0     0x5c  ff_gen_drv.o [1]
+  .text              ro code   0x801'414c    0x128  stm32f4xx_ll_fsmc.o [1]
+  .text              ro code   0x801'4274    0x140  heap0.o [2]
+  .text              ro code   0x801'43b4     0x4c  xfopen.o [2]
+  .text              ro code   0x801'4400     0x10  write.o [5]
+  .text              ro code   0x801'4410    0x110  XShHandles.o [2]
+  .text              ro code   0x801'4520     0x30  read.o [5]
+  .text              ro code   0x801'4550     0x24  fseek.o [2]
+  .text              ro code   0x801'4574    0x200  stm32f4xx_hal_flash.o [1]
+  .text              ro code   0x801'4774    0x190  stm32f4xx_hal_flash_ex.o [1]
+  .text              ro code   0x801'4904      0xa  stm32f4xx_ll_sdmmc.o [1]
+  .text              ro code   0x801'4910     0x2c  xgetmemchunk.o [2]
+  .text              ro code   0x801'493c     0x48  open.o [5]
+  .text              ro code   0x801'4984     0x1e  dwrite.o [5]
+  .text              ro code   0x801'49a2     0xd8  xfspos.o [2]
+  .text              ro code   0x801'4a7a     0x20  iarwstd.o [5]
+  .text              ro code   0x801'4a9a     0x22  iarwrite.o [5]
+  .text              ro code   0x801'4abc      0xc  xfgpos.o [2]
+  .text              ro code   0x801'4ac8     0x4a  lseek.o [5]
+  .rodata            const     0x801'4b14    0xbe0  fonts.o [1]
+  .text              ro code   0x801'56f4    0x4cc  ili9225g.o [1]
+  .rodata            const     0x801'5bc0    0x474  fonts.o [1]
+  .text              ro code   0x801'6034    0x176  stm32f4xx_hal_tim.o [1]
+  .text              ro code   0x801'61aa      0x2  stm32f4xx_hal_tim.o [1]
+  .text              ro code   0x801'61ac      0x2  stm32f4xx_hal_tim.o [1]
+  .text              ro code   0x801'61ae      0x2  stm32f4xx_hal_tim.o [1]
+  .text              ro code   0x801'61b0      0x2  stm32f4xx_hal_tim_ex.o [1]
+  .text              ro code   0x801'61b2      0x2  stm32f4xx_hal_tim.o [1]
+  .text              ro code   0x801'61b4      0x2  stm32f4xx_hal_tim_ex.o [1]
+  .text              ro code   0x801'61b8    0x124  lcd.o [1]
+  .rodata            const     0x801'62dc     0x60  etharp.o [1]
+  .rodata            const     0x801'633c     0x60  ip4_addr.o [1]
+  .rodata            const     0x801'639c     0x60  ip4_frag.o [1]
+  .text              ro code   0x801'63fc     0x60  system_stm32f4xx.o [1]
+  .rodata            const     0x801'645c     0x5c  ethernet.o [1]
+  .rodata            const     0x801'64b8     0x5c  icmp.o [1]
+  .rodata            const     0x801'6514     0x5c  ip4.o [1]
+  .rodata            const     0x801'6570     0x5c  tcp_out.o [1]
+  .rodata            const     0x801'65cc     0x5c  timeouts.o [1]
+  .rodata            const     0x801'6628     0x58  init.o [1]
+  .rodata            const     0x801'6680     0x58  mem.o [1]
+  .rodata            const     0x801'66d8     0x58  memp.o [1]
+  .rodata            const     0x801'6730     0x58  netif.o [1]
+  .rodata            const     0x801'6788     0x58  pbuf.o [1]
+  .rodata            const     0x801'67e0     0x58  tcp.o [1]
+  .rodata            const     0x801'6838     0x58  tcp_in.o [1]
+  .rodata            const     0x801'6890     0x58  tcp_out.o [1]
+  .rodata            const     0x801'68e8     0x58  udp.o [1]
+  .rodata            const     0x801'6940     0x50  CRC.o [1]
+  .rodata            const     0x801'6990     0x4c  fsmc.o [1]
+  .rodata            const     0x801'69dc     0x4c  tftp_example.o [1]
+  .rodata            const     0x801'6a28     0x4c  usart.o [1]
+  .rodata            const     0x801'6a74     0x48  ethernetif.o [1]
+  .rodata            const     0x801'6abc     0x48  SD_Card.o [1]
+  .rodata            const     0x801'6b04     0x48  xfoprep.o [2]
+  .rodata            const     0x801'6b4c     0x44  etharp.o [1]
+  .rodata            const     0x801'6b90     0x44  init.o [1]
+  .rodata            const     0x801'6bd4     0x44  main.o [1]
+  .rodata            const     0x801'6c18     0x44  tftp.o [1]
+  .text              ro code   0x801'6c5c     0x42  stm32f4xx_it.o [1]
+  .text              ro code   0x801'6ca0     0x18  stm32f4xx_hal.o [1]
+  .rodata            const     0x801'6cb8     0x40  etharp.o [1]
+  .rodata            const     0x801'6cf8     0x40  timeouts.o [1]
+  .rodata            const     0x801'6d38     0x3c  tcp_out.o [1]
+  .text              ro code   0x801'6d74     0x3c  xcloseall.o [2]
+  .rodata            const     0x801'6db0     0x38  icmp.o [1]
+  .rodata            const     0x801'6de8     0x38  ip4_frag.o [1]
+  .rodata            const     0x801'6e20     0x38  pbuf.o [1]
+  .rodata            const     0x801'6e58     0x38  tcp.o [1]
+  .rodata            const     0x801'6e90     0x38  tcp_in.o [1]
+  .rodata            const     0x801'6ec8     0x38  timeouts.o [1]
+  .rodata            const     0x801'6f00     0x34  etharp.o [1]
+  .rodata            const     0x801'6f34     0x34  ethernet.o [1]
+  .rodata            const     0x801'6f68     0x34  flash_if.o [1]
+  .rodata            const     0x801'6f9c     0x34  icmp.o [1]
+  .rodata            const     0x801'6fd0     0x34  mem.o [1]
+  .rodata            const     0x801'7004     0x34  pbuf.o [1]
+  .rodata            const     0x801'7038     0x34  tcp.o [1]
+  .rodata            const     0x801'706c     0x34  tcp.o [1]
+  .rodata            const     0x801'70a0     0x34  tcp.o [1]
+  .rodata            const     0x801'70d4     0x30  etharp.o [1]
+  .rodata            const     0x801'7104     0x30  ip4.o [1]
+  .rodata            const     0x801'7134     0x30  mem.o [1]
+  .rodata            const     0x801'7164     0x30  mem.o [1]
+  .rodata            const     0x801'7194     0x30  netif.o [1]
+  .rodata            const     0x801'71c4     0x30  pbuf.o [1]
+  .rodata            const     0x801'71f4     0x30  pbuf.o [1]
+  .rodata            const     0x801'7224     0x30  pbuf.o [1]
+  .rodata            const     0x801'7254     0x30  tcp.o [1]
+  .rodata            const     0x801'7284     0x30  tcp.o [1]
+  .rodata            const     0x801'72b4     0x30  tcp_in.o [1]
+  .rodata            const     0x801'72e4     0x30  tcp_out.o [1]
+  .rodata            const     0x801'7314     0x30  udp.o [1]
+  .rodata            const     0x801'7344     0x2c  etharp.o [1]
+  .rodata            const     0x801'7370     0x2c  icmp.o [1]
+  .rodata            const     0x801'739c     0x2c  mem.o [1]
+  .rodata            const     0x801'73c8     0x2c  pbuf.o [1]
+  .rodata            const     0x801'73f4     0x2c  pbuf.o [1]
+  .rodata            const     0x801'7420     0x2c  tcp.o [1]
+  .rodata            const     0x801'744c     0x2c  tcp.o [1]
+  .rodata            const     0x801'7478     0x2c  tcp.o [1]
+  .rodata            const     0x801'74a4     0x2c  tcp.o [1]
+  .rodata            const     0x801'74d0     0x2c  tcp_in.o [1]
+  .rodata            const     0x801'74fc     0x2c  tcp_in.o [1]
+  .rodata            const     0x801'7528     0x2c  tcp_in.o [1]
+  .rodata            const     0x801'7554     0x2c  tcp_out.o [1]
+  .rodata            const     0x801'7580     0x2c  tcp_out.o [1]
+  .rodata            const     0x801'75ac     0x2c  tftp.o [1]
+  .rodata            const     0x801'75d8     0x28  etharp.o [1]
+  .rodata            const     0x801'7600     0x28  etharp.o [1]
+  .rodata            const     0x801'7628     0x28  ethernet.o [1]
+  .rodata            const     0x801'7650     0x28  ethernetif.o [1]
+  .rodata            const     0x801'7678     0x28  icmp.o [1]
+  .rodata            const     0x801'76a0     0x28  init.o [1]
+  .rodata            const     0x801'76c8     0x28  ip4.o [1]
+  .rodata            const     0x801'76f0     0x28  ip4_addr.o [1]
+  .rodata            const     0x801'7718     0x28  ip4_frag.o [1]
+  .rodata            const     0x801'7740     0x28  main.o [1]
+  .rodata            const     0x801'7768     0x28  mem.o [1]
+  .rodata            const     0x801'7790     0x28  mem.o [1]
+  .rodata            const     0x801'77b8     0x28  memp.o [1]
+  .rodata            const     0x801'77e0     0x28  netif.o [1]
+  .rodata            const     0x801'7808     0x28  pbuf.o [1]
+  .rodata            const     0x801'7830     0x28  tcp.o [1]
+  .rodata            const     0x801'7858     0x28  tcp.o [1]
+  .rodata            const     0x801'7880     0x28  tcp.o [1]
+  .rodata            const     0x801'78a8     0x28  tcp.o [1]
+  .rodata            const     0x801'78d0     0x28  tcp.o [1]
+  .rodata            const     0x801'78f8     0x28  tcp.o [1]
+  .rodata            const     0x801'7920     0x28  tcp.o [1]
+  .rodata            const     0x801'7948     0x28  tcp_in.o [1]
+  .rodata            const     0x801'7970     0x28  tcp_in.o [1]
+  .rodata            const     0x801'7998     0x28  tcp_in.o [1]
+  .rodata            const     0x801'79c0     0x28  tcp_in.o [1]
+  .rodata            const     0x801'79e8     0x28  tcp_in.o [1]
+  .rodata            const     0x801'7a10     0x28  tcp_out.o [1]
+  .rodata            const     0x801'7a38     0x28  tcp_out.o [1]
+  .rodata            const     0x801'7a60     0x28  tcp_out.o [1]
+  .rodata            const     0x801'7a88     0x28  tcp_out.o [1]
+  .rodata            const     0x801'7ab0     0x28  tcp_out.o [1]
+  .rodata            const     0x801'7ad8     0x28  tcp_out.o [1]
+  .rodata            const     0x801'7b00     0x28  tftp.o [1]
+  .rodata            const     0x801'7b28     0x28  tftp.o [1]
+  .rodata            const     0x801'7b50     0x28  tftp.o [1]
+  .rodata            const     0x801'7b78     0x28  tftp.o [1]
+  .rodata            const     0x801'7ba0     0x28  tftp_example.o [1]
+  .rodata            const     0x801'7bc8     0x28  timeouts.o [1]
+  .rodata            const     0x801'7bf0     0x28  udp.o [1]
+  .rodata            const     0x801'7c18     0x28  udp.o [1]
+  .text              ro code   0x801'7c40     0x28  data_init.o [4]
+  .rodata            const     0x801'7c68     0x24  app_ethernet.o [1]
+  .rodata            const     0x801'7c8c     0x24  etharp.o [1]
+  .rodata            const     0x801'7cb0     0x24  flash_if.o [1]
+  .rodata            const     0x801'7cd4     0x24  ip4_frag.o [1]
+  .rodata            const     0x801'7cf8     0x24  ip4_frag.o [1]
+  .rodata            const     0x801'7d1c     0x24  mem.o [1]
+  .rodata            const     0x801'7d40     0x24  mem.o [1]
+  .rodata            const     0x801'7d64     0x24  memp.o [1]
+  .rodata            const     0x801'7d88     0x24  memp.o [1]
+  .rodata            const     0x801'7dac     0x24  netif.o [1]
+  .rodata            const     0x801'7dd0     0x24  netif.o [1]
+  .rodata            const     0x801'7df4     0x24  netif.o [1]
+  .rodata            const     0x801'7e18     0x24  netif.o [1]
+  .rodata            const     0x801'7e3c     0x24  pbuf.o [1]
+  .rodata            const     0x801'7e60     0x24  pbuf.o [1]
+  .rodata            const     0x801'7e84     0x24  tcp.o [1]
+  .rodata            const     0x801'7ea8     0x24  tcp_out.o [1]
+  .rodata            const     0x801'7ecc     0x24  tcp_out.o [1]
+  .rodata            const     0x801'7ef0     0x24  tcp_out.o [1]
+  .rodata            const     0x801'7f14     0x24  tcp_out.o [1]
+  .rodata            const     0x801'7f38     0x24  tcp_out.o [1]
+  .rodata            const     0x801'7f5c     0x24  tcp_out.o [1]
+  .rodata            const     0x801'7f80     0x24  tcp_out.o [1]
+  .rodata            const     0x801'7fa4     0x24  tftp.o [1]
+  .rodata            const     0x801'7fc8     0x24  tftp.o [1]
+  .rodata            const     0x801'7fec     0x24  tftp.o [1]
+  .rodata            const     0x801'8010     0x24  tftp_example.o [1]
+  .rodata            const     0x801'8034     0x24  udp.o [1]
+  .rodata            const     0x801'8058     0x24  udp.o [1]
+  .rodata            const     0x801'807c     0x24  udp.o [1]
+  .rodata            const     0x801'80a0     0x24  udp.o [1]
+  .text              ro code   0x801'80c4     0x22  fpinit_M.o [3]
+  .iar.init_table    const     0x801'80e8     0x20  - Linker created -
+  .rodata            const     0x801'8108     0x20  ip4_frag.o [1]
+  .rodata            const     0x801'8128     0x20  ip4_frag.o [1]
+  .rodata            const     0x801'8148     0x20  ip4_frag.o [1]
+  .rodata            const     0x801'8168     0x20  ip4_frag.o [1]
+  .rodata            const     0x801'8188     0x20  main.o [1]
+  .rodata            const     0x801'81a8     0x20  mem.o [1]
+  .rodata            const     0x801'81c8     0x20  memp.o [1]
+  .rodata            const     0x801'81e8     0x20  memp.o [1]
+  .rodata            const     0x801'8208     0x20  netif.o [1]
+  .rodata            const     0x801'8228     0x20  pbuf.o [1]
+  .rodata            const     0x801'8248     0x20  pbuf.o [1]
+  .rodata            const     0x801'8268     0x20  Sensor_Upload.o [1]
+  .rodata            const     0x801'8288     0x20  Sensor_Upload.o [1]
+  .rodata            const     0x801'82a8     0x20  tcp.o [1]
+  .rodata            const     0x801'82c8     0x20  tcp.o [1]
+  .rodata            const     0x801'82e8     0x20  tcp_in.o [1]
+  .rodata            const     0x801'8308     0x20  tcp_in.o [1]
+  .rodata            const     0x801'8328     0x20  tcp_in.o [1]
+  .rodata            const     0x801'8348     0x20  tcp_in.o [1]
+  .rodata            const     0x801'8368     0x20  tcp_in.o [1]
+  .rodata            const     0x801'8388     0x20  tcp_in.o [1]
+  .rodata            const     0x801'83a8     0x20  tcp_in.o [1]
+  .rodata            const     0x801'83c8     0x20  tcp_out.o [1]
+  .rodata            const     0x801'83e8     0x20  tcp_out.o [1]
+  .rodata            const     0x801'8408     0x20  tcp_out.o [1]
+  .rodata            const     0x801'8428     0x20  tcp_out.o [1]
+  .rodata            const     0x801'8448     0x20  tcp_out.o [1]
+  .rodata            const     0x801'8468     0x20  tcp_out.o [1]
+  .rodata            const     0x801'8488     0x20  tftp.o [1]
+  .rodata            const     0x801'84a8     0x20  tftp_example.o [1]
+  .rodata            const     0x801'84c8     0x20  udp.o [1]
+  .rodata            const     0x801'84e8     0x20  udp.o [1]
+  .rodata            const     0x801'8508     0x20  udp.o [1]
+  .rodata            const     0x801'8528     0x20  udp.o [1]
+  .text              ro code   0x801'8548     0x1e  cmain.o [4]
+  .text              ro code   0x801'8566      0x4  low_level_init.o [2]
+  .text              ro code   0x801'856a      0x4  exit.o [2]
+  .text              ro code   0x801'8570      0xe  cexit.o [4]
+  .rodata            const     0x801'8580     0x1c  app_ethernet.o [1]
+  .rodata            const     0x801'859c     0x1c  etharp.o [1]
+  .rodata            const     0x801'85b8     0x1c  ip4_frag.o [1]
+  .rodata            const     0x801'85d4     0x1c  ip4_frag.o [1]
+  .rodata            const     0x801'85f0     0x1c  ip4_frag.o [1]
+  .rodata            const     0x801'860c     0x1c  main.o [1]
+  .rodata            const     0x801'8628     0x1c  mem.o [1]
+  .rodata            const     0x801'8644     0x1c  mem.o [1]
+  .rodata            const     0x801'8660     0x1c  mem.o [1]
+  .rodata            const     0x801'867c     0x1c  mem.o [1]
+  .rodata            const     0x801'8698     0x1c  memp.o [1]
+  .rodata            const     0x801'86b4     0x1c  netif.o [1]
+  .rodata            const     0x801'86d0     0x1c  netif.o [1]
+  .rodata            const     0x801'86ec     0x1c  pbuf.o [1]
+  .rodata            const     0x801'8708     0x1c  pbuf.o [1]
+  .rodata            const     0x801'8724     0x1c  pbuf.o [1]
+  .rodata            const     0x801'8740     0x1c  tcp.o [1]
+  .rodata            const     0x801'875c     0x1c  tcp.o [1]
+  .rodata            const     0x801'8778     0x1c  tcp.o [1]
+  .rodata            const     0x801'8794     0x1c  tcp.o [1]
+  .rodata            const     0x801'87b0     0x1c  tcp.o [1]
+  .rodata            const     0x801'87cc     0x1c  tcp.o [1]
+  .rodata            const     0x801'87e8     0x1c  tcp.o [1]
+  .rodata            const     0x801'8804     0x1c  tcp.o [1]
+  .rodata            const     0x801'8820     0x1c  tcp.o [1]
+  .rodata            const     0x801'883c     0x1c  tcp_in.o [1]
+  .rodata            const     0x801'8858     0x1c  tcp_in.o [1]
+  .rodata            const     0x801'8874     0x1c  tcp_in.o [1]
+  .rodata            const     0x801'8890     0x1c  tcp_in.o [1]
+  .rodata            const     0x801'88ac     0x1c  tcp_in.o [1]
+  .rodata            const     0x801'88c8     0x1c  tcp_out.o [1]
+  .rodata            const     0x801'88e4     0x1c  tcp_out.o [1]
+  .rodata            const     0x801'8900     0x1c  tcp_out.o [1]
+  .rodata            const     0x801'891c     0x1c  tcp_out.o [1]
+  .rodata            const     0x801'8938     0x1c  tcp_out.o [1]
+  .rodata            const     0x801'8954     0x1c  tftp.o [1]
+  .rodata            const     0x801'8970     0x1c  tftp.o [1]
+  .rodata            const     0x801'898c     0x1c  tftp.o [1]
+  .rodata            const     0x801'89a8     0x1c  tftp_example.o [1]
+  .rodata            const     0x801'89c4     0x1c  udp.o [1]
+  .rodata            const     0x801'89e0     0x1c  udp.o [1]
+  .rodata            const     0x801'89fc     0x1c  udp.o [1]
+  .rodata            const     0x801'8a18     0x1c  udp.o [1]
+  .rodata            const     0x801'8a34     0x1c  udp.o [1]
+  .rodata            const     0x801'8a50     0x1c  udp.o [1]
+  .rodata            const     0x801'8a6c     0x18  etharp.o [1]
+  .rodata            const     0x801'8a84     0x18  mem.o [1]
+  .rodata            const     0x801'8a9c     0x18  mem.o [1]
+  .rodata            const     0x801'8ab4     0x18  pbuf.o [1]
+  .rodata            const     0x801'8acc     0x18  pbuf.o [1]
+  .rodata            const     0x801'8ae4     0x18  pbuf.o [1]
+  .rodata            const     0x801'8afc     0x18  pbuf.o [1]
+  .rodata            const     0x801'8b14     0x18  Task.o [1]
+  .rodata            const     0x801'8b2c     0x18  tcp.o [1]
+  .rodata            const     0x801'8b44     0x18  tcp.o [1]
+  .rodata            const     0x801'8b5c     0x18  tcp.o [1]
+  .rodata            const     0x801'8b74     0x18  tcp.o [1]
+  .rodata            const     0x801'8b8c     0x18  tcp_in.o [1]
+  .rodata            const     0x801'8ba4     0x18  tcp_in.o [1]
+  .rodata            const     0x801'8bbc     0x18  tcp_out.o [1]
+  .rodata            const     0x801'8bd4     0x18  tcp_out.o [1]
+  .rodata            const     0x801'8bec     0x18  tcp_out.o [1]
+  .rodata            const     0x801'8c04     0x18  tcp_out.o [1]
+  .rodata            const     0x801'8c1c     0x18  tcp_out.o [1]
+  .rodata            const     0x801'8c34     0x18  tftp.o [1]
+  .rodata            const     0x801'8c4c     0x18  tftp.o [1]
+  .rodata            const     0x801'8c64     0x18  tftp.o [1]
+  .rodata            const     0x801'8c7c     0x18  tftp.o [1]
+  .rodata            const     0x801'8c94     0x18  tftp.o [1]
+  .rodata            const     0x801'8cac     0x18  tftp.o [1]
+  .rodata            const     0x801'8cc4     0x18  tftp.o [1]
+  .rodata            const     0x801'8cdc     0x18  tftp_example.o [1]
+  .rodata            const     0x801'8cf4     0x18  tftp_example.o [1]
+  .rodata            const     0x801'8d0c     0x18  tftp_example.o [1]
+  .rodata            const     0x801'8d24     0x18  timeouts.o [1]
+  .rodata            const     0x801'8d3c     0x18  udp.o [1]
+  .rodata            const     0x801'8d54     0x18  udp.o [1]
+  .rodata            const     0x801'8d6c     0x18  udp.o [1]
+  .rodata            const     0x801'8d84     0x18  udp.o [1]
+  .rodata            const     0x801'8d9c     0x18  udp.o [1]
+  .text              ro code   0x801'8db4     0x16  xprout.o [2]
+  .text              ro code   0x801'8dcc      0xc  putchar.o [2]
+  .rodata            const     0x801'8dd8     0x14  etharp.o [1]
+  .rodata            const     0x801'8dec     0x14  ip4_frag.o [1]
+  .rodata            const     0x801'8e00     0x14  mem.o [1]
+  .rodata            const     0x801'8e14     0x14  memp.o [1]
+  .rodata            const     0x801'8e28     0x14  netif.o [1]
+  .rodata            const     0x801'8e3c     0x14  pbuf.o [1]
+  .rodata            const     0x801'8e50     0x14  pbuf.o [1]
+  .rodata            const     0x801'8e64     0x14  pbuf.o [1]
+  .rodata            const     0x801'8e78     0x14  pbuf.o [1]
+  .rodata            const     0x801'8e8c     0x14  tcp.o [1]
+  .rodata            const     0x801'8ea0     0x14  tcp_in.o [1]
+  .rodata            const     0x801'8eb4     0x14  tcp_out.o [1]
+  .rodata            const     0x801'8ec8     0x14  tftp.o [1]
+  .rodata            const     0x801'8edc     0x14  tftp.o [1]
+  .rodata            const     0x801'8ef0     0x14  tftp.o [1]
+  .rodata            const     0x801'8f04     0x14  tftp.o [1]
+  .rodata            const     0x801'8f18     0x14  tftp_example.o [1]
+  .rodata            const     0x801'8f2c     0x14  tftp_example.o [1]
+  .rodata            const     0x801'8f40     0x14  tftp_example.o [1]
+  .rodata            const     0x801'8f54     0x10  Display.o [1]
+  .rodata            const     0x801'8f64     0x10  Display.o [1]
+  .rodata            const     0x801'8f74     0x10  etharp.o [1]
+  .rodata            const     0x801'8f84     0x10  etharp.o [1]
+  .rodata            const     0x801'8f94     0x10  etharp.o [1]
+  .rodata            const     0x801'8fa4     0x10  ethernetif.o [1]
+  .rodata            const     0x801'8fb4     0x10  ip4_frag.o [1]
+  .rodata            const     0x801'8fc4     0x10  ip4_frag.o [1]
+  .rodata            const     0x801'8fd4     0x10  main.o [1]
+  .rodata            const     0x801'8fe4     0x10  netif.o [1]
+  .rodata            const     0x801'8ff4     0x10  pbuf.o [1]
+  .rodata            const     0x801'9004     0x10  pbuf.o [1]
+  .rodata            const     0x801'9014     0x10  system_stm32f4xx.o [1]
+  .rodata            const     0x801'9024     0x10  tcp.o [1]
+  .rodata            const     0x801'9034     0x10  tcp.o [1]
+  .rodata            const     0x801'9044     0x10  tcp.o [1]
+  .rodata            const     0x801'9054     0x10  tcp_in.o [1]
+  .rodata            const     0x801'9064     0x10  tcp_in.o [1]
+  .rodata            const     0x801'9074     0x10  tcp_in.o [1]
+  .rodata            const     0x801'9084     0x10  tcp_in.o [1]
+  .rodata            const     0x801'9094     0x10  tcp_out.o [1]
+  .rodata            const     0x801'90a4     0x10  tcp_out.o [1]
+  .rodata            const     0x801'90b4     0x10  tftp.o [1]
+  .rodata            const     0x801'90c4     0x10  tftp.o [1]
+  .rodata            const     0x801'90d4     0x10  tftp.o [1]
+  .rodata            const     0x801'90e4     0x10  tftp.o [1]
+  .rodata            const     0x801'90f4     0x10  tftp_example.o [1]
+  .text              ro code   0x801'9104     0x10  startup_stm32f407xx.o [1]
+  .rodata            const     0x801'9114      0xc  Display.o [1]
+  .rodata            const     0x801'9120      0xc  Display.o [1]
+  .rodata            const     0x801'912c      0xc  Display.o [1]
+  .rodata            const     0x801'9138      0xc  Display.o [1]
+  .rodata            const     0x801'9144      0xc  Display.o [1]
+  .rodata            const     0x801'9150      0xc  Display.o [1]
+  .rodata            const     0x801'915c      0xc  etharp.o [1]
+  .rodata            const     0x801'9168      0xc  ethernetif.o [1]
+  .rodata            const     0x801'9174      0xc  ip4.o [1]
+  .rodata            const     0x801'9180      0xc  ip4_addr.o [1]
+  .rodata            const     0x801'918c      0xc  ip4_frag.o [1]
+  .rodata            const     0x801'9198      0xc  ip4_frag.o [1]
+  .rodata            const     0x801'91a4      0xc  ip4_frag.o [1]
+  .rodata            const     0x801'91b0      0xc  ip4_frag.o [1]
+  .rodata            const     0x801'91bc      0xc  ip4_frag.o [1]
+  .rodata            const     0x801'91c8      0xc  memp.o [1]
+  .rodata            const     0x801'91d4      0xc  memp.o [1]
+  .rodata            const     0x801'91e0      0xc  memp.o [1]
+  .rodata            const     0x801'91ec      0xc  memp.o [1]
+  .rodata            const     0x801'91f8      0xc  memp.o [1]
+  .rodata            const     0x801'9204      0xc  memp.o [1]
+  .rodata            const     0x801'9210      0xc  memp.o [1]
+  .rodata            const     0x801'921c      0xc  memp.o [1]
+  .rodata            const     0x801'9228      0xc  memp.o [1]
+  .rodata            const     0x801'9234      0xc  pbuf.o [1]
+  .rodata            const     0x801'9240      0xc  tcp.o [1]
+  .rodata            const     0x801'924c      0xc  tcp_in.o [1]
+  .rodata            const     0x801'9258      0xc  tcp_out.o [1]
+  .rodata            const     0x801'9264      0xc  tftp.o [1]
+  .rodata            const     0x801'9270      0xc  tftp.o [1]
+  .rodata            const     0x801'927c      0xc  tftp_example.o [1]
+  .text              ro code   0x801'9288      0xc  cstartup_M.o [4]
+  .rodata            const     0x801'9294      0x8  Display.o [1]
+  .rodata            const     0x801'929c      0x8  Display.o [1]
+  .rodata            const     0x801'92a4      0x8  Display.o [1]
+  .rodata            const     0x801'92ac      0x8  Display.o [1]
+  .rodata            const     0x801'92b4      0x8  ethernet.o [1]
+  .rodata            const     0x801'92bc      0x8  ethernet.o [1]
+  .rodata            const     0x801'92c4      0x8  ethernetif.o [1]
+  .rodata            const     0x801'92cc      0x8  system_stm32f4xx.o [1]
+  .rodata            const     0x801'92d4      0x8  tcp.o [1]
+  .rodata            const     0x801'92dc      0x8  tcp_in.o [1]
+  .rodata            const     0x801'92e4      0x8  tcp_in.o [1]
+  .rodata            const     0x801'92ec      0x8  tftp.o [1]
+  .rodata            const     0x801'92f4      0x8  tftp.o [1]
+  .rodata            const     0x801'92fc      0x8  tftp.o [1]
+  .rodata            const     0x801'9304      0x8  tftp_example.o [1]
+  .rodata            const     0x801'930c      0x6  xlocale_c.o [2]
+  .rodata            const     0x801'9314      0x4  ip4_addr.o [1]
+  .text              ro code   0x801'9318      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'931c      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9320      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9324      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9328      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'932c      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9330      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9334      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9338      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'933c      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9340      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9344      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9348      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'934c      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9350      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9354      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9358      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'935c      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9360      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9364      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9368      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'936c      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9370      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9374      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9378      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'937c      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9380      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9384      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9388      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'938c      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9390      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9394      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9398      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'939c      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93a0      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93a4      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93a8      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93ac      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93b0      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93b4      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93b8      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93bc      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93c0      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93c4      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93c8      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93cc      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93d0      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93d4      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93d8      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93dc      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93e0      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93e4      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93e8      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93ec      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93f0      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93f4      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93f8      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'93fc      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9400      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9404      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9408      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'940c      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9410      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9414      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9418      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'941c      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9420      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9424      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9428      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'942c      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9430      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9434      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9438      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'943c      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9440      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9444      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9448      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'944c      0x4  startup_stm32f407xx.o [1]
+  .text              ro code   0x801'9450      0x0  cstart_closeall.o [4]
+  .rodata            const     0x801'9450      0x0  zero_init3.o [4]
+  .rodata            const     0x801'9450      0x0  lz77_init_single.o [4]
+  Initializer bytes  const     0x801'9450    0x10b  <for P2-1>
+                             - 0x801'955b  0x193d3
+
+"P2", part 1 of 3:                           0x209
+  P2-1                        0x2000'0000    0x209  <Init block>
+    .data            inited   0x2000'0000     0x14  ethernetif.o [1]
+    .data            inited   0x2000'0014      0x8  fonts.o [1]
+    .data            inited   0x2000'001c      0x8  fonts.o [1]
+    .data            inited   0x2000'0024      0x8  fonts.o [1]
+    .data            inited   0x2000'002c     0x44  lcd.o [1]
+    .data            inited   0x2000'0070      0x4  stm32f4xx_hal.o [1]
+    .data            inited   0x2000'0074      0x4  system_stm32f4xx.o [1]
+    .data            inited   0x2000'0078      0x4  tcp.o [1]
+    .data            inited   0x2000'007c      0x8  rand.o [2]
+    .data            inited   0x2000'0084     0x38  xlocale_c.o [2]
+    .data            inited   0x2000'00bc     0x48  xlocale_c.o [2]
+    .data            inited   0x2000'0104     0x48  xfiles.o [2]
+    .data            inited   0x2000'014c     0x48  xfiles.o [2]
+    .data            inited   0x2000'0194     0x48  xfiles.o [2]
+    .data            inited   0x2000'01dc     0x20  xfiles.o [2]
+    .data            inited   0x2000'01fc      0x8  XShttio.o [2]
+    .data            inited   0x2000'0204      0x2  tcp.o [1]
+    .data            inited   0x2000'0206      0x2  udp.o [1]
+    .data            inited   0x2000'0208      0x1  stm32f4xx_hal.o [1]
+                            - 0x2000'0209    0x209
+
+"P2", part 2 of 3:                          0xcf38
+  .bss               zero     0x2000'020c   0x3d44  ethernetif.o [1]
+  .bss               zero     0x2000'3f50   0x3024  memp.o [1]
+  .bss               zero     0x2000'6f74   0x2814  mem.o [1]
+  .bss               zero     0x2000'9788    0xf18  Sensor_Upload.o [1]
+  .bss               zero     0x2000'a6a0    0x824  Sensor_Upload.o [1]
+  .bss               zero     0x2000'aec4    0x810  CRC.o [1]
+  .bss               zero     0x2000'b6d4    0x5f4  memp.o [1]
+  .bss               zero     0x2000'bcc8    0x48c  SD_Card.o [1]
+  .bss               zero     0x2000'c154    0x1b8  ili9225g.o [1]
+  .bss               zero     0x2000'c30c    0x16c  memp.o [1]
+  .bss               zero     0x2000'c478    0x100  tftp_example.o [1]
+  .bss               zero     0x2000'c578     0xf0  etharp.o [1]
+  .bss               zero     0x2000'c668     0xc4  memp.o [1]
+  .bss               zero     0x2000'c72c     0xb0  ethernetif.o [1]
+  .bss               zero     0x2000'c7dc     0xa4  memp.o [1]
+  .bss               zero     0x2000'c880     0xa4  memp.o [1]
+  .bss               zero     0x2000'c924     0xa4  memp.o [1]
+  .bss               zero     0x2000'c9c8     0xa0  ethernetif.o [1]
+  .bss               zero     0x2000'ca68     0xa0  ethernetif.o [1]
+  .bss               zero     0x2000'cb08     0x90  memp.o [1]
+  .bss               zero     0x2000'cb98     0x84  memp.o [1]
+  .bss               zero     0x2000'cc1c     0x84  SD_Card.o [1]
+  .bss               zero     0x2000'cca0     0x84  rand.o [2]
+  .bss               zero     0x2000'cd24     0x80  XShHandles.o [2]
+  .bss               zero     0x2000'cda4     0x50  fsmc.o [1]
+  .bss               zero     0x2000'cdf4     0x50  xfiles.o [2]
+  .bss               zero     0x2000'ce44     0x50  xfiles.o [2]
+  .bss               zero     0x2000'ce94     0x40  main.o [1]
+  .bss               zero     0x2000'ced4     0x40  usart.o [1]
+  .bss               zero     0x2000'cf14     0x40  usart.o [1]
+  .bss               zero     0x2000'cf54     0x38  ethernetif.o [1]
+  .bss               zero     0x2000'cf8c     0x34  main.o [1]
+  .bss               zero     0x2000'cfc0     0x28  tftp.o [1]
+  .bss               zero     0x2000'cfe8     0x20  ethernetif.o [1]
+  .bss               zero     0x2000'd008     0x20  stm32f4xx_hal_flash.o [1]
+  .bss               zero     0x2000'd028     0x18  ip.o [1]
+  .bss               zero     0x2000'd040     0x10  tcp_in.o [1]
+  .bss               zero     0x2000'd050      0xc  ff_gen_drv.o [1]
+  .bss               zero     0x2000'd05c      0xc  gdi.o [1]
+  .bss               zero     0x2000'd068      0xc  IO_Ctrl.o [1]
+  .bss               zero     0x2000'd074      0x8  heap0.o [2]
+  .bss               zero     0x2000'd07c      0x4  app_ethernet.o [1]
+  .bss               zero     0x2000'd080      0x4  ethernetif.o [1]
+  .bss               zero     0x2000'd084      0x4  gdi.o [1]
+  .bss               zero     0x2000'd088      0x4  ili9225g.o [1]
+  .bss               zero     0x2000'd08c      0x4  ip4_frag.o [1]
+  .bss               zero     0x2000'd090      0x4  mem.o [1]
+  .bss               zero     0x2000'd094      0x4  mem.o [1]
+  .bss               zero     0x2000'd098      0x4  mem.o [1]
+  .bss               zero     0x2000'd09c      0x4  memp.o [1]
+  .bss               zero     0x2000'd0a0      0x4  memp.o [1]
+  .bss               zero     0x2000'd0a4      0x4  memp.o [1]
+  .bss               zero     0x2000'd0a8      0x4  memp.o [1]
+  .bss               zero     0x2000'd0ac      0x4  memp.o [1]
+  .bss               zero     0x2000'd0b0      0x4  memp.o [1]
+  .bss               zero     0x2000'd0b4      0x4  memp.o [1]
+  .bss               zero     0x2000'd0b8      0x4  memp.o [1]
+  .bss               zero     0x2000'd0bc      0x4  memp.o [1]
+  .bss               zero     0x2000'd0c0      0x4  netif.o [1]
+  .bss               zero     0x2000'd0c4      0x4  netif.o [1]
+  .bss               zero     0x2000'd0c8      0x4  stm32f4xx_hal.o [1]
+  .bss               zero     0x2000'd0cc      0x4  stm32f4xx_hal_msp.o [1]
+  .bss               zero     0x2000'd0d0      0x4  stm32f4xx_hal_msp.o [1]
+  .bss               zero     0x2000'd0d4      0x4  Task.o [1]
+  .bss               zero     0x2000'd0d8      0x4  Task.o [1]
+  .bss               zero     0x2000'd0dc      0x4  Task.o [1]
+  .bss               zero     0x2000'd0e0      0x4  tcp.o [1]
+  .bss               zero     0x2000'd0e4      0x4  tcp.o [1]
+  .bss               zero     0x2000'd0e8      0x4  tcp.o [1]
+  .bss               zero     0x2000'd0ec      0x4  tcp.o [1]
+  .bss               zero     0x2000'd0f0      0x4  tcp.o [1]
+  .bss               zero     0x2000'd0f4      0x4  tcp_in.o [1]
+  .bss               zero     0x2000'd0f8      0x4  tcp_in.o [1]
+  .bss               zero     0x2000'd0fc      0x4  tcp_in.o [1]
+  .bss               zero     0x2000'd100      0x4  tcp_in.o [1]
+  .bss               zero     0x2000'd104      0x4  tcp_in.o [1]
+  .bss               zero     0x2000'd108      0x4  tcp_in.o [1]
+  .bss               zero     0x2000'd10c      0x4  tftp.o [1]
+  .bss               zero     0x2000'd110      0x4  timeouts.o [1]
+  .bss               zero     0x2000'd114      0x4  timeouts.o [1]
+  .bss               zero     0x2000'd118      0x4  timeouts.o [1]
+  .bss               zero     0x2000'd11c      0x4  udp.o [1]
+  .bss               zero     0x2000'd120      0x4  xfail_s.o [2]
+  .bss               zero     0x2000'd124      0x4  xgetmemchunk.o [2]
+  .bss               zero     0x2000'd128      0x2  ip4.o [1]
+  .bss               zero     0x2000'd12a      0x2  ip4_frag.o [1]
+  .bss               zero     0x2000'd12c      0x2  tcp_in.o [1]
+  .bss               zero     0x2000'd12e      0x2  tcp_in.o [1]
+  .bss               zero     0x2000'd130      0x2  tcp_in.o [1]
+  .bss               zero     0x2000'd132      0x2  tcp_in.o [1]
+  .bss               zero     0x2000'd134      0x2  tcp_in.o [1]
+  .bss               zero     0x2000'd136      0x1  etharp.o [1]
+  .bss               zero     0x2000'd137      0x1  ethernetif.o [1]
+  .bss               zero     0x2000'd138      0x1  main.o [1]
+  .bss               zero     0x2000'd139      0x1  netif.o [1]
+  .bss               zero     0x2000'd13a      0x1  Task.o [1]
+  .bss               zero     0x2000'd13b      0x1  Task.o [1]
+  .bss               zero     0x2000'd13c      0x1  tcp.o [1]
+  .bss               zero     0x2000'd13d      0x1  tcp.o [1]
+  .bss               zero     0x2000'd13e      0x1  tcp.o [1]
+  .bss               zero     0x2000'd13f      0x1  tcp_in.o [1]
+  .bss               zero     0x2000'd140      0x1  tcp_in.o [1]
+  .bss               zero     0x2000'd141      0x1  XShttio.o [2]
+                            - 0x2000'd142   0xcf36
+
+"P2", part 3 of 3:                          0xc000
+  CSTACK                      0x2000'd148   0x4000  <Block>
+    CSTACK           uninit   0x2000'd148   0x4000  <Block tail>
+  HEAP                        0x2001'1148   0x8000  <Block>
+    HEAP             uninit   0x2001'1148   0x8000  <Block tail>
+                            - 0x2001'9148   0xc000
+
+Unused ranges:
+
+         From           To      Size
+         ----           --      ----
+   0x801'955b   0x80f'ffff  0xe'6aa5
+  0x2000'0209  0x2000'020b       0x3
+  0x2000'd144  0x2000'd147       0x4
+  0x2001'9148  0x2001'ffff    0x6eb8
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0xcf36:
+          0x2000'020c  0xcf36
+
+Copy/lz77 (__iar_lz77_init_single3)
+    1 source range, total size 0x10b (51% of destination):
+           0x801'9450   0x10b
+    1 destination range, total size 0x209:
+          0x2000'0000   0x209
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                    ro code  ro data  rw data
+    ------                    -------  -------  -------
+command line/config:
+    ---------------------------------------------------
+    Total:
+
+D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj: [1]
+    CRC.o                         348       80    2 064
+    Display.o                     604      136
+    IO_Ctrl.o                     216                12
+    SD_Card.o                      28       72    1 296
+    Sensor_Upload.o             1 680       64    5 948
+    Task.o                        348       24       14
+    app_ethernet.o                 72       64        4
+    bsp_driver_sd.o                20
+    def.o                          44
+    dp83848.o                     486
+    etharp.o                    2 856      620      241
+    ethernet.o                    344      200
+    ethernetif.o                1 312      158   16 293
+    fatfs.o                        24
+    ff_gen_drv.o                   92                12
+    flash_if.o                    184       88
+    fonts.o                             22 432       24
+    fsmc.o                        480       76       80
+    gdi.o                       1 420                16
+    gpio.o                        392
+    icmp.o                        724      284
+    ili9225g.o                  1 228               444
+    inet_chksum.o                 214
+    init.o                         68      196
+    ip.o                                             24
+    ip4.o                       1 032      192        2
+    ip4_addr.o                    552      152
+    ip4_frag.o                  2 688      588        6
+    lcd.o                         292       35       68
+    main.o                        632      184      117
+    mem.o                       1 548      644   10 272
+    memp.o                        376      420   15 212
+    netif.o                     1 092      444        9
+    pbuf.o                      2 736      908
+    startup_stm32f407xx.o         720
+    stm32f4xx_hal.o               204        3        9
+    stm32f4xx_hal_cortex.o        440
+    stm32f4xx_hal_crc.o           162
+    stm32f4xx_hal_dma.o            40
+    stm32f4xx_hal_eth.o         3 272
+    stm32f4xx_hal_flash.o         512                32
+    stm32f4xx_hal_flash_ex.o      400
+    stm32f4xx_hal_gpio.o        1 080
+    stm32f4xx_hal_msp.o           396                 8
+    stm32f4xx_hal_rcc.o         1 616
+    stm32f4xx_hal_sd.o             58
+    stm32f4xx_hal_sram.o          128
+    stm32f4xx_hal_tim.o           382
+    stm32f4xx_hal_tim_ex.o          4
+    stm32f4xx_hal_uart.o        2 178
+    stm32f4xx_it.o                 66
+    stm32f4xx_ll_fsmc.o           296
+    stm32f4xx_ll_sdmmc.o           10
+    system_stm32f4xx.o             96       26        4
+    tcp.o                       4 340    1 391       29
+    tcp_in.o                    5 976    1 048       52
+    tcp_out.o                   4 380    1 384
+    tftp.o                      2 284      856       44
+    tftp_example.o                480      380      256
+    timeouts.o                    532      276       12
+    udp.o                       2 016      777        6
+    usart.o                     1 372       76      128
+    ---------------------------------------------------
+    Total:                     57 572   34 278   52 738
+
+dl7M_tlf.a: [2]
+    XShHandles.o                  272               128
+    XShttio.o                      60        4        9
+    abort.o                         6
+    exit.o                          4
+    fclose.o                      126
+    fflush.o                      172
+    fopen.o                        42
+    fread.o                       140
+    fseek.o                        36
+    fwrite.o                      178
+    heap0.o                       320                 8
+    heaptramp0.o                    4
+    isdigit.o                      10
+    islower.o                      20
+    isspace.o                      20
+    isxdigit.o                     30
+    low_level_init.o                4
+    printf.o                       40
+    putchar.o                      12
+    rand.o                        164        4      140
+    snprintf.o                     68
+    sprintf.o                      64
+    xcloseall.o                    60
+    xencoding_8859_1.o             30
+    xfail_s.o                      64                 4
+    xfgpos.o                       12
+    xfiles.o                               127      408
+    xfofind.o                     212
+    xfopen.o                       76
+    xfoprep.o                     252       72
+    xfrprep.o                     182
+    xfspos.o                      216
+    xfwprep.o                     180
+    xgetmemchunk.o                 44                 4
+    xlocale_c.o                   156       72      128
+    xmbcurmax.o                    10
+    xprintffull.o               3 910
+    xprout.o                       22
+    xsnprout.o                     26
+    xsprout.o                      10
+    ---------------------------------------------------
+    Total:                      7 254      279      829
+
+m7M_tls.a: [3]
+    DblAdd.o                      362
+    DblCmpGe.o                     46
+    DblCmpLe.o                     46
+    DblDiv.o                      582
+    DblMul.o                      418
+    DblSub.o                      226
+    DblToS32.o                     58
+    DblToU32.o                     40
+    FltToDbl.o                     72
+    S32ToDbl.o                     34
+    U32ToDbl.o                     26
+    fpinit_M.o                     34
+    frexp.o                       112
+    ldexp.o                       314
+    ---------------------------------------------------
+    Total:                      2 370
+
+rt7M_tl.a: [4]
+    ABImemclr4.o                    6
+    ABImemcpy.o                   166
+    ABImemset.o                   102
+    ABImemset48.o                  50
+    I64DivMod.o                   560
+    I64DivZer.o                     2
+    cexit.o                        14
+    cmain.o                        30
+    cstart_closeall.o
+    cstartup_M.o                   12
+    data_init.o                    40
+    lz77_init_single.o            122
+    memchr.o                       88
+    memcmp.o                      104
+    strchr.o                       22
+    strlen.o                       54
+    zero_init3.o                   58
+    ---------------------------------------------------
+    Total:                      1 430
+
+shb_l.a: [5]
+    close.o                        24
+    dwrite.o                       30
+    exit.o                         20
+    iarttio.o                     128
+    iarwrite.o                     34
+    iarwstd.o                      32
+    lseek.o                        74
+    open.o                         72
+    read.o                         48
+    remove.o                       20
+    write.o                        16
+    ---------------------------------------------------
+    Total:                        498
+
+    Gaps                           50        8
+    Linker created                          32   49 152
+-------------------------------------------------------
+    Grand Total:               69 174   34 597  102 719
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address    Size  Type      Object
+-----                       -------    ----  ----      ------
+.iar.init_table$$Base    0x801'80e8           --   Gb  - Linker created -
+.iar.init_table$$Limit   0x801'8108           --   Gb  - Linker created -
+?main                    0x801'8549          Code  Gb  cmain.o [4]
+AHBPrescTable            0x801'9014    0x10  Data  Gb  system_stm32f4xx.o [1]
+APBPrescTable            0x801'92cc     0x8  Data  Gb  system_stm32f4xx.o [1]
+Address_Check            0x801'29a5    0x12  Code  Lc  Sensor_Upload.o [1]
+Aldata                  0x2000'd074     0x8  Data  Lc  heap0.o [2]
+ArrayRGB                0x2000'c154   0x1b8  Data  Lc  ili9225g.o [1]
+BSP_SD_DeInit            0x801'38b9     0xe  Code  Gb  bsp_driver_sd.o [1]
+BootKey_Check            0x801'0399    0x6a  Code  Gb  Task.o [1]
+BusFault_Handler         0x801'6c63     0x2  Code  Gb  stm32f4xx_it.o [1]
+CRC_Calculate            0x801'04b9    0xee  Code  Gb  CRC.o [1]
+CRC_DeInit               0x801'05a7    0x20  Code  Gb  CRC.o [1]
+CRC_Handle              0x2000'aec4   0x810  Data  Gb  CRC.o [1]
+CRC_Init                 0x801'047d    0x3c  Code  Gb  CRC.o [1]
+CSTACK$$Base            0x2000'd148           --   Gb  - Linker created -
+CSTACK$$Limit           0x2001'1148           --   Gb  - Linker created -
+CacheMore                0x800'cdd3    0x24  Code  Lc  xlocale_c.o [2]
+DMARxDscrTab            0x2000'c9c8    0xa0  Data  Gb  ethernetif.o [1]
+DMATxDscrTab            0x2000'ca68    0xa0  Data  Gb  ethernetif.o [1]
+DP83848                 0x2000'cfe8    0x20  Data  Gb  ethernetif.o [1]
+DP83848_GetLinkState     0x800'f21d    0xc6  Code  Gb  dp83848.o [1]
+DP83848_IOCtx           0x2000'0000    0x14  Data  Gb  ethernetif.o [1]
+DP83848_Init             0x800'f133    0xea  Code  Gb  dp83848.o [1]
+DP83848_RegisterBusIO    0x800'f0fd    0x36  Code  Gb  dp83848.o [1]
+DebugMon_Handler         0x801'6c69     0x2  Code  Gb  stm32f4xx_it.o [1]
+DrawChar                 0x801'0ee1   0x1f4  Code  Lc  gdi.o [1]
+DrawProp                0x2000'd05c     0xc  Data  Gb  gdi.o [1]
+ETH_DMARxDescListInit    0x800'eec7    0x82  Code  Lc  stm32f4xx_hal_eth.o [1]
+ETH_DMATxDescListInit    0x800'ee61    0x66  Code  Lc  stm32f4xx_hal_eth.o [1]
+ETH_FlushTransmitFIFO    0x800'eb41    0x2c  Code  Lc  stm32f4xx_hal_eth.o [1]
+ETH_MACAddressConfig     0x800'ee0b    0x2e  Code  Lc  stm32f4xx_hal_eth.o [1]
+ETH_MACDMAConfig         0x800'ed2f    0xdc  Code  Lc  stm32f4xx_hal_eth.o [1]
+ETH_PHY_IO_DeInit        0x800'b671     0x4  Code  Gb  ethernetif.o [1]
+ETH_PHY_IO_GetTick       0x800'b6b9     0x8  Code  Gb  ethernetif.o [1]
+ETH_PHY_IO_Init          0x800'b665     0xc  Code  Gb  ethernetif.o [1]
+ETH_PHY_IO_ReadReg       0x800'b675    0x22  Code  Gb  ethernetif.o [1]
+ETH_PHY_IO_WriteReg      0x800'b697    0x22  Code  Gb  ethernetif.o [1]
+ETH_Prepare_Tx_Descriptors
+                         0x800'ef49   0x1b4  Code  Lc  stm32f4xx_hal_eth.o [1]
+ETH_SetDMAConfig         0x800'ec79    0xb6  Code  Lc  stm32f4xx_hal_eth.o [1]
+ETH_SetMACConfig         0x800'eb6d   0x10a  Code  Lc  stm32f4xx_hal_eth.o [1]
+ETH_UpdateDescriptor     0x800'e809    0xc2  Code  Lc  stm32f4xx_hal_eth.o [1]
+EXTI0_IRQHandler         0x801'6c95     0xa  Code  Gb  stm32f4xx_it.o [1]
+EthHandle               0x2000'c72c    0xb0  Data  Gb  ethernetif.o [1]
+EthernetLinkTimer       0x2000'd07c     0x4  Data  Gb  app_ethernet.o [1]
+Ethernet_Link_Periodic_Handle
+                         0x801'1461    0x20  Code  Gb  app_ethernet.o [1]
+FATFS_DeInit             0x801'38cd    0x10  Code  Gb  fatfs.o [1]
+FATFS_UnLinkDriver       0x801'413b     0xe  Code  Gb  ff_gen_drv.o [1]
+FATFS_UnLinkDriverEx     0x801'40f1    0x4a  Code  Gb  ff_gen_drv.o [1]
+FLASH_Erase_Sector       0x801'4845    0x60  Code  Gb  stm32f4xx_hal_flash_ex.o [1]
+FLASH_FlushCaches        0x801'48a5    0x50  Code  Gb  stm32f4xx_hal_flash_ex.o [1]
+FLASH_If_Erase           0x801'3f4d    0x3c  Code  Gb  flash_if.o [1]
+FLASH_If_Init            0x801'3f45     0x8  Code  Gb  flash_if.o [1]
+FLASH_If_Write           0x801'3f89    0x62  Code  Gb  flash_if.o [1]
+FLASH_MassErase          0x801'481d    0x28  Code  Lc  stm32f4xx_hal_flash_ex.o [1]
+FLASH_Program_Byte       0x801'46db    0x1a  Code  Lc  stm32f4xx_hal_flash.o [1]
+FLASH_Program_DoubleWord
+                         0x801'4679    0x26  Code  Lc  stm32f4xx_hal_flash.o [1]
+FLASH_Program_HalfWord   0x801'46bd    0x1e  Code  Lc  stm32f4xx_hal_flash.o [1]
+FLASH_Program_Word       0x801'469f    0x1e  Code  Lc  stm32f4xx_hal_flash.o [1]
+FLASH_SetErrorCode       0x801'46f5    0x68  Code  Lc  stm32f4xx_hal_flash.o [1]
+FLASH_WaitForLastOperation
+                         0x801'4629    0x50  Code  Gb  stm32f4xx_hal_flash.o [1]
+FSMC_DeInit              0x801'110f    0x20  Code  Gb  fsmc.o [1]
+FSMC_DeInitialized      0x2000'd0d0     0x4  Data  Lc  stm32f4xx_hal_msp.o [1]
+FSMC_Init                0x801'10dd    0x32  Code  Gb  fsmc.o [1]
+FSMC_Initialized        0x2000'd0cc     0x4  Data  Lc  stm32f4xx_hal_msp.o [1]
+FSMC_NORSRAM_DeInit      0x801'41a7    0x3a  Code  Gb  stm32f4xx_ll_fsmc.o [1]
+FSMC_NORSRAM_Extended_Timing_Init
+                         0x801'4227    0x44  Code  Gb  stm32f4xx_ll_fsmc.o [1]
+FSMC_NORSRAM_Init        0x801'414d    0x5a  Code  Gb  stm32f4xx_ll_fsmc.o [1]
+FSMC_NORSRAM_Timing_Init
+                         0x801'41e1    0x46  Code  Gb  stm32f4xx_ll_fsmc.o [1]
+FSMC_SramBank1_ReadData
+                         0x801'1141     0x8  Code  Gb  fsmc.o [1]
+FSMC_SramBank1_WriteData
+                         0x801'112f     0x6  Code  Gb  fsmc.o [1]
+FSMC_SramBank1_WriteReg
+                         0x801'1135     0xc  Code  Gb  fsmc.o [1]
+Font07x12               0x2000'0014     0x8  Data  Gb  fonts.o [1]
+Font07x12_Table          0x801'5bc0   0x474  Data  Gb  fonts.o [1]
+Font11x16               0x2000'001c     0x8  Data  Gb  fonts.o [1]
+Font11x16_Table          0x801'4b14   0xbe0  Data  Gb  fonts.o [1]
+Font29x48               0x2000'0024     0x8  Data  Gb  fonts.o [1]
+Font29x48_Table          0x800'0188  0x4740  Data  Gb  fonts.o [1]
+GDI_Clear                0x801'0be5    0x3e  Code  Gb  gdi.o [1]
+GDI_DeInit               0x801'0b9d     0xc  Code  Gb  gdi.o [1]
+GDI_DisplayChar          0x801'0c53    0x3a  Code  Gb  gdi.o [1]
+GDI_DrawHLine            0x801'0e0b    0x5e  Code  Gb  gdi.o [1]
+GDI_DrawPixel            0x801'0de3    0x28  Code  Gb  gdi.o [1]
+GDI_DrawVLine            0x801'0e69    0x5e  Code  Gb  gdi.o [1]
+GDI_GetXSize             0x801'0ba9     0xe  Code  Gb  gdi.o [1]
+GDI_GetYSize             0x801'0bb7     0xe  Code  Gb  gdi.o [1]
+GDI_Init                 0x801'0b51    0x4c  Code  Gb  gdi.o [1]
+GDI_SetBackColor         0x801'0bd1     0xc  Code  Gb  gdi.o [1]
+GDI_SetFont              0x801'0bdd     0x8  Code  Gb  gdi.o [1]
+GDI_SetTextColor         0x801'0bc5     0xc  Code  Gb  gdi.o [1]
+GDI_StatusArea_Clear     0x801'0c23    0x30  Code  Gb  gdi.o [1]
+GDI_String               0x801'0cbb   0x128  Code  Gb  gdi.o [1]
+GDI_StringColor          0x801'0c8d    0x2e  Code  Gb  gdi.o [1]
+GPIO_DeInit              0x801'13a3    0x8c  Code  Gb  gpio.o [1]
+GPIO_Init                0x801'1149    0xd8  Code  Lc  fsmc.o [1]
+GPIO_Init                0x801'12bd    0xe6  Code  Gb  gpio.o [1]
+GPIO_Init                0x801'61e1    0x8e  Code  Lc  lcd.o [1]
+GPIO_Initialize          0x800'ffd7    0x4c  Code  Lc  main.o [1]
+HAL_CRC_Calculate        0x801'3003    0x34  Code  Gb  stm32f4xx_hal_crc.o [1]
+HAL_CRC_DeInit           0x801'2fc1    0x42  Code  Gb  stm32f4xx_hal_crc.o [1]
+HAL_CRC_Init             0x801'2f99    0x28  Code  Gb  stm32f4xx_hal_crc.o [1]
+HAL_DMA_Abort_IT         0x801'4089    0x28  Code  Gb  stm32f4xx_hal_dma.o [1]
+HAL_Delay                0x800'fda5    0x28  Code  Wk  stm32f4xx_hal.o [1]
+HAL_ETH_GetMACConfig     0x800'e9a3   0x104  Code  Gb  stm32f4xx_hal_eth.o [1]
+HAL_ETH_Init             0x800'e435    0xe8  Code  Gb  stm32f4xx_hal_eth.o [1]
+HAL_ETH_MspInit          0x800'b561   0x104  Code  Gb  ethernetif.o [1]
+HAL_ETH_ReadData         0x800'e6eb   0x11e  Code  Gb  stm32f4xx_hal_eth.o [1]
+HAL_ETH_ReadPHYRegister
+                         0x800'e8cb    0x6c  Code  Gb  stm32f4xx_hal_eth.o [1]
+HAL_ETH_RxAllocateCallback
+                         0x800'b79f    0x3e  Code  Gb  ethernetif.o [1]
+HAL_ETH_RxLinkCallback   0x800'b831    0x48  Code  Gb  ethernetif.o [1]
+HAL_ETH_SetMACConfig     0x800'eaa7    0x26  Code  Gb  stm32f4xx_hal_eth.o [1]
+HAL_ETH_SetMDIOClockRange
+                         0x800'eacd    0x6c  Code  Gb  stm32f4xx_hal_eth.o [1]
+HAL_ETH_Start            0x800'e51d    0x80  Code  Gb  stm32f4xx_hal_eth.o [1]
+HAL_ETH_Stop             0x800'e59d    0x76  Code  Gb  stm32f4xx_hal_eth.o [1]
+HAL_ETH_Transmit         0x800'e613    0xd8  Code  Gb  stm32f4xx_hal_eth.o [1]
+HAL_ETH_WritePHYRegister
+                         0x800'e937    0x6c  Code  Gb  stm32f4xx_hal_eth.o [1]
+HAL_FLASHEx_Erase        0x801'4775    0xa8  Code  Gb  stm32f4xx_hal_flash_ex.o [1]
+HAL_FLASH_Program        0x801'4575    0x92  Code  Gb  stm32f4xx_hal_flash.o [1]
+HAL_FLASH_Unlock         0x801'4607    0x22  Code  Gb  stm32f4xx_hal_flash.o [1]
+HAL_FSMC_MspDeInit       0x801'3a79    0x40  Code  Lc  stm32f4xx_hal_msp.o [1]
+HAL_FSMC_MspInit         0x801'39c5    0xaa  Code  Lc  stm32f4xx_hal_msp.o [1]
+HAL_GPIO_DeInit          0x800'f509   0x19c  Code  Gb  stm32f4xx_hal_gpio.o [1]
+HAL_GPIO_EXTI_Callback   0x800'fe0d    0x12  Code  Gb  main.o [1]
+HAL_GPIO_EXTI_IRQHandler
+                         0x800'f6d5    0x20  Code  Gb  stm32f4xx_hal_gpio.o [1]
+HAL_GPIO_Init            0x800'f2f9   0x210  Code  Gb  stm32f4xx_hal_gpio.o [1]
+HAL_GPIO_ReadPin         0x800'f6a5    0x16  Code  Gb  stm32f4xx_hal_gpio.o [1]
+HAL_GPIO_WritePin        0x800'f6bb    0x1a  Code  Gb  stm32f4xx_hal_gpio.o [1]
+HAL_GetTick              0x800'f2ed     0xc  Code  Wk  stm32f4xx_hal.o [1]
+HAL_IncTick              0x801'6ca1    0x18  Code  Wk  stm32f4xx_hal.o [1]
+HAL_Init                 0x801'148d    0x30  Code  Gb  stm32f4xx_hal.o [1]
+HAL_InitTick             0x801'0079    0x4c  Code  Wk  stm32f4xx_hal.o [1]
+HAL_MspInit              0x801'3965    0x36  Code  Gb  stm32f4xx_hal_msp.o [1]
+HAL_NVIC_DisableIRQ      0x801'19f1     0xe  Code  Gb  stm32f4xx_hal_cortex.o [1]
+HAL_NVIC_EnableIRQ       0x801'19e3     0xe  Code  Gb  stm32f4xx_hal_cortex.o [1]
+HAL_NVIC_SetPriority     0x801'19b9    0x2a  Code  Gb  stm32f4xx_hal_cortex.o [1]
+HAL_NVIC_SetPriorityGrouping
+                         0x801'19ad     0xc  Code  Gb  stm32f4xx_hal_cortex.o [1]
+HAL_NVIC_SystemReset     0x801'19ff     0x8  Code  Gb  stm32f4xx_hal_cortex.o [1]
+HAL_RCC_ClockConfig      0x800'f731   0x13e  Code  Gb  stm32f4xx_hal_rcc.o [1]
+HAL_RCC_GetHCLKFreq      0x800'f90d     0x6  Code  Gb  stm32f4xx_hal_rcc.o [1]
+HAL_RCC_GetPCLK1Freq     0x800'f913    0x16  Code  Gb  stm32f4xx_hal_rcc.o [1]
+HAL_RCC_GetPCLK2Freq     0x800'f929    0x16  Code  Gb  stm32f4xx_hal_rcc.o [1]
+HAL_RCC_MCOConfig        0x800'f86f    0x9e  Code  Gb  stm32f4xx_hal_rcc.o [1]
+HAL_RCC_OscConfig        0x801'1505   0x380  Code  Wk  stm32f4xx_hal_rcc.o [1]
+HAL_SD_DeInit            0x801'40b5    0x2c  Code  Gb  stm32f4xx_hal_sd.o [1]
+HAL_SD_MspDeInit         0x801'399b    0x2a  Code  Gb  stm32f4xx_hal_msp.o [1]
+HAL_SRAM_DeInit          0x801'3941    0x24  Code  Gb  stm32f4xx_hal_sram.o [1]
+HAL_SRAM_Init            0x801'38e5    0x5c  Code  Gb  stm32f4xx_hal_sram.o [1]
+HAL_SRAM_MspDeInit       0x801'3ab9     0xa  Code  Gb  stm32f4xx_hal_msp.o [1]
+HAL_SRAM_MspInit         0x801'3a6f     0xa  Code  Gb  stm32f4xx_hal_msp.o [1]
+HAL_SYSTICK_Callback     0x800'fe1f     0x8  Code  Gb  main.o [1]
+HAL_SYSTICK_Config       0x801'1a07     0xc  Code  Gb  stm32f4xx_hal_cortex.o [1]
+HAL_TIMEx_BreakCallback
+                         0x801'61b1     0x2  Code  Wk  stm32f4xx_hal_tim_ex.o [1]
+HAL_TIMEx_CommutCallback
+                         0x801'61b5     0x2  Code  Wk  stm32f4xx_hal_tim_ex.o [1]
+HAL_TIM_IRQHandler       0x801'6035   0x176  Code  Gb  stm32f4xx_hal_tim.o [1]
+HAL_TIM_PeriodElapsedCallback
+                         0x800'fe01     0xc  Code  Gb  main.o [1]
+HAL_UART_DeInit          0x801'30af    0x3e  Code  Gb  stm32f4xx_hal_uart.o [1]
+HAL_UART_IRQHandler      0x801'3299   0x14a  Code  Gb  stm32f4xx_hal_uart.o [1]
+HAL_UART_Init            0x801'3039    0x76  Code  Gb  stm32f4xx_hal_uart.o [1]
+HAL_UART_MspDeInit       0x801'085b    0xa0  Code  Gb  usart.o [1]
+HAL_UART_MspInit         0x801'0703   0x158  Code  Gb  usart.o [1]
+HAL_UART_Receive_IT      0x801'3227    0x72  Code  Gb  stm32f4xx_hal_uart.o [1]
+HAL_UART_RxCpltCallback
+                         0x801'08fb   0x18a  Code  Gb  usart.o [1]
+HAL_UART_Transmit        0x801'30ed    0xe0  Code  Gb  stm32f4xx_hal_uart.o [1]
+HAL_UART_Transmit_IT     0x801'31cd    0x5a  Code  Gb  stm32f4xx_hal_uart.o [1]
+HAL_UART_TxCpltCallback
+                         0x801'0a85    0x3e  Code  Gb  usart.o [1]
+HEAP$$Base              0x2001'1148           --   Gb  - Linker created -
+HEAP$$Limit             0x2001'9148           --   Gb  - Linker created -
+HardFault_Handler        0x801'6c5f     0x2  Code  Gb  stm32f4xx_it.o [1]
+ILI9225G_DisplayOff      0x801'58a5    0x34  Code  Gb  ili9225g.o [1]
+ILI9225G_DisplayOn       0x801'5853    0x52  Code  Gb  ili9225g.o [1]
+ILI9225G_DrawBitmap      0x801'5a6d    0x60  Code  Gb  ili9225g.o [1]
+ILI9225G_DrawHLine       0x801'59a9    0x62  Code  Gb  ili9225g.o [1]
+ILI9225G_DrawRGBImage    0x801'5acd    0x56  Code  Gb  ili9225g.o [1]
+ILI9225G_DrawVLine       0x801'5a0b    0x62  Code  Gb  ili9225g.o [1]
+ILI9225G_GetLcdPixelHeight
+                         0x801'58dd     0x4  Code  Gb  ili9225g.o [1]
+ILI9225G_GetLcdPixelWidth
+                         0x801'58d9     0x4  Code  Gb  ili9225g.o [1]
+ILI9225G_IO_ReadData     0x801'5baf    0x12  Code  Gb  ili9225g.o [1]
+ILI9225G_IO_WriteMultipleData
+                         0x801'5b23    0x1c  Code  Gb  ili9225g.o [1]
+ILI9225G_IO_WriteMultipleRGB
+                         0x801'5b3f    0x58  Code  Gb  ili9225g.o [1]
+ILI9225G_IO_WriteReg     0x801'5ba1     0xe  Code  Gb  ili9225g.o [1]
+ILI9225G_Init            0x801'56f5   0x15e  Code  Gb  ili9225g.o [1]
+ILI9225G_ReadID          0x801'58e1     0xa  Code  Gb  ili9225g.o [1]
+ILI9225G_ReadPixel       0x801'592b    0x1a  Code  Gb  ili9225g.o [1]
+ILI9225G_ReadReg         0x801'595b    0x10  Code  Gb  ili9225g.o [1]
+ILI9225G_SetCursor       0x801'58eb    0x1e  Code  Gb  ili9225g.o [1]
+ILI9225G_SetDisplayWindow
+                         0x801'596b    0x3e  Code  Gb  ili9225g.o [1]
+ILI9225G_WritePixel      0x801'5909    0x22  Code  Gb  ili9225g.o [1]
+ILI9225G_WriteReg        0x801'5945    0x16  Code  Gb  ili9225g.o [1]
+JumpAddress             0x2000'd0dc     0x4  Data  Gb  Task.o [1]
+Jump_To_Application     0x2000'd0d8     0x4  Data  Gb  Task.o [1]
+Key                     0x2000'd068     0xc  Data  Gb  IO_Ctrl.o [1]
+Key_Check                0x801'25d5    0xce  Code  Gb  IO_Ctrl.o [1]
+LCD_BL_Init              0x801'62ab    0x24  Code  Lc  lcd.o [1]
+LCD_DeInit               0x801'61b9    0x1c  Code  Lc  lcd.o [1]
+LCD_IO_Init              0x801'61d5     0xc  Code  Lc  lcd.o [1]
+LCD_IO_Reset             0x801'626f    0x3c  Code  Lc  lcd.o [1]
+LcdDrive                0x2000'002c    0x44  Data  Gb  lcd.o [1]
+LoadInt                  0x800'973b    0x7a  Code  Lc  xprintffull.o [2]
+MemManage_Handler        0x801'6c61     0x2  Code  Gb  stm32f4xx_it.o [1]
+NMI_Handler              0x801'6c5d     0x2  Code  Gb  stm32f4xx_it.o [1]
+NVIC_EncodePriority      0x801'1923    0x40  Code  Lc  stm32f4xx_hal_cortex.o [1]
+Netif_Config             0x800'fe4b    0x44  Code  Lc  main.o [1]
+Packet_Handle           0x2000'9788   0xf18  Data  Gb  Sensor_Upload.o [1]
+PendSV_Handler           0x801'6c6b     0x2  Code  Gb  stm32f4xx_it.o [1]
+RGB_ReMap               0x2000'd088     0x4  Data  Lc  ili9225g.o [1]
+Receive_Check            0x801'29b7   0x1f0  Code  Lc  Sensor_Upload.o [1]
+Region$$Table$$Base      0x801'80e8           --   Gb  - Linker created -
+Region$$Table$$Limit     0x801'8108           --   Gb  - Linker created -
+RxAllocStatus           0x2000'd137     0x1  Data  Lc  ethernetif.o [1]
+Rx_Handler               0x801'26ad    0x68  Code  Gb  Sensor_Upload.o [1]
+SD                      0x2000'bcc8   0x48c  Data  Gb  SD_Card.o [1]
+SDIO_PowerState_OFF      0x801'4905     0xa  Code  Gb  stm32f4xx_ll_sdmmc.o [1]
+SDIO_SD_DeInit           0x801'0b35    0x18  Code  Gb  SD_Card.o [1]
+SD_PowerOFF              0x801'40e1     0xe  Code  Lc  stm32f4xx_hal_sd.o [1]
+SVC_Handler              0x801'6c67     0x2  Code  Gb  stm32f4xx_it.o [1]
+Send_Packet              0x801'2ba7   0x146  Code  Lc  Sensor_Upload.o [1]
+SensorUpload_Handle     0x2000'a6a0   0x824  Data  Gb  Sensor_Upload.o [1]
+Sensor_AppStart          0x801'28cd    0xd8  Code  Gb  Sensor_Upload.o [1]
+Sensor_VersionCheck      0x801'2715   0x1b8  Code  Gb  Sensor_Upload.o [1]
+SramBank1_Handle        0x2000'cda4    0x50  Data  Lc  fsmc.o [1]
+SramBank1_Init           0x801'1221    0x72  Code  Lc  fsmc.o [1]
+StatusBox_Display        0x801'2f1f    0x34  Code  Gb  Display.o [1]
+SysConfig                0x801'0403    0x44  Code  Gb  Task.o [1]
+SysDeInit                0x800'fe27    0x24  Code  Gb  main.o [1]
+SysTick_Config           0x801'197d    0x30  Code  Lc  stm32f4xx_hal_cortex.o [1]
+SysTick_Handler          0x801'6c6d     0xc  Code  Gb  stm32f4xx_it.o [1]
+SysTick_Task             0x801'0321    0x78  Code  Gb  Task.o [1]
+SystemClock_Config       0x800'ff23    0xb4  Code  Gb  main.o [1]
+SystemCoreClock         0x2000'0074     0x4  Data  Gb  system_stm32f4xx.o [1]
+SystemInit               0x801'63fd    0x40  Code  Gb  system_stm32f4xx.o [1]
+TIM6_DAC_IRQHandler      0x801'6c83     0xa  Code  Gb  stm32f4xx_it.o [1]
+TaskStatus              0x2000'd13a     0x1  Data  Gb  Task.o [1]
+Tick                    0x2000'd0d4     0x4  Data  Gb  Task.o [1]
+Timeout_Check            0x801'2ced    0x32  Code  Lc  Sensor_Upload.o [1]
+Title_Display            0x801'2d3d   0x1e2  Code  Gb  Display.o [1]
+TxConfig                0x2000'cf54    0x38  Data  Gb  ethernetif.o [1]
+UART_DMAAbortOnError     0x801'3475    0x16  Code  Lc  stm32f4xx_hal_uart.o [1]
+UART_EndRxTransfer       0x801'3451    0x20  Code  Lc  stm32f4xx_hal_uart.o [1]
+UART_EndTransmit_IT      0x801'34fb    0x20  Code  Lc  stm32f4xx_hal_uart.o [1]
+UART_Receive_IT          0x801'351b    0xae  Code  Lc  stm32f4xx_hal_uart.o [1]
+UART_SetConfig           0x801'35c9   0x2e2  Code  Lc  stm32f4xx_hal_uart.o [1]
+UART_Transmit_IT         0x801'348d    0x6e  Code  Lc  stm32f4xx_hal_uart.o [1]
+UART_WaitOnFlagUntilTimeout
+                         0x801'33e3    0x6e  Code  Lc  stm32f4xx_hal_uart.o [1]
+USART1_Handle           0x2000'ced4    0x40  Data  Gb  usart.o [1]
+USART1_Init              0x801'06a3    0x30  Code  Lc  usart.o [1]
+USART3_Handle           0x2000'cf14    0x40  Data  Gb  usart.o [1]
+USART3_IRQHandler        0x801'6c79     0xa  Code  Gb  stm32f4xx_it.o [1]
+USART3_Init              0x801'06d3    0x30  Code  Lc  usart.o [1]
+USART3_Packet_Send       0x801'0ac3    0x18  Code  Gb  usart.o [1]
+USART3_Packet_Send_IT    0x801'0adb    0x22  Code  Gb  usart.o [1]
+USART_DeInit             0x801'065b    0x48  Code  Gb  usart.o [1]
+USART_Init               0x801'0611    0x4a  Code  Gb  usart.o [1]
+Upload_State            0x2000'd13b     0x1  Data  Gb  Task.o [1]
+UsageFault_Handler       0x801'6c65     0x2  Code  Gb  stm32f4xx_it.o [1]
+_Close_all               0x801'6d75    0x3c  Code  Gb  xcloseall.o [2]
+_Encoding_8859_1_Mbrlen
+                         0x800'af09     0x2  Code  Gb  xencoding_8859_1.o [2]
+_Encoding_8859_1_Wctomb
+                         0x800'aef7    0x12  Code  Gb  xencoding_8859_1.o [2]
+_Error_Handler           0x801'0023    0x12  Code  Gb  main.o [1]
+_Files                  0x2000'01dc    0x20  Data  Gb  xfiles.o [2]
+_Flash_Write_Address_   0x2000'd10c     0x4  Data  Lc  tftp.o [1]
+_Fofind                  0x801'3b2d    0x48  Code  Gb  xfofind.o [2]
+_Fofree                  0x801'3b75    0x86  Code  Gb  xfofind.o [2]
+_Fopen                   0x801'43b5    0x3c  Code  Gb  xfopen.o [2]
+_Fopen::rwacc            0x801'43f0    0x10  Data  Lc  xfopen.o [2]
+_Foprep                  0x801'3c01    0xfc  Code  Gb  xfoprep.o [2]
+_Foprep::init            0x801'6b04    0x48  Data  Lc  xfoprep.o [2]
+_Frprep                  0x801'3dd9    0xb6  Code  Gb  xfrprep.o [2]
+_Fspos                   0x801'49a3    0xd8  Code  Gb  xfspos.o [2]
+_Fwprep                  0x801'3e8f    0xb4  Code  Gb  xfwprep.o [2]
+_GenldFull               0x800'a199   0x274  Code  Lc  xprintffull.o [2]
+_LdtobFull               0x800'9d95   0x3d6  Code  Lc  xprintffull.o [2]
+_LitobFull               0x800'9c45   0x10a  Code  Lc  xprintffull.o [2]
+_LocaleC_islower         0x800'cdad     0x4  Code  Gb  xlocale_c.o [2]
+_LocaleC_isspace         0x800'cdbb    0x14  Code  Gb  xlocale_c.o [2]
+_Locale_lconv           0x2000'0084    0x38  Data  Lc  xlocale_c.o [2]
+_Nnl                     0x801'4abd     0xc  Code  Gb  xfgpos.o [2]
+_PrintfFull              0x800'9579   0x1aa  Code  Gb  xprintffull.o [2]
+_Prout                   0x801'8db5    0x16  Code  Gb  xprout.o [2]
+_PutcharsFull            0x800'a40d    0x2e  Code  Lc  xprintffull.o [2]
+_PutfldFull              0x800'97b5   0x2d4  Code  Lc  xprintffull.o [2]
+_PutstrFull              0x800'9b7f    0xc6  Code  Lc  xprintffull.o [2]
+_PuttxtFull              0x800'9a89    0xf6  Code  Lc  xprintffull.o [2]
+_Rand_idx               0x2000'cd20     0x4  Data  Lc  rand.o [2]
+_Rand_rv                0x2000'cca0    0x80  Data  Lc  rand.o [2]
+_Randinit               0x2000'007c     0x1  Data  Gb  rand.o [2]
+_Randseed               0x2000'0080     0x4  Data  Gb  rand.o [2]
+_SNProut                 0x800'ce5f    0x1a  Code  Gb  xsnprout.o [2]
+_SProut                  0x800'ceef     0xa  Code  Gb  xsprout.o [2]
+__NVIC_DisableIRQ        0x801'18d1    0x26  Code  Lc  stm32f4xx_hal_cortex.o [1]
+__NVIC_EnableIRQ         0x801'18b3    0x1e  Code  Lc  stm32f4xx_hal_cortex.o [1]
+__NVIC_GetPriorityGrouping
+                         0x801'18a7     0xc  Code  Lc  stm32f4xx_hal_cortex.o [1]
+__NVIC_SetPriority       0x801'18f7    0x2c  Code  Lc  stm32f4xx_hal_cortex.o [1]
+__NVIC_SetPriorityGrouping
+                         0x801'1885    0x22  Code  Lc  stm32f4xx_hal_cortex.o [1]
+__NVIC_SystemReset       0x801'1963    0x1a  Code  Lc  stm32f4xx_hal_cortex.o [1]
+__aeabi_cdcmple          0x800'd3a1          Code  Gb  DblCmpLe.o [3]
+__aeabi_cdrcmple         0x800'd3d1          Code  Gb  DblCmpGe.o [3]
+__aeabi_d2iz             0x800'd53d          Code  Gb  DblToS32.o [3]
+__aeabi_d2uiz            0x800'd8c9          Code  Gb  DblToU32.o [3]
+__aeabi_ddiv             0x800'd681          Code  Gb  DblDiv.o [3]
+__aeabi_dmul             0x800'd18d          Code  Gb  DblMul.o [3]
+__aeabi_dsub             0x800'd59d          Code  Gb  DblSub.o [3]
+__aeabi_f2d              0x801'3ffd          Code  Gb  FltToDbl.o [3]
+__aeabi_i2d              0x800'd579          Code  Gb  S32ToDbl.o [3]
+__aeabi_ldiv0            0x800'fadd          Code  Gb  I64DivZer.o [4]
+__aeabi_memclr4          0x800'f2e5          Code  Gb  ABImemclr4.o [4]
+__aeabi_memcpy           0x800'ad0d          Code  Gb  ABImemcpy.o [4]
+__aeabi_memcpy4          0x800'ad2d          Code  Gb  ABImemcpy.o [4]
+__aeabi_memcpy8          0x800'ad2d          Code  Gb  ABImemcpy.o [4]
+__aeabi_memset           0x800'ae91          Code  Gb  ABImemset.o [4]
+__aeabi_ui2d             0x800'd8f1          Code  Gb  U32ToDbl.o [3]
+__aeabi_uldivmod         0x800'cf5d          Code  Gb  I64DivMod.o [4]
+__basic_free             0x801'4321    0x16  Code  Gb  heap0.o [2]
+__basic_free_intern      0x801'4337    0x7a  Code  Lc  heap0.o [2]
+__basic_malloc           0x801'4275    0x18  Code  Gb  heap0.o [2]
+__basic_malloc_intern    0x801'428d    0x94  Code  Lc  heap0.o [2]
+__cexit_closeall         0x801'8573          Code  Gb  cexit.o [4]
+__close                  0x801'3dad    0x18  Code  Gb  close.o [5]
+__cmain                  0x801'8549          Code  Gb  cmain.o [4]
+__cstart_closeall        0x801'9450          Data  Gb  cstart_closeall.o [4]
+__data_GetMemChunk       0x801'4911    0x2c  Code  Gb  xgetmemchunk.o [2]
+__data_GetMemChunk::start
+                        0x2000'd124     0x4  Data  Lc  xgetmemchunk.o [2]
+__dwrite                 0x801'4985    0x1e  Code  Gb  dwrite.o [5]
+__exit                   0x801'00c5    0x14  Code  Gb  exit.o [5]
+__iar_Fail_s             0x800'ce79    0x1c  Code  Gb  xfail_s.o [2]
+__iar_Mbcurmax           0x800'cf51     0xa  Code  Gb  xmbcurmax.o [2]
+__iar_Memchr             0x800'cef9          Code  Gb  memchr.o [4]
+__iar_Memset             0x800'ae91          Code  Gb  ABImemset.o [4]
+__iar_Memset4_word       0x800'fdcd          Code  Gb  ABImemset48.o [4]
+__iar_Memset8_word       0x800'fdcd          Code  Gb  ABImemset48.o [4]
+__iar_Memset_word        0x800'ae99          Code  Gb  ABImemset.o [4]
+__iar_Stderr            0x2000'0194    0x48  Data  Gb  xfiles.o [2]
+__iar_Stdin             0x2000'0104    0x48  Data  Gb  xfiles.o [2]
+__iar_Stdout            0x2000'014c    0x48  Data  Gb  xfiles.o [2]
+__iar_Strchr             0x800'ce49          Code  Gb  strchr.o [4]
+__iar_close_ttio         0x801'1a3d    0x2e  Code  Gb  iarttio.o [5]
+__iar_dadd               0x800'd5ad          Code  Gb  DblSub.o [3]
+__iar_data_init3         0x801'7c41    0x28  Code  Gb  data_init.o [4]
+__iar_dsub               0x800'fae1          Code  Gb  DblAdd.o [3]
+__iar_dsubStart          0x800'faf3          Code  Gb  DblAdd.o [3]
+__iar_frexp              0x800'd33d          Code  Gb  frexp.o [3]
+__iar_frexpl             0x800'd33d          Code  Gb  frexp.o [3]
+__iar_get_ttio           0x801'1a6d    0x4c  Code  Gb  iarttio.o [5]
+__iar_globLocale        0x2000'00bc    0x48  Data  Lc  xlocale_c.o [2]
+__iar_global_Locale      0x800'cdcf     0x4  Code  Gb  xlocale_c.o [2]
+__iar_init_vfp           0x801'80c5          Code  Gb  fpinit_M.o [3]
+__iar_ldexp64            0x800'd401          Code  Gb  ldexp.o [3]
+__iar_lookup_ttioh       0x801'3b1f     0x4  Code  Gb  XShttio.o [2]
+__iar_lz77_init_single3
+                         0x800'a50f    0x7a  Code  Gb  lz77_init_single.o [4]
+__iar_program_start      0x801'9289          Code  Gb  cstartup_M.o [4]
+__iar_scalbln64          0x800'd401          Code  Gb  ldexp.o [3]
+__iar_scalbn64           0x800'd401          Code  Gb  ldexp.o [3]
+__iar_sh_Discard         0x801'4455    0x42  Code  Gb  XShHandles.o [2]
+__iar_sh_Init            0x801'4411    0x44  Code  Gb  XShHandles.o [2]
+__iar_sh_Move            0x801'4497    0x46  Code  Gb  XShHandles.o [2]
+__iar_sh_Pos             0x801'44dd    0x3e  Code  Gb  XShHandles.o [2]
+__iar_sh_stdout          0x801'4a7b    0x20  Code  Gb  iarwstd.o [5]
+__iar_sh_write           0x801'4a9b    0x22  Code  Gb  iarwrite.o [5]
+__iar_softfp___iar_frexp64
+                         0x800'd331          Code  Gb  frexp.o [3]
+__iar_softfp_frexp       0x800'd331          Code  Gb  frexp.o [3]
+__iar_softfp_frexpl      0x800'd331          Code  Gb  frexp.o [3]
+__iar_ttio_guard_lock    0x801'3af1    0x1e  Code  Gb  XShttio.o [2]
+__iar_ttio_guard_unlock
+                         0x801'3b0f    0x10  Code  Gb  XShttio.o [2]
+__iar_ttio_handles      0x2000'01fc     0x8  Data  Lc  XShttio.o [2]
+__iar_zero_init3         0x800'adb3    0x3a  Code  Gb  zero_init3.o [4]
+__low_level_init         0x801'8567     0x4  Code  Gb  low_level_init.o [2]
+__lseek                  0x801'4ac9    0x4a  Code  Gb  lseek.o [5]
+__open                   0x801'493d    0x48  Code  Gb  open.o [5]
+__read                   0x801'4521    0x30  Code  Gb  read.o [5]
+__vector_table           0x800'0000          Data  Gb  startup_stm32f407xx.o [1]
+__write                  0x801'4401    0x10  Code  Gb  write.o [5]
+_call_main               0x801'8555          Code  Gb  cmain.o [4]
+_exit                    0x801'8571          Code  Gb  cexit.o [4]
+_gLocale_mblen           0x800'ce33     0x4  Code  Gb  xlocale_c.o [2]
+_gLocale_mblenInt        0x800'cdf7    0x2c  Code  Gb  xlocale_c.o [2]
+_gLocale_wctomb          0x800'ce37     0x4  Code  Gb  xlocale_c.o [2]
+_gLocale_wctombInt       0x800'ce2f     0x4  Code  Gb  xlocale_c.o [2]
+_main                    0x801'8563          Code  Gb  cmain.o [4]
+abort                    0x800'fad7     0x6  Code  Gb  abort.o [2]
+ackno                   0x2000'd100     0x4  Data  Lc  tcp_in.o [1]
+arp_table               0x2000'c578    0xf0  Data  Lc  etharp.o [1]
+close_handle             0x801'1ce9    0x3c  Code  Lc  tftp.o [1]
+current_timeout_due_time
+                        0x2000'd114     0x4  Data  Lc  timeouts.o [1]
+disk                    0x2000'd050     0xc  Data  Gb  ff_gen_drv.o [1]
+do_memp_free_pool        0x800'a657    0x2a  Code  Lc  memp.o [1]
+do_memp_malloc_pool      0x800'a5d3    0x30  Code  Lc  memp.o [1]
+ebuf                    0x2000'cdf4    0x50  Data  Lc  xfiles.o [2]
+etharp_cached_entry     0x2000'd136     0x1  Data  Lc  etharp.o [1]
+etharp_cleanup_netif     0x800'dd29    0x3a  Code  Gb  etharp.o [1]
+etharp_find_entry        0x800'd9fb   0x24a  Code  Lc  etharp.o [1]
+etharp_free_entry        0x800'd90d    0x34  Code  Lc  etharp.o [1]
+etharp_input             0x800'dd63    0xf4  Code  Gb  etharp.o [1]
+etharp_output            0x800'df2d   0x18c  Code  Gb  etharp.o [1]
+etharp_output_to_arp_index
+                         0x800'de57    0xd6  Code  Lc  etharp.o [1]
+etharp_query             0x800'e0b9   0x1f6  Code  Gb  etharp.o [1]
+etharp_raw               0x800'e2af    0xf8  Code  Lc  etharp.o [1]
+etharp_request           0x800'e3d1    0x12  Code  Gb  etharp.o [1]
+etharp_request_dst       0x800'e3a7    0x2a  Code  Lc  etharp.o [1]
+etharp_tmr               0x800'd941    0xba  Code  Gb  etharp.o [1]
+etharp_update_arp_entry
+                         0x800'dc45    0xe4  Code  Lc  etharp.o [1]
+ethbroadcast             0x801'92b4     0x8  Data  Gb  ethernet.o [1]
+ethernet_input           0x800'fc4d    0xc2  Code  Gb  ethernet.o [1]
+ethernet_link_check_state
+                         0x800'b6c1    0xde  Code  Gb  ethernetif.o [1]
+ethernet_link_status_updated
+                         0x801'1445    0x1c  Code  Gb  app_ethernet.o [1]
+ethernet_output          0x800'fd0f    0x84  Code  Gb  ethernet.o [1]
+ethernetif_init          0x800'b509    0x34  Code  Gb  ethernetif.o [1]
+ethernetif_input         0x800'b4df    0x2a  Code  Gb  ethernetif.o [1]
+ethzero                  0x801'92bc     0x8  Data  Gb  ethernet.o [1]
+exit                     0x801'856b     0x4  Code  Gb  exit.o [2]
+fclose                   0x801'1b2b    0x7e  Code  Gb  fclose.o [2]
+fflush                   0x801'3d71    0x34  Code  Gb  fflush.o [2]
+fflushOne                0x801'3cfd    0x74  Code  Lc  fflush.o [2]
+flags                   0x2000'd13f     0x1  Data  Lc  tcp_in.o [1]
+fopen                    0x801'1b01    0x2a  Code  Gb  fopen.o [2]
+fputc                    0x801'05d9    0x38  Code  Gb  usart.o [1]
+fread                    0x801'1ba9    0x8c  Code  Gb  fread.o [2]
+free                     0x801'3da9     0x4  Code  Gb  heaptramp0.o [2]
+fseek                    0x801'4551    0x24  Code  Gb  fseek.o [2]
+full_filename           0x2000'c478   0x100  Data  Lc  tftp_example.o [1]
+fwrite                   0x801'1c35    0xb2  Code  Gb  fwrite.o [2]
+gnetif                  0x2000'cf8c    0x34  Data  Gb  main.o [1]
+hsd                     0x2000'cc1c    0x84  Data  Gb  SD_Card.o [1]
+htim6                   0x2000'ce94    0x40  Data  Gb  main.o [1]
+icmp_dest_unreach        0x800'cccb    0x14  Code  Gb  icmp.o [1]
+icmp_input               0x800'cad9   0x1f2  Code  Gb  icmp.o [1]
+icmp_send_response       0x800'ccf3    0xa0  Code  Lc  icmp.o [1]
+icmp_time_exceeded       0x800'ccdf    0x14  Code  Gb  icmp.o [1]
+inet_chksum_pbuf         0x800'fa6f    0x68  Code  Gb  inet_chksum.o [1]
+init_packet              0x801'1d25    0x42  Code  Lc  tftp.o [1]
+inseg                   0x2000'd040    0x10  Data  Lc  tcp_in.o [1]
+ip4_addr_isbroadcast_u32
+                         0x800'6049    0x50  Code  Gb  ip4_addr.o [1]
+ip4_frag                 0x800'c053   0x248  Code  Gb  ip4_frag.o [1]
+ip4_input                0x800'9223   0x1d6  Code  Gb  ip4.o [1]
+ip4_input_accept         0x800'91f1    0x32  Code  Lc  ip4.o [1]
+ip4_output_if            0x800'93f9    0x4c  Code  Gb  ip4.o [1]
+ip4_output_if_src        0x800'9445   0x110  Code  Gb  ip4.o [1]
+ip4_reass                0x800'bd4f   0x29c  Code  Gb  ip4_frag.o [1]
+ip4_route                0x800'9171    0x80  Code  Gb  ip4.o [1]
+ip4addr_aton             0x800'6099   0x1ca  Code  Gb  ip4_addr.o [1]
+ip_addr_any              0x801'9314     0x4  Data  Gb  ip4_addr.o [1]
+ip_data                 0x2000'd028    0x18  Data  Gb  ip.o [1]
+ip_frag_alloc_pbuf_custom_ref
+                         0x800'bfeb     0xa  Code  Lc  ip4_frag.o [1]
+ip_frag_free_pbuf_custom_ref
+                         0x800'bff5    0x20  Code  Lc  ip4_frag.o [1]
+ip_id                   0x2000'd128     0x2  Data  Lc  ip4.o [1]
+ip_reass_chain_frag_into_datagram_and_validate
+                         0x800'bb11   0x23e  Code  Lc  ip4_frag.o [1]
+ip_reass_dequeue_datagram
+                         0x800'bad5    0x3c  Code  Lc  ip4_frag.o [1]
+ip_reass_enqueue_new_datagram
+                         0x800'ba6b    0x6a  Code  Lc  ip4_frag.o [1]
+ip_reass_free_complete_datagram
+                         0x800'b8a9   0x12e  Code  Lc  ip4_frag.o [1]
+ip_reass_pbufcount      0x2000'd12a     0x2  Data  Lc  ip4_frag.o [1]
+ip_reass_remove_oldest_datagram
+                         0x800'b9d7    0x94  Code  Lc  ip4_frag.o [1]
+ip_reass_tmr             0x800'b879    0x30  Code  Gb  ip4_frag.o [1]
+ipfrag_free_pbuf_custom
+                         0x800'c015    0x3e  Code  Lc  ip4_frag.o [1]
+isdigit                  0x800'a4bf     0xa  Code  Gb  isdigit.o [2]
+islower                  0x800'a4e7    0x14  Code  Gb  islower.o [2]
+isspace                  0x800'a4fb    0x14  Code  Gb  isspace.o [2]
+isxdigit                 0x800'a4c9    0x1e  Code  Gb  isxdigit.o [2]
+lcd_drv                 0x2000'd084     0x4  Data  Lc  gdi.o [1]
+ldexp                    0x800'd401          Code  Gb  ldexp.o [3]
+ldexpl                   0x800'd401          Code  Gb  ldexp.o [3]
+lfree                   0x2000'd098     0x4  Data  Lc  mem.o [1]
+localeconv               0x800'ce3b     0x4  Code  Gb  xlocale_c.o [2]
+low_level_init           0x800'b359    0xc2  Code  Lc  ethernetif.o [1]
+low_level_input          0x800'b4c3    0x1c  Code  Lc  ethernetif.o [1]
+low_level_output         0x800'b41b    0xa8  Code  Lc  ethernetif.o [1]
+lwip_cyclic_timer        0x800'9035    0x3a  Code  Lc  timeouts.o [1]
+lwip_cyclic_timers       0x801'8d24    0x18  Data  Gb  timeouts.o [1]
+lwip_htonl               0x800'6281    0x1c  Code  Gb  def.o [1]
+lwip_htons               0x800'6271    0x10  Code  Gb  def.o [1]
+lwip_init                0x801'14c1    0x44  Code  Gb  init.o [1]
+lwip_standard_chksum     0x800'fa01    0x6e  Code  Gb  inet_chksum.o [1]
+main                     0x800'fe8f    0x94  Code  Gb  main.o [1]
+main::Init              0x2000'd138     0x1  Data  Lc  main.o [1]
+mem_free                 0x800'a8af    0xac  Code  Gb  mem.o [1]
+mem_init                 0x800'a80d    0x46  Code  Gb  mem.o [1]
+mem_link_valid           0x800'a853    0x5c  Code  Lc  mem.o [1]
+mem_malloc               0x800'ab0f   0x1aa  Code  Gb  mem.o [1]
+mem_to_ptr               0x800'a70d     0xc  Code  Lc  mem.o [1]
+mem_trim                 0x800'a95b   0x1b4  Code  Gb  mem.o [1]
+memchr                   0x800'cef9          Code  Gb  memchr.o [4]
+memcmp                   0x801'00d9          Code  Gb  memcmp.o [4]
+memp_FRAG_PBUF           0x801'9204     0xc  Data  Gb  memp.o [1]
+memp_PBUF                0x801'921c     0xc  Data  Gb  memp.o [1]
+memp_PBUF_POOL           0x801'9228     0xc  Data  Gb  memp.o [1]
+memp_REASSDATA           0x801'91f8     0xc  Data  Gb  memp.o [1]
+memp_RX_POOL             0x801'9168     0xc  Data  Gb  ethernetif.o [1]
+memp_SYS_TIMEOUT         0x801'9210     0xc  Data  Gb  memp.o [1]
+memp_TCP_PCB             0x801'91d4     0xc  Data  Gb  memp.o [1]
+memp_TCP_PCB_LISTEN      0x801'91e0     0xc  Data  Gb  memp.o [1]
+memp_TCP_SEG             0x801'91ec     0xc  Data  Gb  memp.o [1]
+memp_UDP_PCB             0x801'91c8     0xc  Data  Gb  memp.o [1]
+memp_free                0x800'a6ad    0x34  Code  Gb  memp.o [1]
+memp_free_pool           0x800'a681    0x2c  Code  Gb  memp.o [1]
+memp_init                0x800'a5b3    0x20  Code  Gb  memp.o [1]
+memp_init_pool           0x800'a589    0x2a  Code  Gb  memp.o [1]
+memp_malloc              0x800'a629    0x2e  Code  Gb  memp.o [1]
+memp_malloc_pool         0x800'a603    0x26  Code  Gb  memp.o [1]
+memp_memory_FRAG_PBUF_base
+                        0x2000'c30c   0x16c  Data  Gb  memp.o [1]
+memp_memory_PBUF_POOL_base
+                        0x2000'3f50  0x3024  Data  Gb  memp.o [1]
+memp_memory_PBUF_base   0x2000'c924    0xa4  Data  Gb  memp.o [1]
+memp_memory_REASSDATA_base
+                        0x2000'c7dc    0xa4  Data  Gb  memp.o [1]
+memp_memory_RX_POOL_base
+                        0x2000'020c  0x3d44  Data  Gb  ethernetif.o [1]
+memp_memory_SYS_TIMEOUT_base
+                        0x2000'c880    0xa4  Data  Gb  memp.o [1]
+memp_memory_TCP_PCB_LISTEN_base
+                        0x2000'cb08    0x90  Data  Gb  memp.o [1]
+memp_memory_TCP_PCB_base
+                        0x2000'b6d4   0x5f4  Data  Gb  memp.o [1]
+memp_memory_TCP_SEG_base
+                        0x2000'cb98    0x84  Data  Gb  memp.o [1]
+memp_memory_UDP_PCB_base
+                        0x2000'c668    0xc4  Data  Gb  memp.o [1]
+memp_pools               0x801'7d88    0x24  Data  Gb  memp.o [1]
+memp_tab_FRAG_PBUF      0x2000'd0b0     0x4  Data  Lc  memp.o [1]
+memp_tab_PBUF           0x2000'd0b8     0x4  Data  Lc  memp.o [1]
+memp_tab_PBUF_POOL      0x2000'd0bc     0x4  Data  Lc  memp.o [1]
+memp_tab_REASSDATA      0x2000'd0ac     0x4  Data  Lc  memp.o [1]
+memp_tab_RX_POOL        0x2000'd080     0x4  Data  Lc  ethernetif.o [1]
+memp_tab_SYS_TIMEOUT    0x2000'd0b4     0x4  Data  Lc  memp.o [1]
+memp_tab_TCP_PCB        0x2000'd0a0     0x4  Data  Lc  memp.o [1]
+memp_tab_TCP_PCB_LISTEN
+                        0x2000'd0a4     0x4  Data  Lc  memp.o [1]
+memp_tab_TCP_SEG        0x2000'd0a8     0x4  Data  Lc  memp.o [1]
+memp_tab_UDP_PCB        0x2000'd09c     0x4  Data  Lc  memp.o [1]
+mode_to_string           0x801'2487    0x2a  Code  Lc  tftp.o [1]
+netif_add                0x800'af17   0x154  Code  Gb  netif.o [1]
+netif_default           0x2000'd0c4     0x4  Data  Gb  netif.o [1]
+netif_do_ip_addr_changed
+                         0x800'b06b    0x18  Code  Lc  netif.o [1]
+netif_do_set_gw          0x800'b111    0x22  Code  Lc  netif.o [1]
+netif_do_set_ipaddr      0x800'b083    0x6c  Code  Lc  netif.o [1]
+netif_do_set_netmask     0x800'b0ef    0x22  Code  Lc  netif.o [1]
+netif_get_by_index       0x800'b2e9    0x30  Code  Gb  netif.o [1]
+netif_init               0x800'af15     0x2  Code  Gb  netif.o [1]
+netif_issue_reports      0x800'b1df    0x40  Code  Lc  netif.o [1]
+netif_list              0x2000'd0c0     0x4  Data  Gb  netif.o [1]
+netif_null_output_ip4    0x800'b2e1     0x8  Code  Lc  netif.o [1]
+netif_num               0x2000'd139     0x1  Data  Lc  netif.o [1]
+netif_set_addr           0x800'b133    0x70  Code  Gb  netif.o [1]
+netif_set_default        0x800'b1a3     0x6  Code  Gb  netif.o [1]
+netif_set_down           0x800'b21f    0x3c  Code  Gb  netif.o [1]
+netif_set_link_callback
+                         0x800'b2d7     0x8  Code  Gb  netif.o [1]
+netif_set_link_down      0x800'b29d    0x3a  Code  Gb  netif.o [1]
+netif_set_link_up        0x800'b25b    0x42  Code  Gb  netif.o [1]
+netif_set_up             0x800'b1a9    0x36  Code  Gb  netif.o [1]
+next_timeout            0x2000'd110     0x4  Data  Lc  timeouts.o [1]
+obuf                    0x2000'ce44    0x50  Data  Lc  xfiles.o [2]
+pFlash                  0x2000'd008    0x20  Data  Gb  stm32f4xx_hal_flash.o [1]
+pbuf_add_header          0x800'66a3    0x12  Code  Gb  pbuf.o [1]
+pbuf_add_header_impl     0x800'661b    0x88  Code  Lc  pbuf.o [1]
+pbuf_alloc               0x800'62bf   0x1d8  Code  Gb  pbuf.o [1]
+pbuf_alloc_reference     0x800'6497    0x5a  Code  Gb  pbuf.o [1]
+pbuf_alloced_custom      0x800'64f1    0x68  Code  Gb  pbuf.o [1]
+pbuf_cat                 0x800'6891    0x7a  Code  Gb  pbuf.o [1]
+pbuf_chain               0x800'690b    0x16  Code  Gb  pbuf.o [1]
+pbuf_clen                0x800'6855    0x12  Code  Gb  pbuf.o [1]
+pbuf_clone               0x800'6b61    0x48  Code  Gb  pbuf.o [1]
+pbuf_copy                0x800'6921   0x146  Code  Gb  pbuf.o [1]
+pbuf_copy_partial        0x800'6a67    0xc6  Code  Gb  pbuf.o [1]
+pbuf_free                0x800'6767    0xee  Code  Gb  pbuf.o [1]
+pbuf_free_custom         0x800'b53d    0x1c  Code  Gb  ethernetif.o [1]
+pbuf_get_at              0x800'6c11    0x20  Code  Gb  pbuf.o [1]
+pbuf_header_force        0x800'6753    0x14  Code  Gb  pbuf.o [1]
+pbuf_header_impl         0x800'6725    0x2e  Code  Lc  pbuf.o [1]
+pbuf_init_alloced_pbuf   0x800'629d    0x22  Code  Lc  pbuf.o [1]
+pbuf_memcmp              0x800'6c63    0x8e  Code  Gb  pbuf.o [1]
+pbuf_memfind             0x800'6cf1    0x5c  Code  Gb  pbuf.o [1]
+pbuf_realloc             0x800'6559    0xc2  Code  Gb  pbuf.o [1]
+pbuf_ref                 0x800'6867    0x2a  Code  Gb  pbuf.o [1]
+pbuf_remove_header       0x800'66b5    0x70  Code  Gb  pbuf.o [1]
+pbuf_skip_const          0x800'6b2d    0x28  Code  Lc  pbuf.o [1]
+pbuf_try_get_at          0x800'6c31    0x32  Code  Gb  pbuf.o [1]
+plug_holes               0x800'a719    0xf4  Code  Lc  mem.o [1]
+printf                   0x800'6021    0x28  Code  Gb  printf.o [2]
+ptr_to_mem               0x800'a701     0xc  Code  Lc  mem.o [1]
+putchar                  0x801'8dcd     0xc  Code  Gb  putchar.o [2]
+ram                     0x2000'd090     0x4  Data  Lc  mem.o [1]
+ram_end                 0x2000'd094     0x4  Data  Lc  mem.o [1]
+ram_heap                0x2000'6f74  0x2814  Data  Gb  mem.o [1]
+rand                     0x800'aded    0x94  Code  Gb  rand.o [2]
+reassdatagrams          0x2000'd08c     0x4  Data  Lc  ip4_frag.o [1]
+recv                     0x801'1f93   0x410  Code  Lc  tftp.o [1]
+recv_acked              0x2000'd132     0x2  Data  Lc  tcp_in.o [1]
+recv_data               0x2000'd104     0x4  Data  Lc  tcp_in.o [1]
+recv_flags              0x2000'd140     0x1  Data  Lc  tcp_in.o [1]
+remove                   0x801'3dc5    0x14  Code  Gb  remove.o [5]
+resend_data              0x801'1eb5    0x68  Code  Lc  tftp.o [1]
+sFileInfo               0x2000'cd24    0x80  Data  Lc  XShHandles.o [2]
+scalbln                  0x800'd401          Code  Gb  ldexp.o [3]
+scalblnl                 0x800'd401          Code  Gb  ldexp.o [3]
+scalbn                   0x800'd401          Code  Gb  ldexp.o [3]
+scalbnl                  0x800'd401          Code  Gb  ldexp.o [3]
+scale                    0x800'9d4f    0x46  Code  Lc  xprintffull.o [2]
+sec_hand                0x2000'd120     0x4  Data  Lc  xfail_s.o [2]
+send_ack                 0x801'1e71    0x44  Code  Lc  tftp.o [1]
+send_data                0x801'1f1d    0x76  Code  Lc  tftp.o [1]
+send_error               0x801'1e03    0x6e  Code  Lc  tftp.o [1]
+send_request             0x801'1d67    0x9c  Code  Lc  tftp.o [1]
+seqno                   0x2000'd0fc     0x4  Data  Lc  tcp_in.o [1]
+snprintf                 0x801'1abd    0x44  Code  Gb  snprintf.o [2]
+sprintf                  0x801'4045    0x40  Code  Gb  sprintf.o [2]
+strchr                   0x800'ce49          Code  Gb  strchr.o [4]
+strlen                   0x800'ceb9          Code  Gb  strlen.o [4]
+sys_check_timeouts       0x800'9101    0x3e  Code  Gb  timeouts.o [1]
+sys_now                  0x800'b559     0x8  Code  Gb  ethernetif.o [1]
+sys_timeout              0x800'908d    0x30  Code  Gb  timeouts.o [1]
+sys_timeout_abs          0x800'8fb3    0x82  Code  Lc  timeouts.o [1]
+sys_timeouts_init        0x800'906f    0x1e  Code  Gb  timeouts.o [1]
+sys_untimeout            0x800'90bd    0x44  Code  Gb  timeouts.o [1]
+tcp_abandon              0x800'7077   0x114  Code  Gb  tcp.o [1]
+tcp_abort                0x800'718b     0xe  Code  Gb  tcp.o [1]
+tcp_active_pcbs         0x2000'd0ec     0x4  Data  Gb  tcp.o [1]
+tcp_active_pcbs_changed
+                        0x2000'd13c     0x1  Data  Gb  tcp.o [1]
+tcp_alloc                0x800'7ac5    0xc8  Code  Gb  tcp.o [1]
+tcp_backoff              0x801'9034    0x10  Data  Lc  tcp.o [1]
+tcp_bound_pcbs          0x2000'd0e4     0x4  Data  Gb  tcp.o [1]
+tcp_close                0x800'703d    0x3a  Code  Gb  tcp.o [1]
+tcp_close_shutdown       0x800'6e4f   0x14e  Code  Lc  tcp.o [1]
+tcp_close_shutdown_fin   0x800'6f9d    0xa0  Code  Lc  tcp.o [1]
+tcp_create_segment       0x800'7e63   0x11c  Code  Lc  tcp_out.o [1]
+tcp_eff_send_mss_netif   0x800'7cd9    0x56  Code  Gb  tcp.o [1]
+tcp_enqueue_flags        0x800'8201   0x196  Code  Gb  tcp_out.o [1]
+tcp_fasttmr              0x800'77bd    0x7e  Code  Gb  tcp.o [1]
+tcp_free                 0x800'6d63    0x26  Code  Gb  tcp.o [1]
+tcp_free_acked_segments
+                         0x800'5765    0xb6  Code  Lc  tcp_in.o [1]
+tcp_free_listen          0x800'6d89    0x26  Code  Lc  tcp.o [1]
+tcp_get_next_optbyte     0x800'5ea3    0x3a  Code  Lc  tcp_in.o [1]
+tcp_handle_closepend     0x800'7a8d    0x2a  Code  Lc  tcp.o [1]
+tcp_init                 0x800'6d4d    0x16  Code  Gb  tcp.o [1]
+tcp_input                0x800'48c9   0x644  Code  Gb  tcp_in.o [1]
+tcp_input_delayed_close
+                         0x800'4f0d    0x54  Code  Lc  tcp_in.o [1]
+tcp_input_pcb           0x2000'd108     0x4  Data  Gb  tcp_in.o [1]
+tcp_keepalive            0x800'8d85    0x5a  Code  Gb  tcp_out.o [1]
+tcp_kill_prio            0x800'7977    0x70  Code  Lc  tcp.o [1]
+tcp_kill_state           0x800'79e7    0x68  Code  Lc  tcp.o [1]
+tcp_kill_timewait        0x800'7a4f    0x36  Code  Lc  tcp.o [1]
+tcp_listen_closed        0x800'6dfd    0x52  Code  Lc  tcp.o [1]
+tcp_listen_input         0x800'4f61   0x150  Code  Lc  tcp_in.o [1]
+tcp_listen_pcbs         0x2000'd0e8     0x4  Data  Gb  tcp.o [1]
+tcp_netif_ip_addr_changed
+                         0x800'7d79    0x4a  Code  Gb  tcp.o [1]
+tcp_netif_ip_addr_changed_pcblist
+                         0x800'7d3d    0x38  Code  Lc  tcp.o [1]
+tcp_next_iss             0x800'7cad    0x26  Code  Gb  tcp.o [1]
+tcp_next_iss::iss       0x2000'0078     0x4  Data  Lc  tcp.o [1]
+tcp_optidx              0x2000'd130     0x2  Data  Lc  tcp_in.o [1]
+tcp_output               0x800'8399   0x2d0  Code  Gb  tcp_out.o [1]
+tcp_output_alloc_header
+                         0x800'8ad5    0x50  Code  Lc  tcp_out.o [1]
+tcp_output_alloc_header_common
+                         0x800'8a19    0xb4  Code  Lc  tcp_out.o [1]
+tcp_output_control_segment
+                         0x800'8bad    0x76  Code  Lc  tcp_out.o [1]
+tcp_output_fill_options
+                         0x800'8b2d    0x80  Code  Lc  tcp_out.o [1]
+tcp_output_segment       0x800'8695   0x16e  Code  Lc  tcp_out.o [1]
+tcp_output_segment_busy
+                         0x800'8669    0x2c  Code  Lc  tcp_out.o [1]
+tcp_parseopt             0x800'5ee5    0xbc  Code  Lc  tcp_in.o [1]
+tcp_pcb_lists            0x801'9044    0x10  Data  Gb  tcp.o [1]
+tcp_pcb_purge            0x800'7b8d    0x5c  Code  Gb  tcp.o [1]
+tcp_pcb_remove           0x800'7bed    0xb0  Code  Gb  tcp.o [1]
+tcp_persist_backoff      0x801'92d4     0x8  Data  Lc  tcp.o [1]
+tcp_port                0x2000'0204     0x2  Data  Lc  tcp.o [1]
+tcp_process              0x800'5195   0x5c2  Code  Lc  tcp_in.o [1]
+tcp_process_refused_data
+                         0x800'783b    0xb6  Code  Gb  tcp.o [1]
+tcp_receive              0x800'585d   0x646  Code  Lc  tcp_in.o [1]
+tcp_recv_null            0x800'7925    0x50  Code  Gb  tcp.o [1]
+tcp_recved               0x800'7211    0x76  Code  Gb  tcp.o [1]
+tcp_remove_listener      0x800'6dcb    0x32  Code  Lc  tcp.o [1]
+tcp_rexmit               0x800'8901    0x92  Code  Gb  tcp_out.o [1]
+tcp_rexmit_fast          0x800'8995    0x84  Code  Gb  tcp_out.o [1]
+tcp_rexmit_rto           0x800'88d1    0x2e  Code  Gb  tcp_out.o [1]
+tcp_rexmit_rto_commit    0x800'889b    0x36  Code  Gb  tcp_out.o [1]
+tcp_rexmit_rto_prepare   0x800'8805    0x96  Code  Gb  tcp_out.o [1]
+tcp_route                0x800'7e41    0x22  Code  Lc  tcp_out.o [1]
+tcp_rst                  0x800'8c29    0x90  Code  Gb  tcp_out.o [1]
+tcp_seg_free             0x800'7907    0x1e  Code  Gb  tcp.o [1]
+tcp_segs_free            0x800'78f1    0x16  Code  Gb  tcp.o [1]
+tcp_send_empty_ack       0x800'8cc9    0xbc  Code  Gb  tcp_out.o [1]
+tcp_send_fin             0x800'818d    0x5e  Code  Gb  tcp_out.o [1]
+tcp_slowtmr              0x800'72d9   0x4e0  Code  Gb  tcp.o [1]
+tcp_split_unsent_seg     0x800'7f7f   0x20e  Code  Gb  tcp_out.o [1]
+tcp_ticks               0x2000'd0e0     0x4  Data  Gb  tcp.o [1]
+tcp_timer               0x2000'd13d     0x1  Data  Lc  tcp.o [1]
+tcp_timer_ctr           0x2000'd13e     0x1  Data  Lc  tcp.o [1]
+tcp_timer_needed         0x800'8f89    0x2a  Code  Gb  timeouts.o [1]
+tcp_timewait_input       0x800'50b1    0x9a  Code  Lc  tcp_in.o [1]
+tcp_tmr                  0x800'6daf    0x1c  Code  Gb  tcp.o [1]
+tcp_trigger_input_pcb_close
+                         0x800'5fa1     0xc  Code  Gb  tcp_in.o [1]
+tcp_tw_pcbs             0x2000'd0f0     0x4  Data  Gb  tcp.o [1]
+tcp_update_rcv_ann_wnd   0x800'7199    0x78  Code  Gb  tcp.o [1]
+tcp_zero_window_probe    0x800'8df5    0xfe  Code  Gb  tcp_out.o [1]
+tcphdr                  0x2000'd0f4     0x4  Data  Lc  tcp_in.o [1]
+tcphdr_opt1len          0x2000'd12e     0x2  Data  Lc  tcp_in.o [1]
+tcphdr_opt2             0x2000'd0f8     0x4  Data  Lc  tcp_in.o [1]
+tcphdr_optlen           0x2000'd12c     0x2  Data  Lc  tcp_in.o [1]
+tcpip_tcp_timer          0x800'8f5d    0x2c  Code  Lc  timeouts.o [1]
+tcpip_tcp_timer_active  0x2000'd118     0x4  Data  Lc  timeouts.o [1]
+tcplen                  0x2000'd134     0x2  Data  Lc  tcp_in.o [1]
+tftp                     0x801'8f40    0x14  Data  Lc  tftp_example.o [1]
+tftp_close               0x801'018f     0xc  Code  Lc  tftp_example.o [1]
+tftp_error               0x801'01e9    0x4c  Code  Lc  tftp_example.o [1]
+tftp_example_init_client
+                         0x801'0235    0xa2  Code  Gb  tftp_example.o [1]
+tftp_get                 0x801'24b1    0x88  Code  Gb  tftp.o [1]
+tftp_init_client         0x801'2479     0xe  Code  Gb  tftp.o [1]
+tftp_init_common         0x801'23f7    0x82  Code  Gb  tftp.o [1]
+tftp_open                0x801'017b    0x14  Code  Lc  tftp_example.o [1]
+tftp_open_file           0x801'0141    0x3a  Code  Lc  tftp_example.o [1]
+tftp_read                0x801'019b    0x24  Code  Lc  tftp_example.o [1]
+tftp_state              0x2000'cfc0    0x28  Data  Lc  tftp.o [1]
+tftp_tmr                 0x801'23a5    0x52  Code  Lc  tftp.o [1]
+tftp_write               0x801'01bf    0x2a  Code  Lc  tftp_example.o [1]
+ttio_guard              0x2000'd141     0x1  Data  Lc  XShttio.o [2]
+udp_bind                 0x800'c8cd    0xc8  Code  Gb  udp.o [1]
+udp_init                 0x800'c2f9    0x16  Code  Gb  udp.o [1]
+udp_input                0x800'c3ff   0x1ce  Code  Gb  udp.o [1]
+udp_input_local_match    0x800'c35d    0xa2  Code  Lc  udp.o [1]
+udp_netif_ip_addr_changed
+                         0x800'ca37    0x34  Code  Gb  udp.o [1]
+udp_new                  0x800'ca07    0x26  Code  Gb  udp.o [1]
+udp_new_ip_type          0x800'ca2d     0xa  Code  Gb  udp.o [1]
+udp_new_port             0x800'c30f    0x4e  Code  Lc  udp.o [1]
+udp_pcbs                0x2000'd11c     0x4  Data  Gb  udp.o [1]
+udp_port                0x2000'0206     0x2  Data  Lc  udp.o [1]
+udp_recv                 0x800'c995    0x22  Code  Gb  udp.o [1]
+udp_remove               0x800'c9b7    0x50  Code  Gb  udp.o [1]
+udp_sendto               0x800'c5cd    0x9c  Code  Gb  udp.o [1]
+udp_sendto_if            0x800'c669    0xc8  Code  Gb  udp.o [1]
+udp_sendto_if_src        0x800'c731   0x19c  Code  Gb  udp.o [1]
+uwTick                  0x2000'd0c8     0x4  Data  Gb  stm32f4xx_hal.o [1]
+uwTickFreq              0x2000'0208     0x1  Data  Gb  stm32f4xx_hal.o [1]
+uwTickPrio              0x2000'0070     0x4  Data  Gb  stm32f4xx_hal.o [1]
+
+
+[1] = D:\2_Projects\Exam\TFTP_CLIENT\GTD_5100FN_BootLoader\Debug\Obj
+[2] = dl7M_tlf.a
+[3] = m7M_tls.a
+[4] = rt7M_tl.a
+[5] = shb_l.a
+
+   69 174 bytes of readonly  code memory
+   34 597 bytes of readonly  data memory
+  102 719 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

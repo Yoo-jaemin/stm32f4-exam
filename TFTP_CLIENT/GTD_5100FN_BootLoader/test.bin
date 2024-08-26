@@ -1,0 +1,62 @@
+fdasad
+fdawwww
+
+
+fdsfdfsdf
+dsfdfsda
+
+1111111111111111111111
+222222222222222222222
+33333333333333333333334
+
+
+			 
+4. Initial Connection Protocol
+
+전송은 요청(외부 파일 시스템에 쓰기 위한 WRQ 또는 읽기 위한 RRQ)을 보내고 긍정적인 응답, 쓰기에 대한 확인 패킷 또는 읽기에 대한 첫 번째 데이터 패킷을 수신하여 설정됩니다.
+일반적으로 확인 패킷에는 확인되는 데이터 패킷의 블록 번호가 포함됩니다.
+각 데이터 패킷에는 블록 번호가 연관되어 있으며 블록 번호는 연속적이며 1부터 시작합니다.
+(일반적으로 확인 패킷은 데이터 패킷을 확인하므로 확인 패킷에는 확인되는 데이터 패킷의 블록 번호가 포함됩니다.)
+
+ex)
+1. 호스트 A가 호스트 B에 "WRQ"를 전송합니다. 소스는 A의 TID이고 목적지는 69입니다.
+2. 호스트 B가 호스트 A에 "ACK"(블록 번호는 0)를 전송합니다. 소스는 B의 TID이고 목적지는 A의 TID입니다.
+
+
+5. TFTP Packets
+
+데이터는 실제로 그림 5-2에 나와 있는 DATA 패킷으로 전송됩니다.
+DATA 패킷(opcode = 3)에는 블록 번호와 데이터 필드가 있습니다.
+데이터 패킷의 블록 번호는 1부터 시작하여 새 데이터 블록마다 1씩 증가합니다.
+
+[Opcode  operation]
+	1     Read request (RRQ)
+	2     Write request (WRQ)
+	3     Data (DATA)
+	4     Acknowledgment (ACK)
+	5     Error (ERROR)
+	
+	
+		 2 bytes     string    1 byte     string   1 byte
+		 ------------------------------------------------
+		| Opcode |  Filename  |   0  |    Mode    |   0  |
+		 ------------------------------------------------
+
+					Figure 5-1: RRQ/WRQ packet	
+
+
+				 2 bytes     2 bytes      n bytes
+				 ----------------------------------
+				| Opcode |   Block #  |   Data     |
+
+
+
+
+yjm jmyoo bryan
+
+
+
+
+
+
+4444444444fw	ds
