@@ -1,0 +1,5 @@
+---- HAL_ETH_Init Matches (4 in 3 files) ----
+Ethernetif.c (d:\2_projects\1_gasdetector\1_gtd-5x00(f)n\1_firmware\1_gtd-5x00(f)n\rev3.85_20240423\application\interface\industrial_standard\poe):	if (HAL_ETH_Init(&EthHandle) == HAL_OK)
+Stm32f4xx_hal_eth.c (d:\2_projects\1_gasdetector\1_gtd-5x00(f)n\1_firmware\1_gtd-5x00(f)n\rev3.85_20240423\drivers\stm32f4xx_hal_driver\src):      (#)Call HAL_ETH_Init() API to initialize the Ethernet peripheral (MAC, DMA, ...) 
+Stm32f4xx_hal_eth.c (d:\2_projects\1_gasdetector\1_gtd-5x00(f)n\1_firmware\1_gtd-5x00(f)n\rev3.85_20240423\drivers\stm32f4xx_hal_driver\src):HAL_StatusTypeDef HAL_ETH_Init(ETH_HandleTypeDef *heth)
+Stm32f4xx_hal_eth.h (d:\2_projects\1_gasdetector\1_gtd-5x00(f)n\1_firmware\1_gtd-5x00(f)n\rev3.85_20240423\drivers\stm32f4xx_hal_driver\inc):HAL_StatusTypeDef HAL_ETH_Init(ETH_HandleTypeDef *heth);
