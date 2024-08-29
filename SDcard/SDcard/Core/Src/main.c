@@ -35,7 +35,7 @@ char SD_Path[4];
 
 uint8_t text[10];
 uint32_t bytesWritten, bytesRead;
-
+char *pTitle = "SDcard Test\r\n";
 
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
@@ -65,6 +65,8 @@ void MountSDIO(void)
   res = f_mount(&SDFatFs, SD_Path, 0);
   if(res != FR_OK)  
     printf("** mount error **\r\n");  
+  else 
+    printf(" ** mount **\r\n"); 
 }
 
 
@@ -77,9 +79,11 @@ void UnMountSDIO(void)
 
 void OpenFile()
 {
-  res = f_open(&MyFile, "yjm.txt", FA_WRITE|FA_READ);
+  res = f_open(&MyFile, "profile.txt", FA_WRITE|FA_READ);
   if(res != FR_OK)
-    printf("** file open error **\r\n");   
+    printf("** file open error : %d **\r\n", res);
+  else 
+    printf(" ** file Oepn **\r\n");
 }
 
 void CloseFile()
@@ -94,7 +98,7 @@ void ReadFile(void)
 { 
   res = f_read(&MyFile, text, sizeof(text), (void*)&bytesRead);
   if(res != FR_OK || bytesRead == 0)
-    printf("** file read error **\r\n");    
+    printf("** file read error **\r\n");   
 }
 
 
@@ -118,6 +122,41 @@ void WriteFile(void)
     printf("** file write error **\r\n");
 }
 
+void WriteProfile(void)
+{
+  res = f_write(&MyFile, pTitle, strlen(pTitle), &bytesWritten);  
+  
+  if (res != FR_OK)     printf("** file write error : %d **\r\n", res);
+  else                  printf(" ** file write **\r\n");  
+  
+  res = f_lseek(&MyFile, f_size(&MyFile));
+  if(res != FR_OK)
+    printf("** cursor error **\r\n");
+
+  f_puts("Yoo jaemin, 12345\r\n", &MyFile);
+}
+
+void SDcard_Scan(void)
+{
+  DIR           Dir;
+  FILINFO       FInfo;
+  
+  res = f_opendir(&Dir,SD_Path);
+  if (res != FR_OK) 
+    printf(" ** Open dir error **\r\n");
+  
+  else 
+  {
+    while(1) 
+    {
+      res = f_readdir(&Dir, &FInfo);
+      if (res != FR_OK || FInfo.fname[0] == 0) break;
+      
+      printf(" %s\r\n",FInfo.fname);
+      printf(" fileSize : %d\r\n\n", FInfo.fsize);
+    }
+  }
+}
 
 
 int main(void)
@@ -128,26 +167,32 @@ int main(void)
 
   MX_GPIO_Init();
   MX_SDIO_SD_Init();
+  BSP_SD_Init();
   MX_FATFS_Init();
   MX_USART1_UART_Init();
 
   printf("******************************\r\n\r\n");
   
   MountSDIO(); 
-
+  //SDcard_Scan();
+  //OpenFile();
+  //WriteProfile();
+  //CloseFile();
+  
+  
   while (1)
   {
     OpenFile();
     ReadFile();
-    WriteFile();
-    CloseFile();
+    //WriteFile();
+    //CloseFile();
     
-    uint16_t len = (uint16_t)strlen(text);
-    text[len] = '\r';
-    text[len+1] = '\n';
+    //uint16_t len = (uint16_t)strlen(text);
+    //text[len] = '\r';
+    //text[len+1] = '\n';
     
-    HAL_UART_Transmit(&huart1, text, len+2, 50);      
-    HAL_Delay(1000);
+    //HAL_UART_Transmit(&huart1, text, len+2, 50);      
+    //HAL_Delay(1000);
 
   }
 }

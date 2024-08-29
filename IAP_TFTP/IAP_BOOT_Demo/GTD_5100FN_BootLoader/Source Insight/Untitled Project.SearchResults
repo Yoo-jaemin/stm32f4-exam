@@ -1,0 +1,8 @@
+---- bBoot_mode Matches (7 in 3 files) ----
+IO_Ctrl.c (gtd_5100fn_bootloader\app\io_ctrl):	if( (ucOld_OperateKey == ucOperateKey) || ( Status->Bit.bBoot_mode != TRUE)) return;
+Task.c (gtd_5100fn_bootloader\app\task):	TaskStatus.Bit.bBoot_mode = TRUE;
+Task.c (gtd_5100fn_bootloader\app\task):	if(TaskStatus.Bit.bBoot_mode != TRUE) Upload_Task();
+Task.c (gtd_5100fn_bootloader\app\task):		default: TaskStatus.Bit.bBoot_mode = TRUE; break;
+Task.c (gtd_5100fn_bootloader\app\task):		  	TaskStatus.Bit.bBoot_mode = TRUE;
+Task.c (gtd_5100fn_bootloader\app\task):	TaskStatus.Bit.bBoot_mode = TRUE; // Boot Mode·Î º¯°æ
+Task.h (gtd_5100fn_bootloader\app\task):		bool bBoot_mode		:1;
